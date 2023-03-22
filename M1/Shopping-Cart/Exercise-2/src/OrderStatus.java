@@ -1,0 +1,8 @@
+public enum OrderStatus {
+    PENDING,
+    PROCESSING,
+    DELIVERED,
+    ORDER_CANCELLED,
+    ORDER_IN_TRANSIT,
+    ORDER_CONFIRMED
+}
