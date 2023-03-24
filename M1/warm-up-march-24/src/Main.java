@@ -10,10 +10,10 @@ public class Main {
             System.out.print("Please enter a string: ");
             input = sc.nextLine();
             oldArray[i] = input;
-            if ((i + 1) >= oldArray.length) {
+            if (i + 1 == oldArray.length) {
                 String[] newArray = new String[oldArray.length * 2];
                 for (int j = 0; j <= newArray.length; j++) {
-                    if (j >= newArray.length) {
+                    if (j == newArray.length) {
                         System.out.println("Ran out of memory, sorry!");
                         break;
                     }
