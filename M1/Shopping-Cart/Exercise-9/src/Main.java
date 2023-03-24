@@ -11,8 +11,14 @@ public class Main {
             System.out.println((i+1) + ". " + addresses[i]);
         }
         // Prompt for shipping address
-        System.out.println("Shipping address?");
-        String shippingInput = console.nextLine();
+        int shippingAns = 0;
+        String shippingInput = "";
+        do {
+            System.out.println("Shipping address?");
+            shippingInput = console.nextLine();
+            shippingAns = Integer.parseInt(shippingInput);
+        } while (shippingAns < 1 || shippingAns > 3);
+
 
         System.out.println("Order quantity?");
         String orderQuantity = console.nextLine();
@@ -22,8 +28,15 @@ public class Main {
         for (int i = 0; i < size.length; i++) {
             System.out.println((i+1) + ". " + size[i]);
         }
-        System.out.println("Size:");
-        String sizeInput = console.nextLine();
+
+        String sizeInput = "";
+        int sizeInt = 0;
+        do {
+            System.out.println("Size: ");
+            sizeInput = console.nextLine();
+            sizeInt = Integer.parseInt(sizeInput);
+        } while (sizeInt < 1 || sizeInt > 3);
+
 
         System.out.println("Promo code for shipping?");
         String promoCode = console.nextLine();
