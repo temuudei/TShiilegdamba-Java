@@ -44,7 +44,7 @@ public class Main {
                 confirm = true;
             }
         } while (confirm == false);
-        
+
         System.out.println("Bye");
     }
 }
