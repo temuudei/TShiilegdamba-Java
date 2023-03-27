@@ -3,21 +3,14 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        boolean[] isVisit = {false, false, false};
+        boolean[] isVisit = {false, false, false, false, false};
         String[] locations = {"Haunted House", "Maze", "Basement", "UFO House", "Ghost House", "exit the game"};
-        String locationInput = "";
-        int locationInputInt = 0;
 
         System.out.println("Welcome to the game!");
+        int locationIndex = 0;
         do {
-            String location = null;
-            int locationIndex = 0;
-
-            while (location == null) {
-                displayChoices(locations);
-                locationIndex = promptUserForInt("Location?");
-                location = locations[locationIndex];
-            }
+            displayChoices(locations);
+            locationIndex = promptUserForInt("Location?");
 
             if (locationIndex == 1) {
                 System.out.println("\nHaunted House: ");
@@ -38,48 +31,50 @@ public class Main {
                 }
             }
             else if (locationIndex == 3) {
-                System.out.println("\nMaze: ");
-                if (isVisit[1] == false) {
-                    System.out.println("Description A: There are aliens");
-                    isVisit[1] = true;
+                System.out.println("\nBasement: ");
+                if (isVisit[2] == false) {
+                    System.out.println("Description A: There is a bad person in front of you");
+                    isVisit[2] = true;
                 } else {
-                    System.out.println("Description B: There are lions");
+                    System.out.println("Description B: There is Anabelle staring at you on a chair, run!!!");
                 }
             }
             else if (locationIndex == 4) {
-                System.out.println("\nMaze: ");
-                if (isVisit[1] == false) {
-                    System.out.println("Description A: There are aliens");
-                    isVisit[1] = true;
+                System.out.println("\nUFO House: ");
+                if (isVisit[3] == false) {
+                    System.out.println("Description A: There is a flying saucer on your left");
+                    isVisit[3] = true;
                 } else {
-                    System.out.println("Description B: There are lions");
+                    System.out.println("Description B: There are aliens talking to each other");
                 }
             }
             else if (locationIndex == 5){
-                if ((isVisit[0] && isVisit[1]) == true) {
-                    System.out.println("\nBasement: ");
-                    if (isVisit[2] == false) {
-                        System.out.println("Description A: There is a bad person in front of you");
-                        isVisit[2] = true;
-                    } else  {
-                        System.out.println("Description B: There is Anabelle staring at you on a chair, run!!!");
-                        if ((isVisit[0] && isVisit[1] && isVisit[2]) == true) {
+                if ((isVisit[0] && isVisit[1] && isVisit[2] && isVisit[3]) == true) {
+                    System.out.println("\nGhose House: ");
+                    if (isVisit[4] == false) {
+                        System.out.println("Description A: There is an angry ghost yelling next to you");
+                        isVisit[4] = true;
+                    } else {
+                        System.out.println("Description B: Boss ghost is there, RUN RUN RUN!!!");
+                        if ((isVisit[0] && isVisit[1] && isVisit[2] && isVisit[3] && isVisit[4]) == true) {
                             System.out.println("You have visited all the places. Goodbye!");
                             break;
                         }
                     }
                 }
-                else if (isVisit[0] == false || isVisit[1] == false) {
+                else if (isVisit[0] == false || isVisit[1] == false || isVisit[2] == false || isVisit[3] == false) {
                     System.out.println("You have to visit both Haunted House and Maze first in order to have the access to this location.");
                 }
             }
-            else if (loca == 6) {
+            else if (locationIndex == 6) {
                 System.out.println("You have ended the game. Goodbye!");
                 break;
-            } else {
-                System.out.println("Invalid option. Please make a choice from those 4 options");
             }
-        } while (locationInputInt < 1 || locationInputInt > 6 || locationInputInt != 6);
+            else {
+                System.out.println("Wrong choice. Please only choose from the above 6");
+            }
+
+        } while (locationIndex < 1 || locationIndex > 6 || locationIndex != 6);
     }
     private static int promptUserForInt(String prompt) {
         java.util.Scanner console = new java.util.Scanner(System.in);
@@ -96,29 +91,6 @@ public class Main {
             }
         }
         return result;
-    }
-    private static String promptUserForString(String prompt) {
-        java.util.Scanner console = new java.util.Scanner(System.in);
-        System.out.println(prompt);
-        return console.nextLine();
-    }
-    // Method for prompt user for string
-    private static String promptUserForString(String prompt, String[] values) {
-        boolean isValid = false;
-        String input = "";
-        do {
-            input = promptUserForString(prompt);
-            for (int i = 0; i < values.length; i++) {
-                if (input.equalsIgnoreCase(values[i])) {
-                    isValid = true;
-                    break;
-                }
-            }
-            if (!isValid) {
-                System.out.println("Hey, invalid entry. Please try again.");
-            }
-        } while (!isValid);
-        return input;
     }
 
     private static void displayChoices(String[] choices) {
