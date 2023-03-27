@@ -21,8 +21,7 @@ public class Main {
                 if (isVisit[0] == false) {
                     System.out.println("Description A: There is a ghost standing behind you");
                     isVisit[0] = true;
-                }
-                else {
+                } else {
                     System.out.println("Description B: There is a clown standing in front of you");
                 }
             }
@@ -31,8 +30,7 @@ public class Main {
                 if (isVisit[1] == false) {
                     System.out.println("Description A: There are aliens");
                     isVisit[1] = true;
-                }
-                else {
+                } else {
                     System.out.println("Description B: There are lions");
                 }
             }
@@ -42,8 +40,7 @@ public class Main {
                     if (isVisit[2] == false) {
                         System.out.println("Description A: There is a bad person in front of you");
                         isVisit[2] = true;
-                    }
-                    else  {
+                    } else  {
                         System.out.println("Description B: There is Anabelle staring at you on a chair, run!!!");
                         if ((isVisit[0] && isVisit[1] && isVisit[2]) == true) {
                             System.out.println("You have visited all the places. Goodbye!");
@@ -58,8 +55,7 @@ public class Main {
             else if (locationInputInt == 4) {
                 System.out.println("You have ended the game. Goodbye!");
                 break;
-            }
-            else {
+            } else {
                 System.out.println("Invalid option. Please make a choice from those 4 options");
             }
         } while (locationInputInt < 1 || locationInputInt > 4 || locationInputInt != 4);
