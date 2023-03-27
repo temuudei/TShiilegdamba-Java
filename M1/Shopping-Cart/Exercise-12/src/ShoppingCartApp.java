@@ -21,6 +21,7 @@ public class ShoppingCartApp {
             int sizeIndex = 0;
             String address = null;
             String size = null;
+            String order = null;
             // Prompt for tax exempt
 
             taxExempt = promptUserForString("Are you tax-exempt? (y/n)", validTaxExemptResponses);
@@ -41,7 +42,11 @@ public class ShoppingCartApp {
             shipping = promptUserForString("Shipping? (standard/overnight/twoday)", validShippingMethods);
 
             // Prompt for order quantity
+
             int orderQuantity = promptUserForInt("Order quantity?");
+            do {
+                orderQuantity = promptUserForInt("Order quantity?");
+            } while (orderQuantity < 0);
 
             // Prompt for Size
             while (size == null) {
