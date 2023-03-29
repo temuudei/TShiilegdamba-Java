@@ -20,7 +20,7 @@ public class StorageLockers {
         System.out.println("Welcome to Our Locker System!");
         int menuChoice = 0;
 
-        while(true) {
+        while (true) {
             // Generating random PIN numbers 0-9999
             randomPin = rand.nextInt(upperBound);
             // If the locker array is not full, then it displays the full menu
@@ -47,6 +47,7 @@ public class StorageLockers {
             }
         }
     }
+
     // This method shows the options from the menu
     public static void showMenuOptions(int menuChoice) {
         if (menuChoice == 1) {
@@ -59,6 +60,7 @@ public class StorageLockers {
             System.out.println("Please only choose from the options below:");
         }
     }
+
     // This method assigns the locker numbers as well as PIN numbers
     public static void fillArrayData() {
         for (int i = 0; i < lockerPins.length; i++) {
@@ -74,12 +76,14 @@ public class StorageLockers {
         System.out.println("Your locker numbers is: " + lockerIndex);
         System.out.println("You PIN number is " + lockerPinIndivid);
     }
+
     // This method shows the menu options of the array
     public static void displayChoices(String[] choices) {
         for (int i = 0; i < choices.length; i++) {
             System.out.println(i + 1 + ": " + choices[i]);
         }
     }
+
     //This method asks user for a user input and converts it to integer if successful
     public static int promptUserForInt(String prompt) {
         boolean isValid = false;
@@ -96,6 +100,7 @@ public class StorageLockers {
         }
         return result;
     }
+
     // This method adds leading 00 to the PIN numbers
     public static String getLeadingNumbers(String randomPin) {
         int randomPinNumb = Integer.parseInt(randomPin);
@@ -112,6 +117,7 @@ public class StorageLockers {
         }
         return newRandomPin;
     }
+
     // This method asks from a user input
     private static String promptUserForString(String prompt) {
         System.out.println(prompt);
@@ -140,50 +146,52 @@ public class StorageLockers {
                 }
             }
 
-            if (isValidLockerNumb == true) {
-                System.out.println("Correct locker number");
-                do {
-                    pinNumb = promptUserForString("Enter your pin number");
-                    // If the user wants to access to their locker
-                    if (menuChoice == 2) {
-                        for (int i = 0; i < lockerPins.length; i++) {
-                            if (pinNumb.equals(lockerPins[i])) {
-                                System.out.println("Correct pin bye!");
-                                isValidLockerNumb = false;
-                                isValidPin = true;
-                                break;
-                            }
-                            isValidPin = false;
-                        }
-                        // If the user wants to release their locker
-                    } else if (menuChoice == 3) {
-                        for (int i = 0; i < lockerPins.length; i++) {
-                            if (pinNumb.equals(lockerPins[i])) {
-                                String lastInput = promptUserForString("Are you sure? (y/n)");
-                                // Locker is released if the user enters y
-                                if (lastInput.equalsIgnoreCase("y")) {
-                                    System.out.println("Your locker is released, goodbye!");
-                                    lockers[lockerNumber - 1] = 0;
-                                    isLockerReleased = true;
-                                    lockerPins[i] = null;
-                                    isValidPin = true;
-                                    isValidLockerNumb = false;
-                                    break;
-                                    // Locker is not released if the user enters n
-                                } else if (lastInput.equalsIgnoreCase("n")) {
-                                    System.out.println("Locker is not released");
-                                    isValidPin = true;
-                                }
-                            }
-                        }
-                    }
-                    if (isValidPin == false) {
-                        System.out.println("Not correct. Try again");
-                    }
-                } while (isValidPin != true);
-            } else if (isLockerInData == false && lockerNumber > 0 && lockerNumber < 6) {
-                System.out.println("The locker number you entered is empty. Please rent a locker first.");
+            if (isValidLockerNumb != true) {
+                if (isLockerInData == false && lockerNumber > 0 && lockerNumber < 6) {
+                    System.out.println("The locker number you entered is empty. Please rent a locker first.");
+                }
+                continue;
             }
+            System.out.println("Correct locker number");
+            do {
+                pinNumb = promptUserForString("Enter your pin number");
+                // If the user wants to access to their locker
+                if (menuChoice == 2) {
+                    for (int i = 0; i < lockerPins.length; i++) {
+                        if (pinNumb.equals(lockerPins[i])) {
+                            System.out.println("Correct pin bye!");
+                            isValidLockerNumb = false;
+                            isValidPin = true;
+                            break;
+                        }
+                        isValidPin = false;
+                    }
+                    // If the user wants to release their locker
+                } else if (menuChoice == 3) {
+                    for (int i = 0; i < lockerPins.length; i++) {
+                        if (pinNumb.equals(lockerPins[i])) {
+                            String lastInput = promptUserForString("Are you sure? (y/n)");
+                            // Locker is released if the user enters y
+                            if (lastInput.equalsIgnoreCase("y")) {
+                                System.out.println("Your locker is released, goodbye!");
+                                lockers[lockerNumber - 1] = 0;
+                                isLockerReleased = true;
+                                lockerPins[i] = null;
+                                isValidPin = true;
+                                isValidLockerNumb = false;
+                                break;
+                                // Locker is not released if the user enters n
+                            } else if (lastInput.equalsIgnoreCase("n")) {
+                                System.out.println("Locker is not released");
+                                isValidPin = true;
+                            }
+                        }
+                    }
+                }
+                if (isValidPin == false) {
+                    System.out.println("Not correct. Try again");
+                }
+            } while (isValidPin != true);
         } while (isValidPin == false);
     }
 }
