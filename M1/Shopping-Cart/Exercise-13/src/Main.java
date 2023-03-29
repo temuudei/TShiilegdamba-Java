@@ -92,7 +92,6 @@ public class Main {
         }
         return result;
     }
-
     private static void displayChoices(String[] choices) {
         for (int i = 0; i < choices.length; i++) {
             System.out.println(i + 1 + ": " + choices[i]);
