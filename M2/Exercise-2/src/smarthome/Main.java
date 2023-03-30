@@ -45,8 +45,6 @@ public class Main {
                 case 3:
                     devices[i] = new Toaster("ABC");
                     break;
-                default:
-                    break;
             }
         }
 
@@ -62,7 +60,7 @@ public class Main {
         // - 5. Quit
         // This process should continue until the user enters '5' to Quit
         int choice = 0;
-        do {
+        while(true) {
             choice = promptInt("Select which device you want to access:", 1, 5);
             Connectable d  = devices[choice - 1];
 
@@ -72,6 +70,9 @@ public class Main {
                     "3. Turn Off Device\n" +
                     "4. Get Device Status\n" +
                     "5. Quit");
+            if (menuChoice == 5) {
+                break;
+            }
             switch (menuChoice) {
                 case 1:
                     System.out.println(d.getName());
@@ -89,13 +90,9 @@ public class Main {
                     else {
                         System.out.println("Device is off!");
                     }
-                case 5:
-                    break;
-                default:
                     break;
             }
-        } while (choice != 5);
-
+        }
         System.out.println("\nThanks for using the Device Manager App. Bye!");
     }
 
