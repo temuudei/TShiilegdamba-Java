@@ -13,5 +13,4 @@ public class Time {
     public double subtractMinutes(double minutes) {
         return this.minutes - minutes;
     }
-    
 }
