@@ -25,9 +25,13 @@ public class CarAttendant extends Employee{
         super.paySalary();
     }
     public void addCar(String car) {
-        for (int i = 0; i < listOfCars.length; i++) {
-            listOfCars[i] += car;
+        String[] oldArray = getListOfCars();
+        String[] newArray = new String[oldArray.length+1];
+        for (int i = 0; i < oldArray.length; i++) {
+            newArray[i] = oldArray[i];
         }
+        newArray[listOfCars.length] = car;
+        setListOfCars(newArray);
     }
     public String[] removeCar(String car) {
         String[] newArray = new String[listOfCars.length - 1];
