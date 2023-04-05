@@ -10,7 +10,7 @@ public class App {
         stringList.add("name3");
 
         List<Integer> intList = new ArrayList<>();
-        
+
         for (int i = 0; i < stringList.size(); i++) {
             System.out.println(stringList.get(i));
         }
