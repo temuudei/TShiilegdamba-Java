@@ -8,6 +8,7 @@ public class App {
         PersonManagerImpl personManager = new PersonManagerImpl();
         Person person = new Person();
         int userInputMenuChoice = 0;
+        boolean isValid = false;
 
         while (true) {
             System.out.println("\n1. Add a person\n2. See all the people in the directory\n3. Quit");
@@ -15,8 +16,15 @@ public class App {
             if (userInputMenuChoice == 1) {
                 person.setfName(promptUserForString("Enter first name:"));
                 person.setlName(promptUserForString("Enter last name:"));
-                person.setAge(Integer.parseInt(promptUserForString("Enter age:")));
-                person.setSalary(Double.parseDouble(promptUserForString("Enter salary:")));
+                while (!isValid) {
+                    try {
+                        person.setAge(Integer.parseInt(promptUserForString("Enter age:")));
+                        person.setSalary(Double.parseDouble(promptUserForString("Enter salary:")));
+                        isValid = true;
+                    } catch (NumberFormatException e) {
+                        System.out.println("Invalid input. Please only enter integers or floating numbers!");
+                    }
+                }
                 personManager.addPerson(person);
                 person = new Person();
             }
