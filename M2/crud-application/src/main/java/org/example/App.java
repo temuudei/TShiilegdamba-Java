@@ -16,11 +16,11 @@ public class App {
             if (userInputMenuChoice == 1) {
                 person.setfName(promptUserForString("Enter first name:"));
                 person.setlName(promptUserForString("Enter last name:"));
-                while (!isValid) {
+                while (true) {
                     try {
                         person.setAge(Integer.parseInt(promptUserForString("Enter age:")));
                         person.setSalary(Double.parseDouble(promptUserForString("Enter salary:")));
-                        isValid = true;
+                        break;
                     } catch (NumberFormatException e) {
                         System.out.println("Invalid input. Please only enter integers or floating numbers!");
                     }

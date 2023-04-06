@@ -5,7 +5,10 @@ import java.util.List;
 import java.util.function.Supplier;
 
 public class PersonManagerImpl implements PersonManager {
-    private List<Person> personList = new ArrayList<>();
+    private List<Person> personList;
+    public PersonManagerImpl() {
+        personList = new ArrayList<>();
+    }
     @Override
     public void addPerson(Person person) {
         personList.add(person);
