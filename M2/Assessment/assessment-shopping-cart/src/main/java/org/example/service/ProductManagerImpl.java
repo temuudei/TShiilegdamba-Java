@@ -8,11 +8,13 @@ import java.util.Map;
 
 public class ProductManagerImpl implements ProductManager {
     private Map<Integer, Product> productMap;
-    private int nextID;
 
     public ProductManagerImpl() {
         productMap = new HashMap<>();
-        nextID = 0;
+    }
+
+    public Map<Integer, Product> getProductMap() {
+        return productMap;
     }
 
     @Override
@@ -21,19 +23,25 @@ public class ProductManagerImpl implements ProductManager {
     }
 
     @Override
+    public Product readByIndex(int index) {
+        return productMap.get(index);
+    }
+
+    @Override
     public Product deleteProduct(int index) {
         return productMap.remove(index);
     }
 
     @Override
-    public Product createProduct(Product product) {
-        nextID++;
-        productMap.put(nextID, product);
+    public Product createProduct(int index, Product product, int quantity) {
+        if (productMap.containsKey(index)) {
+            product.setItemQuantity(readByIndex(index).getItemQuantity() + quantity);
+            productMap.put(index, product);
+        }
+        else {
+            product.setItemQuantity(quantity);
+            productMap.put(index, product);
+        }
         return product;
-    }
-
-    @Override
-    public void updateProduct(int index, Product product) {
-        productMap.put(index, product);
     }
 }

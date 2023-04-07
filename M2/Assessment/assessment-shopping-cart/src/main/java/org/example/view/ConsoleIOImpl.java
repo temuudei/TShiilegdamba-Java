@@ -37,4 +37,21 @@ public class ConsoleIOImpl implements ConsoleIO {
         } while (result < min || result > max);
         return result;
     }
+
+    public int promptInt(String message, String errorMessage, int min) {
+        int result = -1;
+        String input;
+        do {
+            try {
+                input = prompt(message);
+                result = Integer.parseInt(input);
+                if (result < min) {
+                    System.out.println(errorMessage);
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input: Input must be a number");
+            }
+        } while (result < min);
+        return result;
+    }
 }
