@@ -2,10 +2,10 @@ package org.example.view;
 
 import java.util.Scanner;
 
-public class ConsolIOImpl implements ConsolIO {
+public class ConsoleIOImpl implements ConsoleIO {
     private Scanner scanner;
 
-    public ConsolIOImpl() {
+    public ConsoleIOImpl() {
         scanner = new Scanner(System.in);
     }
 

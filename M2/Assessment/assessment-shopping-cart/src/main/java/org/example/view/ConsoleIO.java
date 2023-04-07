@@ -1,6 +1,6 @@
 package org.example.view;
 
-public interface ConsolIO {
+public interface ConsoleIO {
     void displayMessage(String message);
 
     String prompt(String message);
