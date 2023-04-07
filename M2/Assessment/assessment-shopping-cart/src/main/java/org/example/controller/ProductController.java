@@ -87,7 +87,7 @@ public class ProductController {
             int itemChoice = io.promptInt("Enter the ID number", "Invalid choice: Please choose the correct ID number (1-4)", 1, 4);
             if (productManager.getProductMap().containsKey(itemChoice)) {
                 int productQuantitySize = productManager.readByIndex(itemChoice).getItemQuantity();
-                int quantity = io.promptInt("How many would you like to remove?", "Invalid item quantity: Please enter an amount greater than 0", 0);
+                int quantity = io.promptInt("How many would you like to remove?", "Invalid item quantity: Please enter an amount greater or equal to 0", 0);
 
                 if (quantity == 0) {
                     io.displayMessage("No item has been removed\n");
