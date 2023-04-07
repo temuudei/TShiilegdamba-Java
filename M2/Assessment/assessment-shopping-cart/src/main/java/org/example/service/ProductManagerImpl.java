@@ -36,12 +36,11 @@ public class ProductManagerImpl implements ProductManager {
     public Product createProduct(int index, Product product, int quantity) {
         if (productMap.containsKey(index)) {
             product.setItemQuantity(readByIndex(index).getItemQuantity() + quantity);
-            productMap.put(index, product);
         }
         else {
             product.setItemQuantity(quantity);
-            productMap.put(index, product);
         }
+        productMap.put(index, product);
         return product;
     }
 }
