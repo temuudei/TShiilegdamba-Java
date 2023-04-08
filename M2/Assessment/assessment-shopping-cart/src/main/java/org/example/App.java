@@ -8,6 +8,7 @@ import org.example.view.ConsoleIOImpl;
 
 public class App {
     public static void main(String[] args) {
+        //Initiating the objects
         ConsoleIO io = new ConsoleIOImpl();
         ProductManager productManager = new ProductManagerImpl();
         ProductController productController = new ProductController(io, productManager);

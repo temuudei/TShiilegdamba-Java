@@ -9,17 +9,20 @@ public class ConsoleIOImpl implements ConsoleIO {
         scanner = new Scanner(System.in);
     }
 
+    //Displays message
     @Override
     public void displayMessage(String message) {
         System.out.println(message);
     }
 
+    //Asks for user input
     @Override
     public String prompt(String message) {
         System.out.println(message);
         return scanner.nextLine();
     }
 
+    //Gets int type input from user with minimum and maximum
     @Override
     public int promptInt(String message, String errorMessage, int min, int max) {
         int result = -1;
@@ -38,6 +41,7 @@ public class ConsoleIOImpl implements ConsoleIO {
         return result;
     }
 
+    //Gets int type input from with only minimum
     public int promptInt(String message, String errorMessage, int min) {
         int result = -1;
         String input;

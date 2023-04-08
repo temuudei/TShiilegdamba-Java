@@ -6,5 +6,6 @@ public interface ConsoleIO {
     String prompt(String message);
 
     int promptInt(String message, String errorMessage, int min, int max);
+
     int promptInt(String message, String errorMessage, int min);
 }

@@ -13,5 +13,6 @@ public interface ProductManager {
     Product deleteProduct(int index);
 
     Product createProduct(int index, Product product, int quantity);
+
     Map<Integer, Product> getProductMap();
 }
