@@ -77,7 +77,7 @@ public class ProductController {
         } else {
             io.displayMessage("Your current cart items:");
             for (Product product : productManager.readAll()) {
-                io.displayMessage(String.format("\nItem ID: %d\nItem name: %s\nItem price: $%.2f\nItem quantity: %d\n", product.getItemID(), product.getItemName(), product.getItemPrice(), product.getItemQuantity()));
+                io.displayMessage(String.format("\nItem ID: %d\nItem name: %s\nItem price: $%.2f\nItem quantity: %d\nTotal price: $%.2f\n", product.getItemID(), product.getItemName(), product.getItemPrice(), product.getItemQuantity(), (product.getItemPrice() * product.getItemQuantity())));
             }
         }
     }
@@ -92,11 +92,9 @@ public class ProductController {
             int itemChoice = io.promptInt("Enter the ID number", "Invalid choice: Please choose the correct ID number (1-4)", 1, 4);
             if (productManager.getProductMap().containsKey(itemChoice)) {
                 int productQuantitySize = productManager.readByIndex(itemChoice).getItemQuantity();
-                int quantity = io.promptInt("How many would you like to remove?", "Invalid item quantity: Please enter an amount greater or equal to 0", 0);
+                int quantity = io.promptInt("How many would you like to remove?", "Invalid item quantity: Please enter an amount greater than 0", 1);
 
-                if (quantity == 0) {
-                    io.displayMessage("No item has been removed\n");
-                } else if (quantity <= productQuantitySize) {
+                if (quantity <= productQuantitySize) {
                     productManager.readByIndex(itemChoice).setItemQuantity(productQuantitySize - quantity);
                     if (productManager.readByIndex(itemChoice).getItemQuantity() == 0) {
                         productManager.deleteProduct(itemChoice);
