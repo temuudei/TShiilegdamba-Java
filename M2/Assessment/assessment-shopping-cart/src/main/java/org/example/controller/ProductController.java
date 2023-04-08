@@ -35,6 +35,7 @@ public class ProductController {
                     break;
                 case 5:
                     keepRunning = false;
+                    io.displayMessage("Goodbye!");
                     break;
             }
         }
