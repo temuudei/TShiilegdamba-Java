@@ -86,27 +86,29 @@ public class ProductController {
     public void removeItem() {
         if (getMapSize() == 0) {
             io.displayMessage("Shopping cart is empty. No items need to be removed.\n");
-        } else {
-            io.displayMessage("Which item would you like to remove from the cart?");
-            displayCart();
-            int itemChoice = io.promptInt("Enter the ID number", "Invalid choice: Please choose the correct ID number (1-4)", 1, 4);
-            if (productManager.getProductMap().containsKey(itemChoice)) {
-                int productQuantitySize = productManager.readByIndex(itemChoice).getItemQuantity();
-                int quantity = io.promptInt("How many would you like to remove?", "Invalid item quantity: Please enter an amount greater than 0", 1);
-
-                if (quantity <= productQuantitySize) {
-                    productManager.readByIndex(itemChoice).setItemQuantity(productQuantitySize - quantity);
-                    if (productManager.readByIndex(itemChoice).getItemQuantity() == 0) {
-                        productManager.deleteProduct(itemChoice);
-                    }
-                    io.displayMessage("Item has been removed\n");
-                } else {
-                    io.displayMessage("Please enter the right amount to be removed from the cart. Try again\n");
-                }
-            } else {
-                io.displayMessage("Item ID you entered is not in your cart. Try again\n");
-            }
+            return;
         }
+        io.displayMessage("Which item would you like to remove from the cart?");
+        displayCart();
+        int itemChoice = io.promptInt("Enter the ID number", "Invalid choice: Please choose the correct ID number (1-4)", 1, 4);
+        if (!productManager.getProductMap().containsKey(itemChoice)) {
+            io.displayMessage("Item ID you entered is not in your cart. Try again\n");
+            return;
+        }
+
+        int productQuantitySize = productManager.readByIndex(itemChoice).getItemQuantity();
+        int quantity = io.promptInt("How many would you like to remove?", "Invalid item quantity: Please enter an amount greater than 0", 1);
+
+        if (quantity > productQuantitySize) {
+            io.displayMessage("Please enter the right amount to be removed from the cart. Try again\n");
+            return;
+        }
+
+        productManager.readByIndex(itemChoice).setItemQuantity(productQuantitySize - quantity);
+        if (productManager.readByIndex(itemChoice).getItemQuantity() == 0) {
+            productManager.deleteProduct(itemChoice);
+        }
+        io.displayMessage("Item has been removed\n");
     }
 
     //Adds an item to the cart; the user enters the amount of each iterm being added to their cart
@@ -124,14 +126,15 @@ public class ProductController {
     public void checkOutCart() {
         if (getMapSize() == 0) {
             io.displayMessage("Shopping cart is empty. Please add items to the cart before checking out.\n");
-        } else {
-            double totalPrice = 0;
-            for (Product product : productManager.readAll()) {
-                totalPrice += product.getItemQuantity() * product.getItemPrice();
-            }
-            io.displayMessage(String.format("Your total price is: %.2f\nGoodbye!\n", totalPrice));
-            productManager.getProductMap().clear();
+            return;
         }
+        double totalPrice = 0;
+        for (Product product : productManager.readAll()) {
+            totalPrice += product.getItemQuantity() * product.getItemPrice();
+        }
+        io.displayMessage(String.format("Your total price is: %.2f\nGoodbye!\n", totalPrice));
+        productManager.getProductMap().clear();
+
     }
 
     //Returns the size of the hashmap
