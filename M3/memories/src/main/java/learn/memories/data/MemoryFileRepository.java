@@ -1,17 +1,20 @@
 package learn.memories.data;
 
 import learn.memories.models.Memory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Repository;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class MemoryFileRepository implements MemoryRepository {
 
     private final String filePath;
     private final String delimiter = "~";
 
-    public MemoryFileRepository(String filePath) {
+    public MemoryFileRepository(@Value("${dataFilePath:./data/memories.txt}") String filePath) {
         this.filePath = filePath;
     }
 

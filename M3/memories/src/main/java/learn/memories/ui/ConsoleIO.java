@@ -1,7 +1,10 @@
 package learn.memories.ui;
 
+import org.springframework.stereotype.Component;
+
 import java.util.Scanner;
 
+@Component
 public class ConsoleIO implements TextIO {
 
     private final Scanner console = new Scanner(System.in);

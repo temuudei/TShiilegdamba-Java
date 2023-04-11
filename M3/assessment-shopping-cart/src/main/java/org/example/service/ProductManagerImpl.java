@@ -1,11 +1,16 @@
 package org.example.service;
 
 import org.example.model.Product;
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Component
 public class ProductManagerImpl implements ProductManager {
     private Map<Integer, Product> productMap;
 

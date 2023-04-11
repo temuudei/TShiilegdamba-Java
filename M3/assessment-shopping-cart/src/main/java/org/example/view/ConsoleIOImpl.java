@@ -1,7 +1,10 @@
 package org.example.view;
 
+import org.springframework.stereotype.Component;
+
 import java.util.Scanner;
 
+@Component
 public class ConsoleIOImpl implements ConsoleIO {
     private Scanner scanner;
 

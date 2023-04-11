@@ -4,9 +4,12 @@ import learn.memories.data.DataAccessException;
 import learn.memories.domain.MemoryResult;
 import learn.memories.domain.MemoryService;
 import learn.memories.models.Memory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class Controller {
 
     private final View view;

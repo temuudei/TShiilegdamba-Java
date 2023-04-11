@@ -3,7 +3,10 @@ package org.example.controller;
 import org.example.model.Product;
 import org.example.service.ProductManager;
 import org.example.view.ConsoleIO;
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ProductController {
     private ConsoleIO io;
     private ProductManager productManager;
