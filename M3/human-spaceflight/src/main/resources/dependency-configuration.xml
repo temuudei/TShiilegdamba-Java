@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--
+     Define "beans" here.
+     A bean definition registers an instance of a data type with the DI container.
+     -->
+    <bean id="captain" class="learn.spaceflight.personnel.Astronaut">
+        <constructor-arg value="Tim"/>
+        <constructor-arg value="Shiilegdamba"/>
+        <constructor-arg value="25"/>
+    </bean>
+
+    <bean id="crew" class="learn.spaceflight.personnel.Astronaut">
+        <constructor-arg value="John"/>
+        <constructor-arg value="Kim"/>
+        <constructor-arg value="12"/>
+    </bean>
+
+    <bean class="learn.spaceflight.spacecraft.MoonHopper">
+        <constructor-arg ref="crew"/>
+        <constructor-arg ref="captain"/>
+    </bean>
+
+    <bean class="learn.spaceflight.spacecraft.InterstellarTransport">
+        <constructor-arg>
+            <list>
+                <ref bean="crew"/>
+                <ref bean="captain"/>
+            </list>
+        </constructor-arg>
+        <property name="captain" ref="captain"/>
+    </bean>
+
+    <bean class="learn.spaceflight.spacecraft.Probe" scope="prototype">
+    </bean>
+
+</beans>
