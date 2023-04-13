@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ComputerServiceImpl implements ComputerService{
+public class ComputerServiceImpl implements ComputerService {
 
     private ComputerRepository computerRepository;
 
@@ -19,14 +19,14 @@ public class ComputerServiceImpl implements ComputerService{
     @Override
     public ComputerResult addComputer(Computer computer) throws DALException {
         ComputerResult result = new ComputerResult();
-        if(computer == null){
+        if (computer == null) {
             result.addMessage("An computer is required");
             return result;
         }
-        if(computer.getBrandName().isBlank()){
+        if (computer.getBrandName().isBlank()) {
             result.addMessage("computer brand name is required");
         }
-        if(computer.getPrice() <= 0){
+        if (computer.getPrice() <= 0) {
             result.addMessage("computers must have a price greater than zero");
         }
         if (computer.getCpu().isEmpty()) {
@@ -42,7 +42,7 @@ public class ComputerServiceImpl implements ComputerService{
             result.addMessage("computer release date is required");
         }
 
-        if(result.isSuccessful()){
+        if (result.isSuccessful()) {
             computer = computerRepository.create(computer);
             result.setComputer(computer);
         }
@@ -55,9 +55,7 @@ public class ComputerServiceImpl implements ComputerService{
     }
 
     @Override
-    public ComputerResult removeComputer(int id) throws DALException {
-        ComputerResult result = new ComputerResult();
+    public void removeComputer(int id) throws DALException {
         computerRepository.delete(id);
-        return result;
     }
 }

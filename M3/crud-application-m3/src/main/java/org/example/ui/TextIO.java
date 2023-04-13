@@ -6,4 +6,6 @@ public interface TextIO {
     double promptDouble (String message, double min, double max);
     void println (String message);
     void print (String message);
+    void print (int message);
+    void print (double message);
 }

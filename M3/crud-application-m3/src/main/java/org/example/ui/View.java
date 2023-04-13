@@ -18,15 +18,21 @@ public class View {
         io.println("1. Add computer");
         io.println("2. Remove computer");
         io.println("3. View Cart");
-        io.println("4. Checkout");
-        return io.promptInt("Enter Choice: ", 0, 4);
+        io.println("4. Search by a brand name");
+        io.println("5. Checkout");
+        return io.promptInt("Enter Choice: ", 0, 5);
     }
 
     public void printcomputers (List<Computer> computers)
     {
         for (Computer computer:computers
         ) {
-            io.println(computer.getBrandName());
+            io.print("Computer ID: " + computer.getId());
+            io.print("\nBrand name: " + computer.getBrandName());
+            io.print("\nCPU: " + computer.getCpu());
+            io.print("\nGPU: " + computer.getGpu());
+            io.print("\nOperating system: " + computer.getOperatingSystem());
+            io.print("\nPrice: $" + computer.getPrice() + "\n\n");
         }
     }
 

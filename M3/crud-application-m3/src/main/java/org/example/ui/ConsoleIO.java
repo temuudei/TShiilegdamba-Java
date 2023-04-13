@@ -56,7 +56,8 @@ public class ConsoleIO implements TextIO {
     public void println(String message) {
         System.out.println(message);
     }
-
+    public void print(int message) { System.out.print(message);}
+    public void print(double message) { System.out.print(message);}
     @Override
     public void print(String message) {
         System.out.print(message);
