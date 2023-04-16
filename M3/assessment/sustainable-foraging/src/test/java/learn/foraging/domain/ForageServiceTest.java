@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -70,5 +71,17 @@ class ForageServiceTest {
         assertFalse(result.isSuccess());
     }
 
+    @Test
+    void shouldNotAddDuplicates() throws DataException {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        Item item = new Item(29, "Heaven", Category.EDIBLE, new BigDecimal("3.4"));
 
+        Forage forage = new Forage();
+        forage.setDate(LocalDate.parse("04/14/2023", formatter));
+        forage.setItem(item);
+        forage.setKilograms(3.4);
+
+        Result<Forage> result = service.add(forage);
+        assertFalse(result.isSuccess());
+    }
 }

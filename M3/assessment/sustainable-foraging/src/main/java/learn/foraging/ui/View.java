@@ -7,9 +7,11 @@ import learn.foraging.models.Item;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDate;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
+
 @Component
 public class View {
 
@@ -37,6 +39,16 @@ public class View {
 
     public LocalDate getForageDate() {
         displayHeader(MainMenuOption.VIEW_FORAGES_BY_DATE.getMessage());
+        return io.readLocalDate("Select a date [MM/dd/yyyy]: ");
+    }
+
+    public LocalDate getItemPerKgDate() {
+        displayHeader(MainMenuOption.REPORT_KG_PER_ITEM.getMessage());
+        return io.readLocalDate("Select a date [MM/dd/yyyy]: ");
+    }
+
+    public LocalDate getTotalCategoryValueDate() {
+        displayHeader(MainMenuOption.REPORT_CATEGORY_VALUE.getMessage());
         return io.readLocalDate("Select a date [MM/dd/yyyy]: ");
     }
 
@@ -201,6 +213,37 @@ public class View {
 
         for (Item item : items) {
             io.printf("%s: %s, %s, %.2f $/kg%n", item.getId(), item.getName(), item.getCategory(), item.getDollarPerKilogram());
+        }
+    }
+
+    public void lookUpItemPerKg(List<Forage> forages) {
+        if (forages == null || forages.isEmpty()) {
+            io.println("No forages found.");
+            return;
+        }
+        forages.stream().forEach(f -> io.println((f.getItem().getName() + ": " + f.getKilograms() + " kg")));
+    }
+
+    public void lookUpTotalCategoryValue(List<Forage> forages) {
+        if (forages == null || forages.isEmpty()) {
+            io.println("No forages found.");
+            return;
+        }
+
+        BigDecimal totalValue = new BigDecimal(0);
+        Map<Category, BigDecimal> map = new HashMap<>();
+
+        for (int i = 0; i < forages.size(); i++) {
+            if (map.containsKey(forages.get(i).getItem().getCategory())) {
+                totalValue = forages.get(i).getValue();
+                totalValue = totalValue.add(map.get(forages.get(i).getItem().getCategory()));
+                map.put(forages.get(i).getItem().getCategory(), totalValue);
+                continue;
+            }
+            map.put(forages.get(i).getItem().getCategory(), forages.get(i).getValue());
+        }
+        for (Category c : map.keySet()) {
+            io.println(c + " $" + map.get(c).setScale(2, RoundingMode.HALF_UP));
         }
     }
 }
