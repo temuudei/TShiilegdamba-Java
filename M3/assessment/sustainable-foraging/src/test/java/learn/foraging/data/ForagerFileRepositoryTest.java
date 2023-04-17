@@ -1,10 +1,8 @@
 package learn.foraging.data;
 
-import learn.foraging.domain.Result;
 import learn.foraging.models.Forager;
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -17,31 +15,40 @@ class ForagerFileRepositoryTest {
     @Test
     void shouldFindAll() {
         List<Forager> all = repo.findAll();
-        assertEquals(1008, all.size());
+        assertEquals(1010, all.size());
     }
 
     @Test
     void shouldAdd() throws DataException {
+        //ARRANGE
         Forager forager = new Forager();
         forager.setId("0");
         forager.setFirstName("Testing1");
         forager.setLastName("Testing2");
         forager.setState("");
+        //ASSERT
         forager = repo.add(forager);
+        //ASSERT
         assertEquals("Testing1", forager.getFirstName());
     }
 
     @Test
     void shouldFindById() {
+        //ARRANGE
         String id = "0e4707f4-407e-4ec9-9665-baca0aabe88c";
+        //ACT
         Forager forager = repo.findById(id);
+        //ASSERT
         assertEquals("Jilly", forager.getFirstName());
     }
 
     @Test
     void shouldFindByState() {
+        //ARRANGE
         String state = "GA";
+        //ACT
         List<Forager> foragers = repo.findByState(state);
+        //ASSERT
         assertEquals("Jilly", foragers.get(0).getFirstName());
         assertEquals("Shelby", foragers.get(1).getFirstName());
     }

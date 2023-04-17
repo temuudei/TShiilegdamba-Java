@@ -65,6 +65,9 @@ public class Controller {
                 case REPORT_CATEGORY_VALUE:
                     reportCategoryValue();
                     break;
+                case UPDATE_ITEM:
+                    updateItem();
+                    break;
                 case GENERATE:
                     generate();
                     break;
@@ -104,11 +107,11 @@ public class Controller {
         if (!result.isSuccess()) {
             view.displayStatus(false, result.getErrorMessages());
         } else {
-            String successMessage = String.format("Forage %s created.", result.getPayload().getId());
+            String successMessage = String.format("Forage %s created.", result.getPayload().getItem().getName());
             view.displayStatus(true, successMessage);
         }
     }
-
+    //Adds a forager to the file
     private void addForager() throws DataException {
         view.displayHeader(MainMenuOption.ADD_FORAGER.getMessage());
         Forager forager = view.makeForager();
@@ -116,7 +119,18 @@ public class Controller {
         if (!result.isSuccess()) {
             view.displayStatus(false, result.getErrorMessages());
         } else {
-            String successMessage = String.format("Forager %s has been added.", result.getPayload().getId());
+            String successMessage = String.format("Forager %s %s has been added.", result.getPayload().getFirstName(), result.getPayload().getLastName());
+            view.displayStatus(true, successMessage);
+        }
+    }
+    //Updates an item
+    private void updateItem() throws DataException {
+        Item item = view.updateItem();
+        Result<Item> result = itemService.update(item);
+        if (!result.isSuccess()) {
+            view.displayStatus(false, result.getErrorMessages());
+        } else {
+            String successMessage = "Item updated";
             view.displayStatus(true, successMessage);
         }
     }
@@ -152,14 +166,14 @@ public class Controller {
         List<Item> items = itemService.findByCategory(category);
         return view.chooseItem(items);
     }
-
+    //Shows the kg of each item per day
     private void reportKgPerItem() {
         LocalDate date = view.getItemPerKgDate();
         List<Forage> forages = forageService.findByDate(date);
         view.lookUpItemPerKg(forages);
         view.enterToContinue();
     }
-
+    //Shows the total value of each category per day
     private void reportCategoryValue() {
         LocalDate date = view.getTotalCategoryValueDate();
         List<Forage> forages = forageService.findByDate(date);

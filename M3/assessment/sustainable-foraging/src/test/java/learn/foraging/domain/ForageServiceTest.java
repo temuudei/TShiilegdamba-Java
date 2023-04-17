@@ -73,6 +73,7 @@ class ForageServiceTest {
 
     @Test
     void shouldNotAddDuplicates() throws DataException {
+        //ARRANGE
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
         Item item = new Item(29, "Heaven", Category.EDIBLE, new BigDecimal("3.4"));
 
@@ -80,8 +81,9 @@ class ForageServiceTest {
         forage.setDate(LocalDate.parse("04/14/2023", formatter));
         forage.setItem(item);
         forage.setKilograms(3.4);
-
+        //ACT
         Result<Forage> result = service.add(forage);
+        //ASSERT
         assertFalse(result.isSuccess());
     }
 }

@@ -24,6 +24,20 @@ public class ItemService {
                          .collect(Collectors.toList());
     }
 
+    //Updates an item
+    public Result<Item> update(Item item) throws DataException {
+        Result<Item> result = validate(item);
+        validateIfItemIsInFile(item);
+        if (!result.isSuccess()) {
+            return result;
+        }
+        if (repository.update(item)) {
+            result.setPayload(item);
+        }
+        return result;
+    }
+
+    //This method adds an item to the file
     public Result<Item> add(Item item) throws DataException {
         Result<Item> result = validate(item);
         if (!result.isSuccess()) {
@@ -32,7 +46,7 @@ public class ItemService {
         result.setPayload(repository.add(item));
         return result;
     }
-
+    //Main verification method which calls supporting verification methods
     private Result<Item> validate(Item item) {
         Result<Item> result = validateNulls(item);
         if (!result.isSuccess()) {
@@ -43,7 +57,7 @@ public class ItemService {
         validateCategoryItemPrice(item, result);
         return result;
     }
-
+    //Validates nulls
     private Result<Item> validateNulls(Item item) {
         Result<Item> result = new Result<>();
         if (item == null) {
@@ -60,26 +74,40 @@ public class ItemService {
         }
         return result;
     }
-
+    //Checking duplicates
     private void checkDuplicate(Item item, Result<Item> result) {
         if (repository.findAll().stream()
                                 .anyMatch(i -> i.getName().equalsIgnoreCase(item.getName()))) {
             result.addErrorMessage(String.format("Item '%s' is a duplicate.", item.getName()));
         }
     }
-
+    //Checking prices
     private void validatePrice(Item item, Result<Item> result) {
         if ((item.getDollarPerKilogram().compareTo(BigDecimal.ZERO) < 0
                 || item.getDollarPerKilogram().compareTo(new BigDecimal("7500.00")) > 0)) {
             result.addErrorMessage("%/Kg must be between 0.00 and 7500.00.");
         }
     }
-
+    //Checking Poison and Inedible items' prices
     private void validateCategoryItemPrice(Item item, Result<Item> result) {
         if (item.getCategory().equals(Category.valueOf("INEDIBLE")) || item.getCategory().equals(Category.valueOf("POISONOUS"))) {
             if (item.getDollarPerKilogram().compareTo(BigDecimal.ZERO) > 0) {
                 result.addErrorMessage("POISONOUS and INEDIBLE categories items' prices cannot exceed $0.");
             }
+        }
+    }
+
+    private void validateIfItemIsInFile(Item item) {
+        Result<Item> result = new Result<>();
+        List<Item> repo = repository.findAll();
+        boolean isExisting = true;
+        for (int i = 0; i < repo.size(); i++) {
+            if (item.getId() != repo.get(i).getId()) {
+                isExisting = false;
+            }
+        }
+        if (!isExisting) {
+            result.addErrorMessage(String.format("Item %s is not in the file. Cannot be updated therefore.", item.getName()));
         }
     }
 }

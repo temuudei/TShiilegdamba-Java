@@ -7,7 +7,6 @@ import learn.foraging.models.Item;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
-import java.sql.PreparedStatement;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -61,17 +60,22 @@ class ItemServiceTest {
     }
 
     @Test
-    void shouldNotAllowInedibleItemToHavePriceMoreThanZero() throws DataException{
+    void shouldNotAllowInedibleItemToHavePriceMoreThanZero() throws DataException {
+        //ARRANGE
         Item item = new Item(0, "Tests Item", Category.INEDIBLE, new BigDecimal(1));
+        //ACT
         Result<Item> result = service.add(item);
+        //ASSERT
         assertFalse(result.isSuccess());
     }
 
     @Test
-    void shouldNotAllowPoisonousItemToHavePriceMoreThanZero() throws DataException{
+    void shouldNotAllowPoisonousItemToHavePriceMoreThanZero() throws DataException {
+        //ARRANGE
         Item item = new Item(0, "Tests Item", Category.POISONOUS, new BigDecimal(1));
+        //ACT
         Result<Item> result = service.add(item);
+        //ASSERT
         assertFalse(result.isSuccess());
     }
-
 }

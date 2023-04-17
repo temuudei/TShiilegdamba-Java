@@ -140,6 +140,16 @@ public class View {
         return item;
     }
 
+    public Item updateItem() {
+        displayHeader(MainMenuOption.UPDATE_ITEM.getMessage());
+        Item item = new Item();
+        item.setId(io.readInt("Enter your item id to be updated: "));
+        item.setCategory(getItemCategory());
+        item.setName(io.readRequiredString("Item Name: "));
+        item.setDollarPerKilogram(io.readBigDecimal("$/Kg: ", BigDecimal.ZERO, new BigDecimal("7500.00")));
+        return item;
+    }
+
     public GenerateRequest getGenerateRequest() {
         displayHeader(MainMenuOption.GENERATE.getMessage());
         LocalDate start = io.readLocalDate("Select a start date [MM/dd/yyyy]: ");
@@ -215,7 +225,7 @@ public class View {
             io.printf("%s: %s, %s, %.2f $/kg%n", item.getId(), item.getName(), item.getCategory(), item.getDollarPerKilogram());
         }
     }
-
+    //This method shows the kg of each item on the same day
     public void lookUpItemPerKg(List<Forage> forages) {
         if (forages == null || forages.isEmpty()) {
             io.println("No forages found.");
@@ -224,6 +234,7 @@ public class View {
         forages.stream().forEach(f -> io.println((f.getItem().getName() + ": " + f.getKilograms() + " kg")));
     }
 
+    //This method shows the report of the total value of each category in one day
     public void lookUpTotalCategoryValue(List<Forage> forages) {
         if (forages == null || forages.isEmpty()) {
             io.println("No forages found.");

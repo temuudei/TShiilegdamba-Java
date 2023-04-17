@@ -1,7 +1,5 @@
 package learn.foraging.models;
 
-import java.util.Objects;
-
 public class Forager {
 
     private String id;

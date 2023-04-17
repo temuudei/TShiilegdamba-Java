@@ -2,11 +2,8 @@ package learn.foraging.domain;
 
 import learn.foraging.data.DataException;
 import learn.foraging.data.ForagerRepository;
-import learn.foraging.models.Forage;
 import learn.foraging.models.Forager;
 import org.springframework.stereotype.Service;
-
-import java.math.RoundingMode;
 import java.util.List;
 import java.util.stream.Collectors;
 @Service
@@ -27,7 +24,7 @@ public class ForagerService {
                          .filter(i -> i.getLastName().startsWith(prefix))
                          .collect(Collectors.toList());
     }
-
+    //Adds forager to the file
     public Result<Forager> add(Forager forager) throws DataException {
         Result<Forager> result = validate(forager);
         if (!result.isSuccess()) {
@@ -37,6 +34,7 @@ public class ForagerService {
         return result;
     }
 
+    //Main verification method that calls supporting methods
     private Result<Forager> validate(Forager forager) {
         Result<Forager> result = validateNulls(forager);
         if (!result.isSuccess()) {
@@ -45,7 +43,7 @@ public class ForagerService {
         checkDuplicate(forager, result);
         return result;
     }
-
+    //Checking nulls
     private Result<Forager> validateNulls(Forager forager) {
         Result<Forager> result = new Result<>();
         if (forager == null) {
@@ -63,7 +61,7 @@ public class ForagerService {
         }
         return result;
     }
-
+    //Checking duplicates
     private void checkDuplicate(Forager forager, Result<Forager> result) {
         if (repository.findAll().stream()
                 .anyMatch(f -> f.getFirstName().equalsIgnoreCase(forager.getFirstName())

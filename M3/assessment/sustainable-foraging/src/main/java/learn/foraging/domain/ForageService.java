@@ -139,7 +139,7 @@ public class ForageService {
             result.addErrorMessage("Item does not exist.");
         }
     }
-
+    //Checking duplicates
     private void checkDuplicates(Forage forage, Result<Forage> result) {
         List<Forage> duplicates = findByDate(forage.getDate());
         if (duplicates.stream().filter(f -> f.getForager().getLastName().equalsIgnoreCase(forage.getForager().getLastName()) &&

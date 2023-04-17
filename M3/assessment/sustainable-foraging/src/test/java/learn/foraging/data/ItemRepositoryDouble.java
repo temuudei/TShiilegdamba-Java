@@ -43,4 +43,9 @@ public class ItemRepositoryDouble implements ItemRepository {
         all.add(item);
         return item;
     }
+
+    @Override
+    public boolean update(Item item) throws DataException {
+        return false;
+    }
 }

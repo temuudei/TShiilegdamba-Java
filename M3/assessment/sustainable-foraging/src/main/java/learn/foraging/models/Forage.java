@@ -3,7 +3,6 @@ package learn.foraging.models;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDate;
-import java.util.Objects;
 
 public class Forage {
 

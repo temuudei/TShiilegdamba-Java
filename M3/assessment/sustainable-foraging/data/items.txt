@@ -1,13 +1,13 @@
 id,name,category,dollars/kilogram
-1,Ramps,EDIBLE,5.00
+1,Hello,MEDICINAL,2
 2,Purslane,EDIBLE,2.95
 3,Cattail,EDIBLE,4.99
-4,Chicory,EDIBLE,1.99
+4,Testing,EDIBLE,2
 5,Field Garlic,EDIBLE,2.99
 6,Papaw,EDIBLE,9.99
 7,Blackberry,EDIBLE,6.25
-8,Chicken of the Woods Mushroom,EDIBLE,14.95
-9,Chanterelle,EDIBLE,15.00
+8,nini,EDIBLE,1
+9,dsaa,EDIBLE,2
 10,Nettle,EDIBLE,2.89
 11,Dandelion,EDIBLE,0.05
 12,Hazelnut,EDIBLE,8.85
