@@ -26,11 +26,15 @@ public class ItemService {
 
     //Updates an item
     public Result<Item> update(Item item) throws DataException {
-        Result<Item> result = validate(item);
-        validateIfItemIsInFile(item);
+        Result<Item> result = validateIfItemIsInFile(item);
         if (!result.isSuccess()) {
             return result;
         }
+        result = validate(item);
+        if (!result.isSuccess()) {
+            return result;
+        }
+
         if (repository.update(item)) {
             result.setPayload(item);
         }
@@ -77,7 +81,7 @@ public class ItemService {
     //Checking duplicates
     private void checkDuplicate(Item item, Result<Item> result) {
         if (repository.findAll().stream()
-                                .anyMatch(i -> i.getName().equalsIgnoreCase(item.getName()))) {
+                                .anyMatch(i -> i.getName().equalsIgnoreCase(item.getName()) && item.getId() != i.getId())) {
             result.addErrorMessage(String.format("Item '%s' is a duplicate.", item.getName()));
         }
     }
@@ -97,17 +101,20 @@ public class ItemService {
         }
     }
 
-    private void validateIfItemIsInFile(Item item) {
+    private Result<Item> validateIfItemIsInFile(Item item) {
         Result<Item> result = new Result<>();
         List<Item> repo = repository.findAll();
-        boolean isExisting = true;
+        boolean isExisting = false;
+
         for (int i = 0; i < repo.size(); i++) {
-            if (item.getId() != repo.get(i).getId()) {
-                isExisting = false;
+            if (item.getId() == repo.get(i).getId()) {
+                isExisting = true;
+                break;
             }
         }
         if (!isExisting) {
             result.addErrorMessage(String.format("Item %s is not in the file. Cannot be updated therefore.", item.getName()));
         }
+        return result;
     }
 }

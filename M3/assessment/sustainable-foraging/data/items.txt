@@ -1,12 +1,11 @@
 id,name,category,dollars/kilogram
-1,Hello,MEDICINAL,2
-2,Purslane,EDIBLE,2.95
+1,hehe,EDIBLE,1
+2,hi,MEDICINAL,2
 3,Cattail,EDIBLE,4.99
-4,Testing,EDIBLE,2
 5,Field Garlic,EDIBLE,2.99
-6,Papaw,EDIBLE,9.99
-7,Blackberry,EDIBLE,6.25
-8,nini,EDIBLE,1
+6,hie,EDIBLE,2
+7,hehe,EDIBLE,1
+8,hihi,EDIBLE,1
 9,dsaa,EDIBLE,2
 10,Nettle,EDIBLE,2.89
 11,Dandelion,EDIBLE,0.05
@@ -40,4 +39,5 @@ id,name,category,dollars/kilogram
 39,dsadsa,MEDICINAL,12
 40,jksda,EDIBLE,8
 41,dasdsadas,INEDIBLE,0
-42,dsadsadsa,INEDIBLE,0
+42,3,MEDICINAL,1
+43,Apple,EDIBLE,1.50
