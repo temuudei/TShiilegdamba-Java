@@ -42,14 +42,21 @@ public class ReservationService {
             return null;
         }
 
-        List<Reservation> reservationList = new ArrayList<>();
-        for (int i = 0; i < hostList.size(); i++) {
-            if (email.equalsIgnoreCase(hostList.get(i).getEmail())) {
-                reservationList = reservationRepository.findById(hostList.get(i));
-                break;
+        return getReservationList(hostList, email);
+    }
+
+    public Result<Reservation> update(Reservation reservation) throws DataException {
+        Result<Reservation> result = new Result<>();
+        Reservation rsv = makeReservation(reservation);
+        if (view.showSummary(rsv.getStartDate(), rsv.getEndDate(), rsv.getGuest().getTotal())) {
+            if (reservationRepository.update(reservation)) {
+                result.setPayload(reservation);
             }
         }
-        return reservationList;
+        else {
+            result.addMessage("No reservations have been updated. Goodbye.");
+        }
+        return result;
     }
 
     public Result<Reservation> add(Reservation reservation) throws DataException {
@@ -57,12 +64,8 @@ public class ReservationService {
         if (!result.isSuccess()) {
             return result;
         }
-        Host host = getHostInfo(reservation);
-        Guest guest = getGuestInfo(reservation);
-        guest.setTotal(getTotalPrice(reservation));
-        reservation.setHost(host);
-        reservation.setGuest(guest);
-        if (view.showSummary(reservation.getStartDate(), reservation.getEndDate(), guest.getTotal())) {
+        Reservation rsv = makeReservation(reservation);
+        if (view.showSummary(rsv.getStartDate(), rsv.getEndDate(), rsv.getGuest().getTotal())) {
             result.setPayload(reservationRepository.add(reservation));
         }
         else {
@@ -71,16 +74,38 @@ public class ReservationService {
         return result;
     }
 
-    public List<Reservation> viewForAdd(String email) {
+    public List<Reservation> showIfGuestInHostReservation(Reservation reservation) {
         List<Host> hostList = hostRepository.findAll();
-        List<Reservation> reservationList = new ArrayList<>();
+        List<Reservation> reservationList = getReservationList(hostList, reservation.getHost().getEmail());
+        List<Reservation> newList = new ArrayList<>();
+
+        for (int i = 0; i < reservationList.size(); i++) {
+            if (reservation.getGuest().getEmail().equalsIgnoreCase(reservationList.get(i).getGuest().getEmail())) {
+                newList.add(reservationList.get(i));
+            }
+        }
+        return newList;
+    }
+
+    public Host viewHostInfo(String email) {
+        Host host = new Host();
+        List<Host> hostList = hostRepository.findAll();
         for (int i = 0; i < hostList.size(); i++) {
             if (email.equalsIgnoreCase(hostList.get(i).getEmail())) {
-                reservationList = reservationRepository.findById(hostList.get(i));
+                host.setLastName(hostList.get(i).getLastName());
+                host.setAddress(hostList.get(i).getAddress());
+                host.setCity(hostList.get(i).getCity());
+                host.setState(hostList.get(i).getState());
+                host.setPostalCode(hostList.get(i).getPostalCode());
                 break;
             }
         }
-        return reservationList;
+        return host;
+    }
+
+    public List<Reservation> viewForAdd(String email) {
+        List<Host> hostList = hostRepository.findAll();
+        return getReservationList(hostList, email);
     }
     public boolean validateHostInTheFile(String email) {
         List<Host> hostList = hostRepository.findAll();
@@ -103,6 +128,26 @@ public class ReservationService {
             }
         }
         return isExisting;
+    }
+
+    private Reservation makeReservation(Reservation reservation) {
+        Host host = getHostInfo(reservation);
+        Guest guest = getGuestInfo(reservation);
+        guest.setTotal(getTotalPrice(reservation));
+        reservation.setHost(host);
+        reservation.setGuest(guest);
+        return reservation;
+    }
+
+    private List<Reservation> getReservationList(List<Host> hostList, String email) {
+        List<Reservation> reservationList = new ArrayList<>();
+        for (int i = 0; i < hostList.size(); i++) {
+            if (email.equalsIgnoreCase(hostList.get(i).getEmail())) {
+                reservationList = reservationRepository.findById(hostList.get(i));
+                break;
+            }
+        }
+        return reservationList;
     }
 
     private Host getHostInfo(Reservation reservation) {
@@ -149,8 +194,7 @@ public class ReservationService {
                 break;
             }
         }
-        BigDecimal totalPrice = (weekendRate.multiply(BigDecimal.valueOf(numberOfWeekends))).add(standardRate.multiply(BigDecimal.valueOf(numberOfWeekdays)));
-        return totalPrice;
+        return (weekendRate.multiply(BigDecimal.valueOf(numberOfWeekends))).add(standardRate.multiply(BigDecimal.valueOf(numberOfWeekdays)));
     }
 
     private List<Integer> getDateDifferences(Reservation reservation) {
@@ -169,15 +213,8 @@ public class ReservationService {
     }
     private Result<Reservation> validateNoOverlappingReservations(Reservation reservation) {
         Result<Reservation> result = new Result<>();
-        List<Reservation> reservations = new ArrayList<>();
         List<Host> hostList = hostRepository.findAll();
-
-        for (int i = 0; i < hostList.size(); i++) {
-            if (reservation.getHost().getEmail().equalsIgnoreCase(hostList.get(i).getEmail())) {
-                reservations = reservationRepository.findById(hostList.get(i));
-                break;
-            }
-        }
+        List<Reservation> reservations = getReservationList(hostList, reservation.getHost().getEmail());
 
         for (int i = 0; i < reservations.size(); i++) {
             if (reservation.getStartDate().equals(reservations.get(i).getStartDate()) || reservation.getStartDate().equals(reservations.get(i).getEndDate()) ||

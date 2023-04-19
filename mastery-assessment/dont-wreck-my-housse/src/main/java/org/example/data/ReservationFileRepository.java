@@ -49,6 +49,19 @@ public class ReservationFileRepository implements ReservationRepository {
         return reservation;
     }
 
+    @Override
+    public boolean update(Reservation reservation) throws DataException {
+        List<Reservation> all = findById(reservation.getHost());
+        for (int i = 0; i < all.size(); i++) {
+            if (all.get(i).getId() == reservation.getId()) {
+                all.set(i, reservation);
+                writeAll(all, reservation.getHost());
+                return true;
+            }
+        }
+        return false;
+    }
+
     private void writeAll(List<Reservation> reservations, Host host) throws DataException {
         try (PrintWriter writer = new PrintWriter(getFilePath(host))) {
             writer.println(HEADER);

@@ -7,6 +7,8 @@ import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 @Component
 public class View {
@@ -34,6 +36,7 @@ public class View {
         io.println(message);
         io.println("=".repeat(message.length()));
     }
+
     public void displayException(Exception ex) {
         displayHeader("A critical error occurred:");
         io.println(ex.getMessage());
@@ -48,8 +51,12 @@ public class View {
         return io.readRequiredString("Please enter guest's email: ");
     }
 
-    public void hostAndGuestNotInFile(String hostEmail, String guestEmail) {
+    public void getHostAndGuestNotInFile(String hostEmail, String guestEmail) {
         io.printf("Unfortunately, '%s' or '%s' or both do not exist in the file. Therefore, reservation cannot be created.\n", hostEmail, guestEmail);
+    }
+
+    public void getHostAndGuestNoReservation(String hostEmail, String guestEmail) {
+        io.printf("Unfortunately, '%s' or '%s' do not have a reservation together. Please make a new reservation instead.\n", hostEmail, guestEmail);
     }
     public void displayStatus(boolean success, List<String> messages) {
         displayHeader(success ? "Success" : "Error");
@@ -83,6 +90,7 @@ public class View {
 
     public void displayReservations(List<Reservation> reservations) {
         if (reservations != null) {
+            Collections.sort(reservations, Comparator.comparing(Reservation::getStartDate));
             for (Reservation reservation : reservations) {
                 io.printf("ID: %s, %s - %s, Guest: first name: %s, last name: %s, email: %s, phone number: %s, total price: $%.2f \n",
                         reservation.getId(),
@@ -96,9 +104,11 @@ public class View {
                 );
             }
         }
+        io.println("");
     }
     public void displayFutureReservations(List<Reservation> reservations) {
         if (reservations != null) {
+            Collections.sort(reservations, Comparator.comparing(Reservation::getStartDate));
             for (int i = 0; i < reservations.size(); i++) {
                 LocalDate startDate = reservations.get(i).getStartDate();
                 LocalDate endDate = reservations.get(i).getStartDate();
@@ -117,6 +127,12 @@ public class View {
                 }
             }
         }
+        io.println("");
+    }
+
+    public String showHostInfo(Host host) {
+        String str = String.format("%s: %s, %s, %s %d", host.getLastName(), host.getAddress(), host.getCity(), host.getState(), host.getPostalCode());
+        return str;
     }
     public LocalDate getStartDate() {
         LocalDate startDate;
@@ -150,5 +166,39 @@ public class View {
         reservation.setStartDate(startDate);
         reservation.setEndDate(endDate);
         return reservation;
+    }
+
+    public Reservation makeReservation(String guestEmail, String hostEmail, LocalDate endDate, LocalDate startDate, int id) {
+        Reservation reservation = new Reservation();
+        Guest guest = new Guest();
+        Host host = new Host();
+        guest.setEmail(guestEmail);
+        host.setEmail(hostEmail);
+        reservation.setHost(host);
+        reservation.setGuest(guest);
+        reservation.setStartDate(startDate);
+        reservation.setEndDate(endDate);
+        reservation.setId(id);
+        return reservation;
+    }
+
+
+    public Reservation makeReservation(String guestEmail, String hostEmail) {
+        Reservation reservation = new Reservation();
+        Guest guest = new Guest();
+        Host host = new Host();
+        guest.setEmail(guestEmail);
+        host.setEmail(hostEmail);
+        reservation.setGuest(guest);
+        reservation.setHost(host);
+        return reservation;
+    }
+
+    public void displayEditingID(int id) {
+        displayHeader("Editing Reservation " + id);
+    }
+
+    public int getReservationID() {
+        return io.readInt("Choose the reservation ID to be changed: ");
     }
 }

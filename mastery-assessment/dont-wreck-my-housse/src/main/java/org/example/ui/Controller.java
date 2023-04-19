@@ -63,6 +63,9 @@ public class Controller {
         view.displayHeader(MainMenuOption.VIEW_RESERVATIONS_FOR_HOST.getMessage());
         String email = view.getHostEmail();
         List<Reservation> reservations = reservationService.view(email);
+        if (reservations != null) {
+            view.displayHeader(view.showHostInfo(reservationService.viewHostInfo(email)));
+        }
         view.displayReservations(reservations);
         view.enterToContinue();
     }
@@ -74,36 +77,69 @@ public class Controller {
 
         if (reservationService.validateHostInTheFile(hostEmail) && reservationService.validateGuestInTheFile(guestEmail)) {
             view.displayFutureReservations(reservationService.viewForAdd(hostEmail));
+            view.displayHeader(view.showHostInfo(reservationService.viewHostInfo(hostEmail)));
             LocalDate startDate = view.getStartDate();
             LocalDate endDate = view.getEndDate(startDate);
             Reservation reservation = view.makeReservation(guestEmail, hostEmail, endDate, startDate);
 
             Result<Reservation> result = reservationService.add(reservation);
-             if (!result.isSuccessTwo()) {
+            if (!result.isSuccessTwo()) {
                 view.displayCancellation(false, result.getAddMessage());
             }
-             if (!result.isSuccess()) {
+            if (!result.isSuccess()) {
                 view.displayStatus(false, result.getErrorMessages());
             } else if (result.isSuccess() && result.isSuccessTwo()) {
-                String successMessage = String.format("Reservation created", result.getPayload().getGuest().getTotal());
+                String successMessage = String.format("Reservation %d created", result.getPayload().getId());
                 view.displayStatus(true, successMessage);
             }
         } else {
-            view.hostAndGuestNotInFile(hostEmail, guestEmail);
+            view.getHostAndGuestNotInFile(hostEmail, guestEmail);
         }
         view.enterToContinue();
     }
 
     private void editReservation() throws DataException {
         view.displayHeader(MainMenuOption.EDIT_RESERVATION.getMessage());
+        String guestEmail = view.getGuestEmail();
+        String hostEmail = view.getHostEmail();
+        if (reservationService.validateHostInTheFile(hostEmail) && reservationService.validateGuestInTheFile(guestEmail)) {
+            Reservation reservation = view.makeReservation(guestEmail, hostEmail);
+            List<Reservation> updatingReservation = reservationService.showIfGuestInHostReservation(reservation);
 
-
+            if (updatingReservation.size() >= 1) {
+                view.displayHeader(view.showHostInfo(reservationService.viewHostInfo(hostEmail)));
+                view.displayReservations(updatingReservation);
+                int reservationID = 0;
+                if (updatingReservation.size() >= 2) {
+                    reservationID = view.getReservationID();
+                } else{
+                    reservationID = updatingReservation.get(0).getId();
+                }
+                view.displayEditingID(reservationID);
+                LocalDate startDate = view.getStartDate();
+                LocalDate endDate = view.getEndDate(startDate);
+                Reservation newReservation = view.makeReservation(guestEmail, hostEmail, endDate, startDate, reservationID);
+                Result<Reservation> result = reservationService.update(newReservation);
+                if (!result.isSuccessTwo()) {
+                    view.displayCancellation(false, result.getAddMessage());
+                }
+                if (!result.isSuccess()) {
+                    view.displayStatus(false, result.getErrorMessages());
+                } else if (result.isSuccess() && result.isSuccessTwo()) {
+                    String successMessage = String.format("Reservation %d updated", result.getPayload().getId());
+                    view.displayStatus(true, successMessage);
+                }
+            } else {
+                view.getHostAndGuestNoReservation(hostEmail, guestEmail);
+            }
+        } else {
+            view.getHostAndGuestNotInFile(hostEmail, guestEmail);
+        }
         view.enterToContinue();
     }
 
     private void cancelReservation() throws DataException {
         view.displayHeader(MainMenuOption.CANCEL_RESERVATION.getMessage());
-
 
         view.enterToContinue();
     }
