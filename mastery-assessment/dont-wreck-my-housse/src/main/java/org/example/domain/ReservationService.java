@@ -13,9 +13,7 @@ import java.time.DayOfWeek;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static java.time.DayOfWeek.*;
@@ -220,10 +218,14 @@ public class ReservationService {
         Result<Reservation> result = new Result<>();
         List<Host> hostList = hostRepository.findAll();
         List<Reservation> reservations = getReservationList(hostList, reservation.getHost().getEmail());
+        Collections.sort(reservations, Comparator.comparing(Reservation::getStartDate));
 
         for (int i = 0; i < reservations.size(); i++) {
             if (reservation.getStartDate().equals(reservations.get(i).getStartDate()) || reservation.getStartDate().equals(reservations.get(i).getEndDate()) ||
-                reservation.getEndDate().equals(reservations.get(i).getEndDate()) || reservation.getEndDate().equals(reservations.get(i).getStartDate())) {
+                reservation.getEndDate().equals(reservations.get(i).getEndDate()) || reservation.getEndDate().equals(reservations.get(i).getStartDate()) ||
+               (reservation.getStartDate().isAfter(reservations.get(i).getStartDate()) && reservation.getStartDate().isBefore(reservations.get(i).getEndDate())) ||
+               (reservation.getStartDate().isBefore(reservations.get(i).getStartDate()) &&
+                reservation.getEndDate().isAfter(reservations.get(reservations.size() - 1).getEndDate()))) {
                 result.addErrorMessage("Provided dates overlap with other reservations. Please choose other dates.");
                 return result;
             }
@@ -235,15 +237,22 @@ public class ReservationService {
         Result<Reservation> result = new Result<>();
         List<Host> hostList = hostRepository.findAll();
         List<Reservation> reservations = getReservationList(hostList, reservation.getHost().getEmail());
+        Collections.sort(reservations, Comparator.comparing(Reservation::getStartDate));
 
-        for (int i = 0; i < reservations.size(); i++) {
-            if (reservation.getEndDate().equals(reservations.get(i).getStartDate()) ||
-               (reservation.getEndDate().isAfter(reservations.get(i).getStartDate()) &&
-                reservation.getEndDate().isBefore(reservations.get(i).getEndDate())) ||
-               (reservation.getStartDate().isBefore(reservations.get(i).getStartDate()) &&
-                reservation.getEndDate().isAfter(reservations.get(i).getStartDate()))) {
-                result.addErrorMessage("Provided dates overlap with other reservations. Please choose other dates.");
-                return result;
+        if (reservations.size() > 1 ) {
+            for (int i = 0; i < reservations.size(); i++) {
+                if (reservation.getEndDate().equals(reservations.get(i).getStartDate()) ||
+                    reservation.getStartDate().equals(reservations.get(i).getEndDate()) ||
+                   (reservation.getEndDate().isAfter(reservations.get(i).getStartDate()) &&
+                   (reservation.getEndDate().isBefore(reservations.get(i).getEndDate()) ||
+                    reservation.getEndDate().equals(reservations.get(i).getEndDate()))) ||
+                   (reservation.getStartDate().isBefore(reservations.get(i).getStartDate()) &&
+                    reservation.getEndDate().isAfter(reservations.get(reservations.size() - 1).getEndDate())) ||
+                   (reservation.getStartDate().isBefore(reservations.get(i).getEndDate()) &&
+                    reservation.getEndDate().isAfter(reservations.get(reservations.size() - 1).getEndDate()))) {
+                    result.addErrorMessage("Provided dates overlap with other reservations. Please choose other dates.");
+                    return result;
+                }
             }
         }
         return result;

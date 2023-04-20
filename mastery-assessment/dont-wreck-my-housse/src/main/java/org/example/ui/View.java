@@ -194,6 +194,21 @@ public class View {
         return reservation;
     }
 
+    public boolean validateIdInTheFile(List<Reservation> reservations, int id) {
+        boolean isExisting = true;
+        for (int i = 0; i < reservations.size(); i++) {
+            if (reservations.get(i).getId() == id) {
+                return true;
+            }
+            isExisting = false;
+        }
+        return isExisting;
+    }
+
+    public void showNotInFile(int id) {
+        io.printf("%d does not exist. Please choose the correct ID number\n", id);
+    }
+
     public void displayEditingID(int id) {
         displayHeader("Editing Reservation " + id);
     }

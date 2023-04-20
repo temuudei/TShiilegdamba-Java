@@ -109,10 +109,12 @@ public class Controller {
             if (updatingReservation.size() >= 1) {
                 view.displayHeader(view.showHostInfo(reservationService.viewHostInfo(hostEmail)));
                 view.displayReservations(updatingReservation);
-                int reservationID = 0;
+                int reservationID;
                 if (updatingReservation.size() >= 2) {
-                    reservationID = view.getReservationID();
-                } else{
+                    do {
+                        reservationID = view.getReservationID();
+                    } while (!view.validateIdInTheFile(updatingReservation, reservationID));
+                } else {
                     reservationID = updatingReservation.get(0).getId();
                 }
                 view.displayEditingID(reservationID);
