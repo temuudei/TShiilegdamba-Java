@@ -19,6 +19,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import static java.time.DayOfWeek.*;
+import static java.time.temporal.ChronoUnit.DAYS;
 
 @Service
 public class ReservationService {
@@ -46,14 +47,16 @@ public class ReservationService {
     }
 
     public Result<Reservation> update(Reservation reservation) throws DataException {
-        Result<Reservation> result = new Result<>();
+        Result<Reservation> result = validateNoOverlappingReservationsForUpdate(reservation);
+        if (!result.isSuccess()) {
+            return result;
+        }
         Reservation rsv = makeReservation(reservation);
         if (view.showSummary(rsv.getStartDate(), rsv.getEndDate(), rsv.getGuest().getTotal())) {
             if (reservationRepository.update(reservation)) {
                 result.setPayload(reservation);
             }
-        }
-        else {
+        } else {
             result.addMessage("No reservations have been updated. Goodbye.");
         }
         return result;
@@ -67,8 +70,7 @@ public class ReservationService {
         Reservation rsv = makeReservation(reservation);
         if (view.showSummary(rsv.getStartDate(), rsv.getEndDate(), rsv.getGuest().getTotal())) {
             result.setPayload(reservationRepository.add(reservation));
-        }
-        else {
+        } else {
             result.addMessage("No reservations have been made. Goodbye.");
         }
         return result;
@@ -107,6 +109,7 @@ public class ReservationService {
         List<Host> hostList = hostRepository.findAll();
         return getReservationList(hostList, email);
     }
+
     public boolean validateHostInTheFile(String email) {
         List<Host> hostList = hostRepository.findAll();
         boolean isExisting = false;
@@ -178,14 +181,15 @@ public class ReservationService {
         }
         return guest;
     }
+
     private BigDecimal getTotalPrice(Reservation reservation) {
         List<Host> hostList = hostRepository.findAll();
-        List<Integer> totalDates = getDateDifferences(reservation);
+        List<Long> totalDates = getDateDifferences(reservation);
 
         BigDecimal weekendRate = new BigDecimal(0);
         BigDecimal standardRate = new BigDecimal(0);
-        int numberOfWeekdays = totalDates.get(0);
-        int numberOfWeekends = totalDates.get(1);
+        long numberOfWeekdays = totalDates.get(0);
+        long numberOfWeekends = totalDates.get(1);
 
         for (int i = 0; i < hostList.size(); i++) {
             if (reservation.getHost().getEmail().equalsIgnoreCase(hostList.get(i).getEmail())) {
@@ -197,20 +201,21 @@ public class ReservationService {
         return (weekendRate.multiply(BigDecimal.valueOf(numberOfWeekends))).add(standardRate.multiply(BigDecimal.valueOf(numberOfWeekdays)));
     }
 
-    private List<Integer> getDateDifferences(Reservation reservation) {
-        List<Integer> totalDates = new ArrayList<>();
+    private List<Long> getDateDifferences(Reservation reservation) {
+        List<Long> totalDates = new ArrayList<>();
         LocalDate startDate = reservation.getStartDate();
         LocalDate endDate = reservation.getEndDate();
-        Period difference = startDate.until(endDate);
+        long difference = DAYS.between(startDate, endDate);
 
         final Set<DayOfWeek> businessDays = Set.of(MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY);
         List<LocalDate> dates = startDate.datesUntil(endDate).filter(t -> businessDays.contains(t.getDayOfWeek())).toList();
-        int weekends = difference.getDays() - dates.size();
-        int weekdays = dates.size();
+        long weekends = difference - dates.size();
+        long weekdays = dates.size();
         totalDates.add(weekdays);
         totalDates.add(weekends);
         return totalDates;
     }
+
     private Result<Reservation> validateNoOverlappingReservations(Reservation reservation) {
         Result<Reservation> result = new Result<>();
         List<Host> hostList = hostRepository.findAll();
@@ -225,6 +230,25 @@ public class ReservationService {
         }
         return result;
     }
+
+    private Result<Reservation> validateNoOverlappingReservationsForUpdate(Reservation reservation) {
+        Result<Reservation> result = new Result<>();
+        List<Host> hostList = hostRepository.findAll();
+        List<Reservation> reservations = getReservationList(hostList, reservation.getHost().getEmail());
+
+        for (int i = 0; i < reservations.size(); i++) {
+            if (reservation.getEndDate().equals(reservations.get(i).getStartDate()) ||
+               (reservation.getEndDate().isAfter(reservations.get(i).getStartDate()) &&
+                reservation.getEndDate().isBefore(reservations.get(i).getEndDate())) ||
+               (reservation.getStartDate().isBefore(reservations.get(i).getStartDate()) &&
+                reservation.getEndDate().isAfter(reservations.get(i).getStartDate()))) {
+                result.addErrorMessage("Provided dates overlap with other reservations. Please choose other dates.");
+                return result;
+            }
+        }
+        return result;
+    }
+
     private boolean checkIfHostExists(List<Host> hostList, String email) {
         boolean isExisting = true;
         String message = "";

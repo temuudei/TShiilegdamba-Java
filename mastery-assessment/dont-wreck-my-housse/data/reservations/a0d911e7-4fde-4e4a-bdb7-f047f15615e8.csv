@@ -4,6 +4,5 @@ id,start_date,end_date,first_name,last_name,email,phone,total_price
 2,2023-05-01,2023-05-10,Sullivan,Lomas,slomas0@mediafire.com,(702) 7768761,2802.50
 1,2023-05-15,2023-05-16,Sullivan,Lomas,slomas0@mediafire.com,(702) 7768761,295.00
 5,2023-05-11,2023-05-14,Sullivan,Lomas,slomas0@mediafire.com,(702) 7768761,958.75
-6,2023-05-17,2023-05-24,Olympie,Gecks,ogecks1@dagondesign.com,(202) 2528316,2212.50
-7,2023-05-25,2023-06-25,Olympie,Gecks,ogecks1@dagondesign.com,(202) 2528316,-1622.50
-8,2023-06-01,2023-06-25,Olympie,Gecks,ogecks1@dagondesign.com,(202) 2528316,7596.25
+6,2023-05-17,2023-05-31,Olympie,Gecks,ogecks1@dagondesign.com,(202) 2528316,4425.00
+8,2023-06-01,2023-06-18,Olympie,Gecks,ogecks1@dagondesign.com,(202) 2528316,5383.75

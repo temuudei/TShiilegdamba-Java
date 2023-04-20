@@ -76,8 +76,8 @@ public class Controller {
         String hostEmail = view.getHostEmail();
 
         if (reservationService.validateHostInTheFile(hostEmail) && reservationService.validateGuestInTheFile(guestEmail)) {
-            view.displayFutureReservations(reservationService.viewForAdd(hostEmail));
             view.displayHeader(view.showHostInfo(reservationService.viewHostInfo(hostEmail)));
+            view.displayFutureReservations(reservationService.viewForAdd(hostEmail));
             LocalDate startDate = view.getStartDate();
             LocalDate endDate = view.getEndDate(startDate);
             Reservation reservation = view.makeReservation(guestEmail, hostEmail, endDate, startDate);

@@ -9,9 +9,16 @@ import org.example.ui.View;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.Month;
+import java.time.Period;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
+import static java.time.DayOfWeek.*;
+import static java.time.temporal.ChronoUnit.DAYS;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ReservationServiceTest {
@@ -54,5 +61,21 @@ class ReservationServiceTest {
         Result<Reservation> result = service.add(reservation);
         assertTrue(result.isSuccess());
         assertNotNull(result.getPayload());
+    }
+
+    @Test
+    void checkingTimeDifference() {
+        LocalDate startDate = LocalDate.of(2023, 8, 1);
+        LocalDate endDate = LocalDate.of(2023, 9, 15);
+        long difference = DAYS.between(startDate, endDate);
+        System.out.println(difference);
+
+        final Set<DayOfWeek> businessDays = Set.of(MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY);
+        List<LocalDate> dates = startDate.datesUntil(endDate).filter(t -> businessDays.contains(t.getDayOfWeek())).toList();
+        long weekends = difference - dates.size();
+        long weekdays = dates.size();
+
+        System.out.println(weekdays);
+        System.out.println(weekends);
     }
 }
