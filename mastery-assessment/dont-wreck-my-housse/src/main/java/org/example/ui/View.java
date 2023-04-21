@@ -7,9 +7,9 @@ import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+
 @Component
 public class View {
     private final ConsoleIO io;
@@ -31,6 +31,7 @@ public class View {
         String message = String.format("Select [%s-%s]: ", min, max);
         return MainMenuOption.fromValue(io.readInt(message, min, max));
     }
+
     public void displayHeader(String message) {
         io.println("");
         io.println(message);
@@ -41,12 +42,15 @@ public class View {
         displayHeader("A critical error occurred:");
         io.println(ex.getMessage());
     }
+
     public void enterToContinue() {
         io.readString("Press [Enter] to continue.");
     }
+
     public String getHostEmail() {
         return io.readRequiredString("Please enter host's email: ");
     }
+
     public String getGuestEmail() {
         return io.readRequiredString("Please enter guest's email: ");
     }
@@ -58,6 +62,7 @@ public class View {
     public void getHostAndGuestNoReservation(String hostEmail, String guestEmail) {
         io.printf("Unfortunately, '%s' or '%s' do not have a reservation together. Please make a new reservation instead.\n", hostEmail, guestEmail);
     }
+
     public void displayStatus(boolean success, List<String> messages) {
         displayHeader(success ? "Success" : "Error");
         for (String message : messages) {
@@ -77,20 +82,20 @@ public class View {
         io.println("Start: " + startDate);
         io.println("End: " + endDate);
         io.println("Total: $" + total);
-        boolean input = io.readBoolean("Is this okay? [y/n]: ");
-        if (input == true) {
-            return true;
-        }
-        return false;
+        return io.readBoolean("Is this okay? [y/n]: ");
     }
 
     public void displayStatus(boolean success, String message) {
         displayStatus(success, List.of(message));
     }
 
+    public void displayCancellation(boolean success, String mesaage) {
+        displayCancellation(success, List.of(mesaage));
+    }
+
     public void displayReservations(List<Reservation> reservations) {
         if (reservations != null) {
-            Collections.sort(reservations, Comparator.comparing(Reservation::getStartDate));
+            reservations.sort(Comparator.comparing(Reservation::getStartDate));
             for (Reservation reservation : reservations) {
                 io.printf("ID: %s, %s - %s, Guest: first name: %s, last name: %s, email: %s, phone number: %s, total price: $%.2f \n",
                         reservation.getId(),
@@ -106,22 +111,23 @@ public class View {
         }
         io.println("");
     }
+
     public void displayFutureReservations(List<Reservation> reservations) {
         if (reservations != null) {
-            Collections.sort(reservations, Comparator.comparing(Reservation::getStartDate));
-            for (int i = 0; i < reservations.size(); i++) {
-                LocalDate startDate = reservations.get(i).getStartDate();
-                LocalDate endDate = reservations.get(i).getStartDate();
+            reservations.sort(Comparator.comparing(Reservation::getStartDate));
+            for (Reservation reservation : reservations) {
+                LocalDate startDate = reservation.getStartDate();
+                LocalDate endDate = reservation.getStartDate();
                 while (startDate.isAfter(LocalDate.now()) && endDate.isAfter(LocalDate.now())) {
                     io.printf("ID: %s, %s - %s, Guest: first name: %s, last name: %s, email: %s, phone number: %s, total price: $%.2f \n",
-                            reservations.get(i).getId(),
-                            reservations.get(i).getStartDate(),
-                            reservations.get(i).getEndDate(),
-                            reservations.get(i).getGuest().getFirstName(),
-                            reservations.get(i).getGuest().getLastName(),
-                            reservations.get(i).getGuest().getEmail(),
-                            reservations.get(i).getGuest().getPhone(),
-                            reservations.get(i).getGuest().getTotal()
+                            reservation.getId(),
+                            reservation.getStartDate(),
+                            reservation.getEndDate(),
+                            reservation.getGuest().getFirstName(),
+                            reservation.getGuest().getLastName(),
+                            reservation.getGuest().getEmail(),
+                            reservation.getGuest().getPhone(),
+                            reservation.getGuest().getTotal()
                     );
                     break;
                 }
@@ -131,9 +137,9 @@ public class View {
     }
 
     public String showHostInfo(Host host) {
-        String str = String.format("%s: %s, %s, %s %d", host.getLastName(), host.getAddress(), host.getCity(), host.getState(), host.getPostalCode());
-        return str;
+        return String.format("%s: %s, %s, %s %d", host.getLastName(), host.getAddress(), host.getCity(), host.getState(), host.getPostalCode());
     }
+
     public LocalDate getStartDate() {
         LocalDate startDate;
         do {
@@ -141,7 +147,7 @@ public class View {
             if (startDate.isBefore(LocalDate.now().plusDays(1))) {
                 displayStatus(false, "Start date much be in the future.");
             }
-        } while(startDate.isBefore(LocalDate.now().plusDays(1)));
+        } while (startDate.isBefore(LocalDate.now().plusDays(1)));
         return startDate;
     }
 
@@ -152,9 +158,10 @@ public class View {
             if (endDate.isBefore(startDate.plusDays(1))) {
                 displayStatus(false, "End date must come after start date.");
             }
-        } while(endDate.isBefore(startDate.plusDays(1)));
+        } while (endDate.isBefore(startDate.plusDays(1)));
         return endDate;
     }
+
     public Reservation makeReservation(String guestEmail, String hostEmail, LocalDate endDate, LocalDate startDate) {
         Reservation reservation = new Reservation();
         Guest guest = new Guest();
@@ -182,6 +189,18 @@ public class View {
         return reservation;
     }
 
+    public Reservation makeReservation(String guestEmail, String hostEmail, int id) {
+        Reservation reservation = new Reservation();
+        Guest guest = new Guest();
+        Host host = new Host();
+        guest.setEmail(guestEmail);
+        host.setEmail(hostEmail);
+        reservation.setHost(host);
+        reservation.setGuest(guest);
+        reservation.setId(id);
+        return reservation;
+    }
+
 
     public Reservation makeReservation(String guestEmail, String hostEmail) {
         Reservation reservation = new Reservation();
@@ -196,17 +215,13 @@ public class View {
 
     public boolean validateIdInTheFile(List<Reservation> reservations, int id) {
         boolean isExisting = true;
-        for (int i = 0; i < reservations.size(); i++) {
-            if (reservations.get(i).getId() == id) {
+        for (Reservation reservation : reservations) {
+            if (reservation.getId() == id) {
                 return true;
             }
             isExisting = false;
         }
         return isExisting;
-    }
-
-    public void showNotInFile(int id) {
-        io.printf("%d does not exist. Please choose the correct ID number\n", id);
     }
 
     public void displayEditingID(int id) {
@@ -215,5 +230,9 @@ public class View {
 
     public int getReservationID() {
         return io.readInt("Choose the reservation ID to be changed: ");
+    }
+
+    public int getReservationIDForDelete() {
+        return io.readInt("Choose the reservation ID to be deleted: ");
     }
 }

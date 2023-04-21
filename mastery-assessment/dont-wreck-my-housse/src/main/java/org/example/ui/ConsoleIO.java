@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Scanner;
+
 @Component
 public class ConsoleIO {
     private static final String REQUIRED
@@ -17,20 +18,25 @@ public class ConsoleIO {
     private static final String INVALID_DATE
             = "[INVALID] Enter a date in MM/dd/yyyy format.";
     private final Scanner scanner = new Scanner(System.in);
-    private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+
     public void print(String message) {
         System.out.print(message);
     }
+
     public void println(String message) {
         System.out.println(message);
     }
+
     public void printf(String format, Object... values) {
         System.out.printf(format, values);
     }
+
     public String readString(String prompt) {
         print(prompt);
         return scanner.nextLine();
     }
+
     public String readRequiredString(String prompt) {
         while (true) {
             String result = readString(prompt);
@@ -40,6 +46,7 @@ public class ConsoleIO {
             println(REQUIRED);
         }
     }
+
     public int readInt(String prompt) {
         while (true) {
             try {
@@ -49,6 +56,7 @@ public class ConsoleIO {
             }
         }
     }
+
     public int readInt(String prompt, int min, int max) {
         while (true) {
             int result = readInt(prompt);
@@ -58,6 +66,7 @@ public class ConsoleIO {
             println(String.format(NUMBER_OUT_OF_RANGE, min, max));
         }
     }
+
     public LocalDate readLocalDate(String prompt) {
         while (true) {
             String input = readRequiredString(prompt);
@@ -68,6 +77,7 @@ public class ConsoleIO {
             }
         }
     }
+
     public boolean readBoolean(String prompt) {
         while (true) {
             String input = readRequiredString(prompt).toLowerCase();

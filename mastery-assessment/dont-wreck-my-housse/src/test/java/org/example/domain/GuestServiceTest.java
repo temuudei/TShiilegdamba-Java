@@ -9,6 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class GuestServiceTest {
     static final String DIRECTORY = "./data/guests.csv";
     GuestService service = new GuestService(new GuestFileRepository(DIRECTORY));
+
     @Test
     void firstEmailInTheFileShouldHaveCorrespondToSullivan() {
         //ACT

@@ -1,7 +1,6 @@
 package org.example.models;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.Objects;
 
 public class Guest {
@@ -12,6 +11,7 @@ public class Guest {
     private String phone;
     private String state;
     private BigDecimal total;
+
     public String getFirstName() {
         return firstName;
     }

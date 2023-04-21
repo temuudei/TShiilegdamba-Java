@@ -9,15 +9,16 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
 @Repository
 public class GuestFileRepository implements GuestRepository {
     private final String filePath;
 
-    public GuestFileRepository(@Value("${filePath:./data/guests.csv}")String filePath) {
+    public GuestFileRepository(@Value("${filePath:./data/guests.csv}") String filePath) {
         this.filePath = filePath;
     }
 
-
+    //Reads data from the Guest file
     @Override
     public List<Guest> findAll() {
         ArrayList<Guest> result = new ArrayList<>();
@@ -35,6 +36,7 @@ public class GuestFileRepository implements GuestRepository {
         return result;
     }
 
+    //Supporting function used for parsing the data from a file
     private Guest deserialize(String[] fields) {
         Guest guest = new Guest();
         guest.setGuestID(Integer.parseInt(fields[0]));

@@ -8,11 +8,11 @@ import org.springframework.stereotype.Repository;
 
 import java.io.*;
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+
 @Repository
 public class ReservationFileRepository implements ReservationRepository {
     private static final String HEADER = "id,start_date,end_date,first_name,last_name,email,phone,total_price";
@@ -22,13 +22,14 @@ public class ReservationFileRepository implements ReservationRepository {
         this.filepath = filepath;
     }
 
+    //Read file by the host info
     @Override
     public List<Reservation> findById(Host host) {
         ArrayList<Reservation> result = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(getFilePath(host)))) {
             reader.readLine();
             for (String line = reader.readLine(); line != null; line = reader.readLine()) {
-                String[] fields = line.split(",",-1);
+                String[] fields = line.split(",", -1);
                 if (fields.length == 8) {
                     result.add(deserialize(fields, host));
                 }
@@ -39,6 +40,7 @@ public class ReservationFileRepository implements ReservationRepository {
         return result;
     }
 
+    //Adds information to the file
     @Override
     public Reservation add(Reservation reservation) throws DataException {
         List<Reservation> all = findById(reservation.getHost());
@@ -49,6 +51,7 @@ public class ReservationFileRepository implements ReservationRepository {
         return reservation;
     }
 
+    //Updates information in the file
     @Override
     public boolean update(Reservation reservation) throws DataException {
         List<Reservation> all = findById(reservation.getHost());
@@ -62,6 +65,21 @@ public class ReservationFileRepository implements ReservationRepository {
         return false;
     }
 
+    //Deletes a line of code in the file
+    @Override
+    public boolean delete(Reservation reservation) throws DataException {
+        List<Reservation> all = findById(reservation.getHost());
+        for (int i = 0; i < all.size(); i++) {
+            if (all.get(i).getId() == reservation.getId()) {
+                all.remove(i);
+                writeAll(all, reservation.getHost());
+                return true;
+            }
+        }
+        return false;
+    }
+
+    //Writes data to the file
     private void writeAll(List<Reservation> reservations, Host host) throws DataException {
         try (PrintWriter writer = new PrintWriter(getFilePath(host))) {
             writer.println(HEADER);
@@ -73,6 +91,7 @@ public class ReservationFileRepository implements ReservationRepository {
         }
     }
 
+    //Assigns next id
     private int getNextId(List<Reservation> reservations) {
         int maxId = 0;
         for (Reservation reservation : reservations) {
@@ -83,6 +102,7 @@ public class ReservationFileRepository implements ReservationRepository {
         return maxId + 1;
     }
 
+    //
     private Reservation deserialize(String[] fields, Host host) {
         Reservation reservation = new Reservation();
         reservation.setId(Integer.parseInt(fields[0]));
@@ -103,6 +123,7 @@ public class ReservationFileRepository implements ReservationRepository {
         return reservation;
     }
 
+    //Converts string and adds it in to the file
     private String serialize(Reservation reservation) {
         return String.format("%s,%s,%s,%s,%s,%s,%s,%s",
                 reservation.getId(),
@@ -115,7 +136,8 @@ public class ReservationFileRepository implements ReservationRepository {
                 reservation.getGuest().getTotal());
     }
 
+    //Gets filepath
     private String getFilePath(Host host) {
-        return Paths.get(filepath,host.getId() + ".csv").toString();
+        return Paths.get(filepath, host.getId() + ".csv").toString();
     }
 }

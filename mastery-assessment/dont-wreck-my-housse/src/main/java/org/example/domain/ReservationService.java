@@ -5,16 +5,13 @@ import org.example.models.Guest;
 import org.example.models.Host;
 import org.example.models.Reservation;
 import org.example.ui.ConsoleIO;
-import org.example.ui.View;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.time.DayOfWeek;
-import java.time.Duration;
 import java.time.LocalDate;
-import java.time.Period;
 import java.util.*;
-import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import static java.time.DayOfWeek.*;
 import static java.time.temporal.ChronoUnit.DAYS;
@@ -25,55 +22,67 @@ public class ReservationService {
     private final HostRepository hostRepository;
     private final ReservationRepository reservationRepository;
     private final ConsoleIO io;
-    private final View view;
 
-    public ReservationService(GuestRepository guestRepository, HostRepository hostRepository, ReservationRepository reservationRepository, ConsoleIO io, View view) {
+    public ReservationService(GuestRepository guestRepository, HostRepository hostRepository, ReservationRepository reservationRepository, ConsoleIO io) {
         this.guestRepository = guestRepository;
         this.hostRepository = hostRepository;
         this.reservationRepository = reservationRepository;
         this.io = io;
-        this.view = view;
     }
 
+    //Shows reservations
     public List<Reservation> view(String email) {
         List<Host> hostList = hostRepository.findAll();
         if (!checkIfHostExists(hostList, email) || !checkIfHostHasReservations(hostList, email)) {
             return null;
         }
-
         return getReservationList(hostList, email);
     }
 
-    public Result<Reservation> update(Reservation reservation) throws DataException {
+    //Deletes a reservation
+    public Result<Reservation> delete(Reservation reservation) throws DataException {
+        Result<Reservation> result = new Result<>();
+        reservation.setHost(getHostInfo(reservation));
+        if (!reservationRepository.delete(reservation)) {
+            result.addErrorMessage(String.format("Reservation %d was not deleted", reservation.getId()));
+        }
+        result.setPayload(reservation);
+        return result;
+    }
+
+    //Updates a reservation
+    public boolean update(Reservation reservation) throws DataException {
+        return reservationRepository.update(reservation);
+    }
+
+    //Adds a reservation
+    public void add(Reservation reservation) throws DataException {
+        reservationRepository.add(reservation);
+    }
+
+    //Verifies reservation before updating it
+    public Result<Reservation> sendUpdateReservationInfo(Reservation reservation) {
         Result<Reservation> result = validateNoOverlappingReservationsForUpdate(reservation);
         if (!result.isSuccess()) {
             return result;
         }
         Reservation rsv = makeReservation(reservation);
-        if (view.showSummary(rsv.getStartDate(), rsv.getEndDate(), rsv.getGuest().getTotal())) {
-            if (reservationRepository.update(reservation)) {
-                result.setPayload(reservation);
-            }
-        } else {
-            result.addMessage("No reservations have been updated. Goodbye.");
-        }
+        result.setPayload(rsv);
         return result;
     }
 
-    public Result<Reservation> add(Reservation reservation) throws DataException {
+    //Verifies reservation before adding it
+    public Result<Reservation> sendAddReservationInfo(Reservation reservation) {
         Result<Reservation> result = validateNoOverlappingReservations(reservation);
         if (!result.isSuccess()) {
             return result;
         }
         Reservation rsv = makeReservation(reservation);
-        if (view.showSummary(rsv.getStartDate(), rsv.getEndDate(), rsv.getGuest().getTotal())) {
-            result.setPayload(reservationRepository.add(reservation));
-        } else {
-            result.addMessage("No reservations have been made. Goodbye.");
-        }
+        result.setPayload(rsv);
         return result;
     }
 
+    //Checks if guest and host have a reservation together
     public List<Reservation> showIfGuestInHostReservation(Reservation reservation) {
         List<Host> hostList = hostRepository.findAll();
         List<Reservation> reservationList = getReservationList(hostList, reservation.getHost().getEmail());
@@ -87,6 +96,7 @@ public class ReservationService {
         return newList;
     }
 
+    //Gets Host info from the file
     public Host viewHostInfo(String email) {
         Host host = new Host();
         List<Host> hostList = hostRepository.findAll();
@@ -103,34 +113,25 @@ public class ReservationService {
         return host;
     }
 
+    //Used to display reservations
     public List<Reservation> viewForAdd(String email) {
         List<Host> hostList = hostRepository.findAll();
         return getReservationList(hostList, email);
     }
 
+    //Used to check if host is in the file
     public boolean validateHostInTheFile(String email) {
         List<Host> hostList = hostRepository.findAll();
-        boolean isExisting = false;
-        for (int i = 0; i < hostList.size(); i++) {
-            if (email.equalsIgnoreCase(hostList.get(i).getEmail())) {
-                return true;
-            }
-        }
-        return isExisting;
+        return IntStream.range(0, hostList.size()).anyMatch(i -> email.equalsIgnoreCase(hostList.get(i).getEmail()));
     }
 
-
+    //Used to check if the guest is in the file
     public boolean validateGuestInTheFile(String email) {
         List<Guest> guestList = guestRepository.findAll();
-        boolean isExisting = false;
-        for (int i = 0; i < guestList.size(); i++) {
-            if (email.equalsIgnoreCase(guestList.get(i).getEmail())) {
-                return true;
-            }
-        }
-        return isExisting;
+        return IntStream.range(0, guestList.size()).anyMatch(i -> email.equalsIgnoreCase(guestList.get(i).getEmail()));
     }
 
+    //Collects all the important reservation info
     private Reservation makeReservation(Reservation reservation) {
         Host host = getHostInfo(reservation);
         Guest guest = getGuestInfo(reservation);
@@ -140,46 +141,52 @@ public class ReservationService {
         return reservation;
     }
 
+    //Gets all reservations for a specific host
     private List<Reservation> getReservationList(List<Host> hostList, String email) {
         List<Reservation> reservationList = new ArrayList<>();
-        for (int i = 0; i < hostList.size(); i++) {
-            if (email.equalsIgnoreCase(hostList.get(i).getEmail())) {
-                reservationList = reservationRepository.findById(hostList.get(i));
+        for (Host host : hostList) {
+            if (email.equalsIgnoreCase(host.getEmail())) {
+                reservationList = reservationRepository.findById(host);
                 break;
             }
         }
         return reservationList;
     }
 
+    //Gets host info
     private Host getHostInfo(Reservation reservation) {
         List<Host> hostList = hostRepository.findAll();
         Host host = new Host();
-        for (int i = 0; i < hostList.size(); i++) {
-            if (reservation.getHost().getEmail().equalsIgnoreCase(hostList.get(i).getEmail())) {
-                host.setId(hostList.get(i).getId());
-                host.setAddress(hostList.get(i).getAddress());
-                host.setCity(hostList.get(i).getCity());
-                host.setState(hostList.get(i).getState());
-                host.setPostalCode(hostList.get(i).getPostalCode());
+        for (Host value : hostList) {
+            if (reservation.getHost().getEmail().equalsIgnoreCase(value.getEmail())) {
+                host.setId(value.getId());
+                host.setAddress(value.getAddress());
+                host.setCity(value.getCity());
+                host.setState(value.getState());
+                host.setPostalCode(value.getPostalCode());
+                break;
             }
         }
         return host;
     }
 
+    //Gets guest info
     private Guest getGuestInfo(Reservation reservation) {
         List<Guest> guestList = guestRepository.findAll();
         Guest guest = new Guest();
-        for (int i = 0; i < guestList.size(); i++) {
-            if (reservation.getGuest().getEmail().equalsIgnoreCase(guestList.get(i).getEmail())) {
-                guest.setFirstName(guestList.get(i).getFirstName());
-                guest.setLastName(guestList.get(i).getLastName());
-                guest.setPhone(guestList.get(i).getPhone());
-                guest.setEmail(guestList.get(i).getEmail());
+        for (Guest value : guestList) {
+            if (reservation.getGuest().getEmail().equalsIgnoreCase(value.getEmail())) {
+                guest.setFirstName(value.getFirstName());
+                guest.setLastName(value.getLastName());
+                guest.setPhone(value.getPhone());
+                guest.setEmail(value.getEmail());
+                break;
             }
         }
         return guest;
     }
 
+    //Calculates total price
     private BigDecimal getTotalPrice(Reservation reservation) {
         List<Host> hostList = hostRepository.findAll();
         List<Long> totalDates = getDateDifferences(reservation);
@@ -189,16 +196,17 @@ public class ReservationService {
         long numberOfWeekdays = totalDates.get(0);
         long numberOfWeekends = totalDates.get(1);
 
-        for (int i = 0; i < hostList.size(); i++) {
-            if (reservation.getHost().getEmail().equalsIgnoreCase(hostList.get(i).getEmail())) {
-                weekendRate = hostList.get(i).getWeekendRate();
-                standardRate = hostList.get(i).getStandardRate();
+        for (Host host : hostList) {
+            if (reservation.getHost().getEmail().equalsIgnoreCase(host.getEmail())) {
+                weekendRate = host.getWeekendRate();
+                standardRate = host.getStandardRate();
                 break;
             }
         }
         return (weekendRate.multiply(BigDecimal.valueOf(numberOfWeekends))).add(standardRate.multiply(BigDecimal.valueOf(numberOfWeekdays)));
     }
 
+    //Calculates number of weekdays and weekends between two dates
     private List<Long> getDateDifferences(Reservation reservation) {
         List<Long> totalDates = new ArrayList<>();
         LocalDate startDate = reservation.getStartDate();
@@ -214,18 +222,22 @@ public class ReservationService {
         return totalDates;
     }
 
+    //Checks for overlapping reservations when adding
     private Result<Reservation> validateNoOverlappingReservations(Reservation reservation) {
         Result<Reservation> result = new Result<>();
         List<Host> hostList = hostRepository.findAll();
         List<Reservation> reservations = getReservationList(hostList, reservation.getHost().getEmail());
-        Collections.sort(reservations, Comparator.comparing(Reservation::getStartDate));
-
         for (int i = 0; i < reservations.size(); i++) {
-            if (reservation.getStartDate().equals(reservations.get(i).getStartDate()) || reservation.getStartDate().equals(reservations.get(i).getEndDate()) ||
-                reservation.getEndDate().equals(reservations.get(i).getEndDate()) || reservation.getEndDate().equals(reservations.get(i).getStartDate()) ||
-               (reservation.getStartDate().isAfter(reservations.get(i).getStartDate()) && reservation.getStartDate().isBefore(reservations.get(i).getEndDate())) ||
-               (reservation.getStartDate().isBefore(reservations.get(i).getStartDate()) &&
-                reservation.getEndDate().isAfter(reservations.get(reservations.size() - 1).getEndDate()))) {
+            if (reservation.getStartDate().isEqual(reservations.get(i).getStartDate()) ||
+                    reservation.getStartDate().isEqual(reservations.get(i).getEndDate()) ||
+                    (reservation.getStartDate().isBefore(reservations.get(i).getEndDate()) &&
+                            reservation.getStartDate().isAfter(reservations.get(i).getStartDate())) ||
+                    reservation.getEndDate().isEqual(reservations.get(i).getStartDate()) ||
+                    reservation.getEndDate().isEqual(reservations.get(i).getEndDate()) ||
+                    (reservation.getEndDate().isBefore(reservations.get(i).getEndDate()) &&
+                            reservation.getEndDate().isAfter(reservations.get(i).getStartDate())) ||
+                    (reservation.getStartDate().isBefore(reservations.get(i).getEndDate()) &&
+                            reservation.getEndDate().isAfter(reservations.get(i).getStartDate()))) {
                 result.addErrorMessage("Provided dates overlap with other reservations. Please choose other dates.");
                 return result;
             }
@@ -233,23 +245,14 @@ public class ReservationService {
         return result;
     }
 
+    //Checks for overlapping reservations when updating
     private Result<Reservation> validateNoOverlappingReservationsForUpdate(Reservation reservation) {
         Result<Reservation> result = new Result<>();
-        List<Host> hostList = hostRepository.findAll();
-        List<Reservation> reservations = getReservationList(hostList, reservation.getHost().getEmail());
-        Collections.sort(reservations, Comparator.comparing(Reservation::getStartDate));
-
-        if (reservations.size() > 1 ) {
+        List<Reservation> reservations = showIfGuestInHostReservation(reservation);
+        if (reservations.size() > 1) {
             for (int i = 0; i < reservations.size(); i++) {
-                if (reservation.getEndDate().equals(reservations.get(i).getStartDate()) ||
-                    reservation.getStartDate().equals(reservations.get(i).getEndDate()) ||
-                   (reservation.getEndDate().isAfter(reservations.get(i).getStartDate()) &&
-                   (reservation.getEndDate().isBefore(reservations.get(i).getEndDate()) ||
-                    reservation.getEndDate().equals(reservations.get(i).getEndDate()))) ||
-                   (reservation.getStartDate().isBefore(reservations.get(i).getStartDate()) &&
-                    reservation.getEndDate().isAfter(reservations.get(reservations.size() - 1).getEndDate())) ||
-                   (reservation.getStartDate().isBefore(reservations.get(i).getEndDate()) &&
-                    reservation.getEndDate().isAfter(reservations.get(reservations.size() - 1).getEndDate()))) {
+                if (reservation.getEndDate().isEqual(reservations.get(i).getStartDate()) ||
+                        reservation.getEndDate().isEqual(reservations.get(i).getEndDate())) {
                     result.addErrorMessage("Provided dates overlap with other reservations. Please choose other dates.");
                     return result;
                 }
@@ -258,11 +261,12 @@ public class ReservationService {
         return result;
     }
 
+    //Checks if host exists in the file
     private boolean checkIfHostExists(List<Host> hostList, String email) {
         boolean isExisting = true;
         String message = "";
-        for (int i = 0; i < hostList.size(); i++) {
-            if (email.equalsIgnoreCase(hostList.get(i).getEmail())) {
+        for (Host host : hostList) {
+            if (email.equalsIgnoreCase(host.getEmail())) {
                 return true;
             }
             message = "Sorry, '" + email + "' does not exist in the database";
@@ -272,14 +276,15 @@ public class ReservationService {
         return isExisting;
     }
 
+    //Checks if host has any reservations
     private boolean checkIfHostHasReservations(List<Host> hostList, String email) {
         boolean hasReservation = true;
         String message = "";
-        for (int i = 0; i < hostList.size(); i++) {
-            if (email.equalsIgnoreCase(hostList.get(i).getEmail())) {
-                List<Reservation> reservationList = reservationRepository.findById(hostList.get(i));
+        for (Host host : hostList) {
+            if (email.equalsIgnoreCase(host.getEmail())) {
+                List<Reservation> reservationList = reservationRepository.findById(host);
                 if (reservationList == null || reservationList.isEmpty()) {
-                    message = "Sorry, '" + hostList.get(i).getLastName() + ", " + hostList.get(i).getEmail() + "' does not have any reservations at the moment.";
+                    message = "Sorry, '" + host.getLastName() + ", " + host.getEmail() + "' does not have any reservations at the moment.";
                     hasReservation = false;
                 }
             }
