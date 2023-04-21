@@ -42,13 +42,12 @@ public class ReservationFileRepository implements ReservationRepository {
 
     //Adds information to the file
     @Override
-    public Reservation add(Reservation reservation) throws DataException {
+    public void add(Reservation reservation) throws DataException {
         List<Reservation> all = findById(reservation.getHost());
         int nextId = getNextId(all);
         reservation.setId(nextId);
         all.add(reservation);
         writeAll(all, reservation.getHost());
-        return reservation;
     }
 
     //Updates information in the file
@@ -102,7 +101,6 @@ public class ReservationFileRepository implements ReservationRepository {
         return maxId + 1;
     }
 
-    //
     private Reservation deserialize(String[] fields, Host host) {
         Reservation reservation = new Reservation();
         reservation.setId(Integer.parseInt(fields[0]));

@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface GuestRepository {
     List<Guest> findAll();
+    Guest addGuest(Guest guest) throws DataException;
 }

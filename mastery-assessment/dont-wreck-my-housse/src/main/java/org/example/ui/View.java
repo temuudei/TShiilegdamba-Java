@@ -189,6 +189,30 @@ public class View {
         return reservation;
     }
 
+    public Guest createGuest() {
+        Guest guest = new Guest();
+        guest.setFirstName(io.readRequiredString("Please enter your first name: "));
+        guest.setLastName(io.readRequiredString("Please enter your last name: "));
+        guest.setEmail(io.readRequiredString("Please enter your email: "));
+        guest.setPhone(io.readRequiredString("Please enter your phone number: "));
+        guest.setState(io.readRequiredString("Please enter your state: "));
+        return guest;
+    }
+
+    public Host createHost() {
+        Host host = new Host();
+        host.setLastName(io.readRequiredString("Please enter your last name: "));
+        host.setEmail(io.readRequiredString("Please enter your email: "));
+        host.setPhone(io.readRequiredString("Please enter your phone number: "));
+        host.setAddress(io.readRequiredString("Please enter your street address: "));
+        host.setCity(io.readRequiredString("Please enter your your city: "));
+        host.setState(io.readRequiredString("Please enter your state: "));
+        host.setPostalCode(io.readInt("Please enter your postal code: "));
+        host.setStandardRate(io.readBigDecimal("Please enter your standard rate: "));
+        host.setWeekendRate(io.readBigDecimal("Please enter your weekend rate: "));
+        return host;
+    }
+
     public Reservation makeReservation(String guestEmail, String hostEmail, int id) {
         Reservation reservation = new Reservation();
         Guest guest = new Guest();

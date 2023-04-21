@@ -38,12 +38,12 @@ class ReservationFileRepositoryTest {
         guest.setEmail("johnwhich@gmail.com");
         guest.setPhone("911");
         guest.setTotal(BigDecimal.valueOf(242));
-        reservation.setStartDate(LocalDate.of(2023, 5, 21));
-        reservation.setEndDate(LocalDate.of(2023, 5, 30));
+        reservation.setStartDate(LocalDate.of(2025, 5, 21));
+        reservation.setEndDate(LocalDate.of(2025, 5, 30));
         reservation.setHost(host);
         reservation.setGuest(guest);
         //ACT
-        repository.update(reservation);
+        repository.add(reservation);
         //ASSERT
         host.setId("acb780c9-a2bd-4c58-b007-379200805cb1");
         List<Reservation> reservationList = repository.findById(host);

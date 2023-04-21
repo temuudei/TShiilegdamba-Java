@@ -2,6 +2,7 @@ package org.example.ui;
 
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -51,6 +52,16 @@ public class ConsoleIO {
         while (true) {
             try {
                 return Integer.parseInt(readRequiredString(prompt));
+            } catch (NumberFormatException ex) {
+                println(INVALID_NUMBER);
+            }
+        }
+    }
+
+    public BigDecimal readBigDecimal(String prompt) {
+        while (true) {
+            try {
+                return new BigDecimal(readRequiredString(prompt));
             } catch (NumberFormatException ex) {
                 println(INVALID_NUMBER);
             }

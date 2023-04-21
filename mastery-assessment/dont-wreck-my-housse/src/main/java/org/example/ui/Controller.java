@@ -1,8 +1,12 @@
 package org.example.ui;
 
 import org.example.data.DataException;
+import org.example.domain.GuestService;
+import org.example.domain.HostService;
 import org.example.domain.ReservationService;
 import org.example.domain.Result;
+import org.example.models.Guest;
+import org.example.models.Host;
 import org.example.models.Reservation;
 import org.springframework.stereotype.Component;
 
@@ -12,10 +16,14 @@ import java.util.List;
 @Component
 public class Controller {
     private final ReservationService reservationService;
+    private final GuestService guestService;
+    private final HostService hostService;
     private final View view;
 
-    public Controller(ReservationService reservationService, View view) {
+    public Controller(ReservationService reservationService, GuestService guestService, HostService hostService, View view) {
         this.reservationService = reservationService;
+        this.guestService = guestService;
+        this.hostService = hostService;
         this.view = view;
     }
 
@@ -34,24 +42,52 @@ public class Controller {
         do {
             option = view.selectMainMenuOption();
             switch (option) {
-                case VIEW_RESERVATIONS_FOR_HOST -> viewReservations();
+                case VIEW_RESERVATIONS_FOR_HOST -> viewHostReservations();
                 case MAKE_RESERVATION -> makeReservation();
                 case EDIT_RESERVATION -> editReservation();
                 case CANCEL_RESERVATION -> cancelReservation();
+                case CREATE_GUEST -> createGuest();
+                case CREATE_HOST -> createHost();
             }
         } while (option != MainMenuOption.EXIT);
     }
 
     //Displays reservations
-    private void viewReservations() {
+    private void viewHostReservations() {
         view.displayHeader(MainMenuOption.VIEW_RESERVATIONS_FOR_HOST.getMessage());
         String email = view.getHostEmail();
-        List<Reservation> reservations = reservationService.view(email);
+        List<Reservation> reservations = reservationService.viewHostReservations(email);
         if (reservations != null) {
             view.displayHeader(view.showHostInfo(reservationService.viewHostInfo(email)));
         }
         view.displayReservations(reservations);
         view.enterToContinue();
+    }
+
+    //Creates a guest
+    private void createGuest() throws DataException {
+        view.displayHeader(MainMenuOption.CREATE_GUEST.getMessage());
+        Guest guest = view.createGuest();
+        Result<Guest> result = guestService.addGuest(guest);
+        if (!result.isSuccess()) {
+            view.displayStatus(false, result.getErrorMessages());
+        } else {
+            String message = String.format("Guest: '%s, %s' has been created.", result.getPayload().getFirstName(), result.getPayload().getLastName());
+            view.displayStatus(true, message);
+        }
+    }
+
+    //Create a host
+    private void createHost() throws DataException {
+        view.displayHeader(MainMenuOption.CREATE_HOST.getMessage());
+        Host host = view.createHost();
+        Result<Host> result = hostService.addHost(host);
+        if (!result.isSuccess()) {
+            view.displayStatus(false, result.getErrorMessages());
+        } else {
+            String message = String.format("Host: '%s, %s' has been created.", result.getPayload().getLastName(), result.getPayload().getEmail());
+            view.displayStatus(true, message);
+        }
     }
 
     //Makes a reservations

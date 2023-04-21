@@ -28,11 +28,11 @@ b148a667-7bc4-4e3c-947f-21885321dad1,Sydry,vsydryp@example.com,(704) 6174969,0 E
 9b2df328-e9bb-4bbb-83db-eedf6bf4a008,Neubigging,eneubiggingq@4shared.com,(337) 1259693,61 Anzinger Crossing,Lake Charles,LA,70616,117,146.25
 ae17ab0e-7a96-4762-915e-38c2f01d07fd,Morphew,lmorphewr@google.ca,(915) 8246481,72 Northport Drive,El Paso,TX,79994,142,177.5
 a2f8abbb-2c7c-4b7e-b4d6-83517ccc579a,Sked,askeds@nifty.com,(502) 5530644,67 Upham Trail,Louisville,KY,40298,260,325
-5eb6760b-905c-427a-adbd-79fa9ae94dd0,Laughren,klaughrent@omniture.com,(603) 5197834,585 Lotheville Alley,Portsmouth,NH,00214,386,482.5
+5eb6760b-905c-427a-adbd-79fa9ae94dd0,Laughren,klaughrent@omniture.com,(603) 5197834,585 Lotheville Alley,Portsmouth,NH,214,386,482.5
 af6eec56-b7d7-439b-bea7-e72dcdce76a9,Doby,hdobyu@ftc.gov,(432) 5080627,3 Sunnyside Pass,Midland,TX,79705,114,142.5
 4c7f5ee4-a822-46c4-95d4-8dba7635922c,Torri,etorriv@yelp.com,(317) 7683712,29 Mosinee Avenue,Indianapolis,IN,46207,118,147.5
 08f56b3b-9ae0-4dfa-a73d-2f9e3878f3d9,Setterfield,ssetterfieldw@tiny.cc,(410) 3477119,1 Clove Crossing,Baltimore,MD,21290,141,176.25
-b5ed3d2d-4e7b-4509-964b-18ac4cce7493,Cantle,zcantlex@nymag.com,(860) 9145827,4804 Corry Street,Hartford,CT,06120,367,458.75
+b5ed3d2d-4e7b-4509-964b-18ac4cce7493,Cantle,zcantlex@nymag.com,(860) 9145827,4804 Corry Street,Hartford,CT,6120,367,458.75
 dbe836ef-358b-40b0-a7bd-b40027764d7e,Hollingsbee,lhollingsbeey@home.pl,(325) 9233596,6 Schlimgen Place,Abilene,TX,79699,152,190
 ee21f554-13cb-4981-a50c-85d55e3d5856,Drust,fdrustz@google.com.br,(208) 6604815,6 Rusk Crossing,Boise,ID,83732,409,511.25
 e369b945-8e47-4199-a891-4771847932dd,Espinola,jespinola10@istockphoto.com,(305) 8227212,66 Arizona Crossing,Boca Raton,FL,33487,119,148.75
@@ -60,12 +60,12 @@ cbd567ea-d4af-467c-9067-aa4a1fd5512b,Sleaford,ssleaford1g@google.ca,(540) 829316
 106ea5cf-4842-4063-93e6-fcdef617ae9d,Worledge,aworledge1m@dailymotion.com,(202) 5772841,2 Hagan Circle,Washington,DC,20226,486,607.5
 f208144e-1abb-4d09-be72-3d87c0abc9f1,Form,gform1n@thetimes.co.uk,(786) 5320777,377 Waubesa Road,Miami,FL,33153,440,550
 7a298176-60cb-490b-8b01-08279e48a00e,Hazeldene,ohazeldene1o@histats.com,(786) 5179925,81 Oneill Place,Miami,FL,33124,416,520
-eff93491-f82d-40de-9be2-56b2af80753f,Besse,sbesse1p@newyorker.com,(802) 7447153,71 Hagan Place,Montpelier,VT,05609,235,293.75
+eff93491-f82d-40de-9be2-56b2af80753f,Besse,sbesse1p@newyorker.com,(802) 7447153,71 Hagan Place,Montpelier,VT,5609,235,293.75
 9392bafc-0eea-4f8d-a364-980ade773465,Zeale,czeale1q@livejournal.com,(561) 9754202,57150 Park Meadow Junction,Boca Raton,FL,33432,266,332.5
 b4d1c62b-8521-4f2b-b6c7-2b41625d8588,Laity,flaity1r@timesonline.co.uk,(812) 2804796,286 Hazelcrest Street,Jeffersonville,IN,47134,233,291.25
 293508da-e367-437a-9178-1ebaa7d83015,McLurg,nmclurg1s@umn.edu,(909) 6821531,8542 Commercial Point,Riverside,CA,92505,409,511.25
 9cc47e36-6623-4fd5-af83-3f7c1475d9b8,Wort,cwort1t@yelp.com,(317) 4537567,1916 Oneill Road,Indianapolis,IN,46247,199,248.75
-f4d6c5e4-d207-4ce0-93b3-f1d1b397883c,MacTimpany,cmactimpany1u@ebay.com,(203) 7237610,34059 Randy Parkway,Fairfield,CT,06825,476,595
+f4d6c5e4-d207-4ce0-93b3-f1d1b397883c,MacTimpany,cmactimpany1u@ebay.com,(203) 7237610,34059 Randy Parkway,Fairfield,CT,6825,476,595
 d59368be-f087-4f61-91bb-1bfc9b076f97,Maddick,vmaddick1v@tiny.cc,(770) 6214581,63621 Bonner Point,Gainesville,GA,30506,329,411.25
 26292981-1202-45dc-9fcc-9ce59fb1d12c,Rolse,grolse1w@jugem.jp,(336) 4693940,9 Thompson Lane,Greensboro,NC,27499,225,281.25
 6d7d0184-3a4e-410f-baa5-5c39391f43e4,Pasterfield,gpasterfield1x@dedecms.com,(302) 9793405,9839 Huxley Street,Wilmington,DE,19810,220,275
@@ -102,7 +102,7 @@ e71f45ab-3b34-424f-bab7-bfd78925558f,Davidsen,ddavidsen2r@timesonline.co.uk,(917
 ed75ed0b-eb65-43f2-b708-e927b08c3064,Elphinstone,melphinstone2s@addtoany.com,(901) 1191852,7 Merchant Way,Memphis,TN,38109,182,227.5
 767cd40f-c8b4-4c48-885c-08b96a6ae707,Huck,chuck2t@creativecommons.org,(502) 6126324,2078 Thompson Crossing,Louisville,KY,40287,178,222.5
 be4a23fc-ae4b-4c96-804f-d6d86c3e46dc,Exposito,aexposito2u@psu.edu,(719) 4859006,968 Ridgeway Crossing,Pueblo,CO,81005,445,556.25
-74f32f01-9c6d-4e87-b2d9-d389af693b44,Gery,ngery2v@ow.ly,(203) 6385708,09 Bashford Trail,New Haven,CT,06505,464,580
+74f32f01-9c6d-4e87-b2d9-d389af693b44,Gery,ngery2v@ow.ly,(203) 6385708,09 Bashford Trail,New Haven,CT,6505,464,580
 cf981fd9-6fe7-4e60-8e65-8bc2a3f448cd,Kilshall,vkilshall2w@irs.gov,(435) 9304676,737 Hoard Drive,Salt Lake City,UT,84105,488,610
 bd9babad-9beb-4c2d-96e3-4a993991fded,Chicchelli,dchicchelli2x@360.cn,(239) 3315871,15668 Anniversary Crossing,Naples,FL,33963,355,443.75
 80f42fd1-5dd5-4630-9441-72b63e0a8ef6,Leigh,eleigh2y@smh.com.au,(214) 8454923,4654 Maple Wood Place,Dallas,TX,75205,468,585
@@ -140,7 +140,7 @@ ed345d34-7d26-47cd-b577-7d57f1e97f9e,Rentcome,arentcome3t@shutterfly.com,(916) 3
 1c75d6f6-5241-41d9-a2e0-262a44bcd6c5,Stolberger,jstolberger3u@tinyurl.com,(786) 3793992,7993 Debra Parkway,Miami,FL,33124,322,402.5
 d3fd24e3-aafb-45ee-97d7-c9906f5229c0,Dimont,mdimont3v@alibaba.com,(918) 1398434,1926 Namekagon Park,Tulsa,OK,74108,136,170
 77fb880b-c413-41af-89c2-e976ebd2e356,Langham,dlangham3w@vistaprint.com,(801) 4073393,8180 Thompson Lane,Ogden,UT,84409,266,332.5
-582de161-b2eb-4ea6-8f28-b2e4be5f5ca0,Such,jsuch3x@unblog.fr,(973) 6830651,64 Red Cloud Street,Paterson,NJ,07522,192,240
+582de161-b2eb-4ea6-8f28-b2e4be5f5ca0,Such,jsuch3x@unblog.fr,(973) 6830651,64 Red Cloud Street,Paterson,NJ,7522,192,240
 6c303a51-d630-41bc-8814-25f1916f7698,Gossling,tgossling3y@europa.eu,(808) 8489465,0 Buell Place,Honolulu,HI,96820,330,412.5
 3e148462-01b4-40dd-9ba8-639fca1f9106,Clifforth,hclifforth3z@who.int,(757) 6822088,112 Westport Lane,Newport News,VA,23605,337,421.25
 c395234c-8c0f-4e96-8dc3-d9032e05bc66,Gresswell,hgresswell40@telegraph.co.uk,(864) 8386918,98 Caliangt Way,Spartanburg,SC,29319,143,178.75
@@ -152,7 +152,7 @@ e8a09faa-7206-4694-b1a7-2b37b1f606ea,Britee,gbritee45@mayoclinic.com,(513) 58183
 1bdfd4d8-608d-46b0-b230-b3c2ea038e94,Loverock,dloverock46@wufoo.com,(716) 3454954,33653 Messerschmidt Crossing,Buffalo,NY,14215,213,266.25
 f61df614-bb36-4a4f-9962-34cb41eeac39,Pavis,ipavis47@drupal.org,(918) 9549752,55083 Butterfield Court,Tulsa,OK,74156,424,530
 d545ecdf-b679-44d5-8665-d78a28cf92e8,Assante,tassante48@usgs.gov,(407) 7327824,4172 Graceland Alley,Kissimmee,FL,34745,453,566.25
-4c3da7df-d00a-4c57-99b6-0c64d33de3ee,MacAdam,hmacadam49@constantcontact.com,(973) 9952425,615 Mitchell Pass,Newark,NJ,07112,294,367.5
+4c3da7df-d00a-4c57-99b6-0c64d33de3ee,MacAdam,hmacadam49@constantcontact.com,(973) 9952425,615 Mitchell Pass,Newark,NJ,7112,294,367.5
 dd68dc58-07c6-428f-a845-f966a31c35a0,Hakking,ahakking4a@purevolume.com,(605) 7783579,4 Talisman Park,Sioux Falls,SD,57105,455,568.75
 dd742faa-a5ca-433e-b7ed-b58202bd6a55,Jemmett,hjemmett4b@instagram.com,(702) 2930797,71 Basil Street,Henderson,NV,89074,413,516.25
 c61717e7-b898-4512-85ec-4f94ae4f4ce4,Petrashov,cpetrashov4c@time.com,(213) 8642978,9 Melby Avenue,Los Angeles,CA,90030,388,485
@@ -171,7 +171,7 @@ cd5d4026-7acb-4a56-931f-de97a825f635,Cushelly,bcushelly4o@vkontakte.ru,(330) 771
 2f747551-8391-4f42-91a4-5071052a9027,Craiker,bcraiker4p@vimeo.com,(909) 8360218,90262 Annamark Junction,San Bernardino,CA,92415,152,190
 79cd98ca-ae60-4ae8-a1ca-e752cab93508,Faulconer,bfaulconer4q@marriott.com,(304) 5332310,91729 Farwell Parkway,Huntington,WV,25705,360,450
 bf40f165-101f-4677-b546-ce51bbe34289,Suermeier,hsuermeier4r@exblog.jp,(805) 8063399,84 Anderson Drive,Simi Valley,CA,93094,181,226.25
-30494414-a0c2-4063-8416-1ae4ea6ab8a8,Slorance,cslorance4s@example.com,(203) 3568492,317 Nancy Alley,Waterbury,CT,06705,168,210
+30494414-a0c2-4063-8416-1ae4ea6ab8a8,Slorance,cslorance4s@example.com,(203) 3568492,317 Nancy Alley,Waterbury,CT,6705,168,210
 7b249e20-01db-425c-92af-43dcbb99a991,MacLese,tmaclese4t@sfgate.com,(941) 8622468,0 Sherman Avenue,Port Charlotte,FL,33954,415,518.75
 6a59ae3f-f185-455c-ac1c-cb8c296ba1e5,Avraham,tavraham4u@bloglines.com,(513) 5792680,9384 Monterey Junction,Cincinnati,OH,45203,227,283.75
 8b0cc0df-a564-4f46-a05f-30b6b25a8c1c,Dury,mdury4v@usda.gov,(803) 2633660,1761 Union Place,Columbia,SC,29203,430,537.5
@@ -223,20 +223,20 @@ a7e00fa0-bf3b-45ea-b711-3e6532ee02d1,Gergus,lgergus61@mapy.cz,(210) 2030385,335 
 4f0fcca6-a4f6-492d-bff9-c9460d63e1fd,Hebblewaite,mhebblewaite65@woothemes.com,(917) 4828626,098 Hovde Court,Jamaica,NY,11480,292,365
 b0ae93aa-17b9-4c4a-8bd7-61f7d389510f,MacArdle,mmacardle66@bizjournals.com,(312) 6564218,300 Pine View Road,Chicago,IL,60669,409,511.25
 8fb45a9d-2c57-411d-a631-338b2f4ce400,Laurenzi,jlaurenzi67@cnet.com,(772) 6234898,59210 Lindbergh Avenue,Fort Pierce,FL,34949,172,215
-9dd735cc-04f6-48e7-97a5-93d825927991,Larvor,alarvor68@biblegateway.com,(207) 3646724,5336 Dryden Court,Portland,ME,04109,173,216.25
+9dd735cc-04f6-48e7-97a5-93d825927991,Larvor,alarvor68@biblegateway.com,(207) 3646724,5336 Dryden Court,Portland,ME,4109,173,216.25
 c0b6bbd8-6e55-4a64-9e55-319ca5853d21,Berrygun,nberrygun69@godaddy.com,(419) 8147352,6 Schmedeman Hill,Toledo,OH,43605,120,150
 2d6f4000-ea72-435e-8e15-0def543f1eed,Darwent,vdarwent6a@youku.com,(412) 2380734,874 Arapahoe Point,Pittsburgh,PA,15255,296,370
 0a21e5ae-df51-4d91-b366-b892b9b24491,Relph,prelph6b@alibaba.com,(520) 3163295,8 Heffernan Trail,Tucson,AZ,85748,433,541.25
 1a1c6d34-0212-4099-a8fa-0cc740963448,Fairn,afairn6c@wired.com,(404) 4609589,385 Norway Maple Alley,Atlanta,GA,30368,331,413.75
 2a8bff18-34b6-4db9-8185-04c2edf6c005,Gisbourn,hgisbourn6d@pcworld.com,(716) 9765979,580 Anderson Park,Buffalo,NY,14205,329,411.25
-0261e02d-04ee-4c14-96d7-a82ae507cc9e,Bedder,cbedder6e@ycombinator.com,(617) 1773900,7198 Mayer Place,Boston,MA,02216,366,457.5
+0261e02d-04ee-4c14-96d7-a82ae507cc9e,Bedder,cbedder6e@ycombinator.com,(617) 1773900,7198 Mayer Place,Boston,MA,2216,366,457.5
 b17a843e-70fb-4034-8c35-9005ae5ba325,Hamley,nhamley6f@nasa.gov,(937) 8932430,90752 Corry Court,Dayton,OH,45432,81,101.25
 34a9b679-233b-4755-a4bf-551cb51c09c9,Jillions,ajillions6g@digg.com,(718) 6989207,650 Dahle Pass,Brooklyn,NY,11205,233,291.25
 57342caf-8455-4995-bbf5-eb3be16e6707,Cristofaro,kcristofaro6h@spotify.com,(919) 5227575,72 Stang Road,Raleigh,NC,27605,146,182.5
 e4224853-5298-4da6-a584-5b740a5aeccb,Franzman,rfranzman6i@de.vu,(504) 7786842,4071 Barby Drive,New Orleans,LA,70165,237,296.25
 3fa7ce08-ebd3-4b5d-b806-da8e467277db,Lawlance,slawlance6j@youtube.com,(302) 1300840,5 Cordelia Center,Wilmington,DE,19805,222,277.5
 6e9a9c4b-1569-401b-a21e-43d28da7c4fa,Endon,jendon6k@technorati.com,(202) 7832472,26 Di Loreto Way,Washington,DC,20073,268,335
-a9a9697c-f109-4efc-a526-fbb017d29816,Lambersen,rlambersen6l@google.nl,(603) 8195086,16025 Dahle Place,Portsmouth,NH,03804,447,558.75
+a9a9697c-f109-4efc-a526-fbb017d29816,Lambersen,rlambersen6l@google.nl,(603) 8195086,16025 Dahle Place,Portsmouth,NH,3804,447,558.75
 ce232569-b70c-4903-9a14-f297d726f104,Sustins,ssustins6m@spiegel.de,(909) 1743904,288 Westport Road,San Bernardino,CA,92424,90,112.5
 d2733223-10f8-49a0-84f3-296d1c3fefc6,Hartmann,ahartmann6n@microsoft.com,(408) 9567668,085 Boyd Road,San Jose,CA,95160,291,363.75
 272e26a1-d852-41b9-9fcd-c21615de109d,Klagge,lklagge6o@cdbaby.com,(812) 1561272,61812 Lukken Junction,Evansville,IN,47725,499,623.75
@@ -274,7 +274,7 @@ cbb13cf7-8038-4bfe-9262-85e70daebfb3,Sutworth,rsutworth7g@examiner.com,(571) 430
 70184562-a4e3-4d7c-a803-49fe606088e3,Afield,mafield7k@digg.com,(313) 1957137,41970 La Follette Court,Detroit,MI,48211,460,575
 987dd2b0-86e9-4bb5-8ee8-5ffd22d156b7,Arthurs,jarthurs7l@miibeian.gov.cn,(218) 5390210,8 Meadow Valley Pass,Duluth,MN,55811,428,535
 37948174-7cfc-4c89-bf8c-23c17f325f41,Keijser,ekeijser7m@webs.com,(307) 9875639,74 South Crossing,Cheyenne,WY,82007,239,298.75
-e8e53dfb-4a1b-49ae-a569-e820391ed801,Giacopazzi,agiacopazzi7n@sina.com.cn,(508) 7651173,7373 Prentice Center,Worcester,MA,01654,421,526.25
+e8e53dfb-4a1b-49ae-a569-e820391ed801,Giacopazzi,agiacopazzi7n@sina.com.cn,(508) 7651173,7373 Prentice Center,Worcester,MA,1654,421,526.25
 eb2a46cd-e066-4104-9588-8d106efad50b,Habgood,ehabgood7o@eepurl.com,(972) 2227816,82 Carey Terrace,Dallas,TX,75205,371,463.75
 fe24d651-697d-4c4f-9448-eee68b754846,Goodbody,igoodbody7p@mapy.cz,(806) 5278041,975 Grayhawk Circle,Amarillo,TX,79159,285,356.25
 cf872f30-30b0-4452-9063-04d17413b2f7,Kither,lkither7q@ed.gov,(512) 8702327,0889 Forster Junction,Austin,TX,78721,128,160
@@ -298,7 +298,7 @@ bc21218e-f71e-46c3-a0c6-0c7d0edc8457,Kerwick,jkerwick87@springer.com,(405) 83456
 269b19d6-0923-4602-98c4-5abdaa090bb4,Ruckert,eruckert88@ehow.com,(754) 6191064,097 Grasskamp Junction,Fort Lauderdale,FL,33355,290,362.5
 7f6bfa5d-fcd2-41e3-ad09-665eb55a3227,McKeefry,amckeefry89@geocities.jp,(269) 5720972,5 Dryden Street,Battle Creek,MI,49018,353,441.25
 90a3a229-4da4-4494-8ada-35e0073b451d,Izaac,kizaac8a@yolasite.com,(901) 3758101,27 Kim Way,Memphis,TN,38114,374,467.5
-d9faad1c-9fae-4afc-869c-d4fba7fa3446,Imms,timms8b@paginegialle.it,(860) 5327620,9 West Lane,Hartford,CT,06160,233,291.25
+d9faad1c-9fae-4afc-869c-d4fba7fa3446,Imms,timms8b@paginegialle.it,(860) 5327620,9 West Lane,Hartford,CT,6160,233,291.25
 05efe6d3-506e-4329-a45a-a793b07aad84,Grunnill,sgrunnill8c@qq.com,(562) 7730425,9289 Farmco Crossing,Whittier,CA,90610,181,226.25
 54d77858-fa70-481f-9de3-32a0a262317f,Pickover,mpickover8d@twitter.com,(334) 3239437,65739 Tennessee Lane,Montgomery,AL,36134,492,615
 67d92786-7d96-4cff-8051-4d9aacaea90f,Winwright,kwinwright8e@imageshack.us,(404) 4969827,8 Northridge Trail,Atlanta,GA,30375,351,438.75
@@ -308,7 +308,7 @@ dfda0086-b033-48a6-8e67-f5e165f2b7ad,Beany,rbeany8g@networkadvertising.org,(504)
 8d85a751-c8f5-43d6-9b59-27c8858bc958,Moxted,bmoxted8i@ifeng.com,(303) 3581431,891 Cambridge Place,Aurora,CO,80044,496,620
 143eed87-8393-4bf4-9357-c82e5135abbf,Sealeaf,gsealeaf8j@bbb.org,(786) 4524356,07 Briar Crest Avenue,Miami,FL,33147,287,358.75
 80b9c5f2-0386-477c-93d2-6168736a46d1,MacNess,jmacness8k@google.es,(818) 4092204,8 Riverside Road,Glendale,CA,91210,468,585
-36b107bb-1926-4d43-a70b-bce16bce56ea,Real,areal8l@themeforest.net,(609) 4771556,617 Acker Place,Trenton,NJ,08603,136,170
+36b107bb-1926-4d43-a70b-bce16bce56ea,Real,areal8l@themeforest.net,(609) 4771556,617 Acker Place,Trenton,NJ,8603,136,170
 dcd36771-dc13-4347-9de6-28bd1d265a00,Mix,emix8m@youtu.be,(818) 8310814,80 Mcbride Circle,Burbank,CA,91505,132,165
 74942712-c144-4555-a24c-ed06d633d37c,Tudhope,btudhope8n@biglobe.ne.jp,(623) 3443378,32109 Shelley Junction,Glendale,AZ,85305,192,240
 27d42337-449a-41c9-b311-4f5c6946bc54,Zeale,jzeale8o@nba.com,(213) 6673286,252 Twin Pines Hill,Van Nuys,CA,91499,442,552.5
@@ -318,7 +318,7 @@ b0a24055-f27f-4936-b94a-533b90429c2c,Dewey,kdewey8q@shinystat.com,(202) 5356507,
 a6946904-4a02-4885-932b-c286ff2b89d6,Bengoechea,abengoechea8s@marriott.com,(202) 3508980,5 John Wall Point,Washington,DC,20580,229,286.25
 fe1a0b01-9ef1-4dc8-a64e-c342bd47b4b3,Savin,ssavin8t@ehow.com,(515) 7235632,4795 Briar Crest Point,Des Moines,IA,50335,387,483.75
 b972f946-d68b-40c8-a1a0-1b86b8b11d61,Haresign,pharesign8u@rakuten.co.jp,(626) 6449917,5462 Mitchell Circle,Pasadena,CA,91131,176,220
-e4781888-0970-4e97-83b3-5282247322aa,Morrice,vmorrice8v@ameblo.jp,(860) 3383290,63658 Vernon Pass,Hartford,CT,06160,395,493.75
+e4781888-0970-4e97-83b3-5282247322aa,Morrice,vmorrice8v@ameblo.jp,(860) 3383290,63658 Vernon Pass,Hartford,CT,6160,395,493.75
 2e25f6f7-3ef0-4f38-8a1a-2b5eea81409c,Rosenkranc,irosenkranc8w@reverbnation.com,(970) 7391162,7 Kennedy Plaza,Greeley,CO,80638,180,225
 af2f4a8f-087c-4d86-9c1a-47b30205ab7e,Ofener,rofener8x@bluehost.com,(240) 6803240,91590 Merry Alley,Silver Spring,MD,20918,488,610
 9d41c4c9-bdbb-42db-a2e1-73938e7c9565,Sedgwick,jsedgwick8y@soup.io,(850) 6858545,388 Debs Circle,Tallahassee,FL,32314,97,121.25
@@ -372,7 +372,7 @@ e3a2dce7-78df-4fe6-b42d-5693b8a2e7b8,Domnick,adomnicka8@tamu.edu,(651) 3695923,4
 f839a2b6-7a1f-4604-94a8-7f9228d6632b,Verni,bverniaa@dmoz.org,(757) 2472682,06 Fuller Place,Hampton,VA,23663,469,586.25
 63511236-5756-45fa-b832-a9c0ea2bc15d,Baack,mbaackab@bandcamp.com,(727) 5345188,36 Sullivan Point,Largo,FL,33777,221,276.25
 729c729c-7337-42ea-9bd4-2bdfb3070509,Franklyn,jfranklynac@java.com,(907) 2082632,18878 Ramsey Street,Fairbanks,AK,99709,452,565
-5a9b3ff0-8e8d-45aa-b049-a0bd9638b7d0,Shawl,mshawlad@wunderground.com,(908) 2774245,99 Dryden Trail,Elizabeth,NJ,07208,271,338.75
+5a9b3ff0-8e8d-45aa-b049-a0bd9638b7d0,Shawl,mshawlad@wunderground.com,(908) 2774245,99 Dryden Trail,Elizabeth,NJ,7208,271,338.75
 760e9acc-29ad-44ef-a1d4-a1dbf3c87a72,Rutgers,krutgersae@dmoz.org,(512) 5556898,23839 Mockingbird Drive,Austin,TX,78754,150,187.5
 66a6128a-9b84-422f-8f3d-ac8a01b394ec,Munt,cmuntaf@1688.com,(513) 8386696,55 Vidon Park,Cincinnati,OH,45249,376,470
 59196fff-2c28-4b7c-8b28-1c833a828576,Ledur,aledurag@linkedin.com,(571) 8095561,69 Old Gate Terrace,Falls Church,VA,22047,319,398.75
@@ -442,7 +442,7 @@ b775ed60-8bbb-4edf-b8e7-a593557e6b92,Roke,erokec6@sogou.com,(704) 5236527,917 Gr
 4d904a3c-514e-4117-a524-25f5927ba7b4,Halegarth,khalegarthc8@over-blog.com,(302) 7264401,667 Cody Drive,Wilmington,DE,19805,159,198.75
 bc1cd634-6027-4fa9-9cd0-93a86b269c45,Dukelow,kdukelowc9@github.com,(202) 5633615,7 Scoville Hill,Washington,DC,20503,198,247.5
 3812388a-b8f7-495d-a438-d769abc4efa2,Farquharson,mfarquharsonca@answers.com,(402) 4310668,96724 Buhler Park,Lincoln,NE,68531,157,196.25
-33c0c4a5-1520-4f93-80ea-376ec7433702,McKniely,jmcknielycb@phpbb.com,(857) 3094755,34961 Spohn Lane,Watertown,MA,02472,364,455
+33c0c4a5-1520-4f93-80ea-376ec7433702,McKniely,jmcknielycb@phpbb.com,(857) 3094755,34961 Spohn Lane,Watertown,MA,2472,364,455
 cf80cbc9-f4a5-4c65-beb7-d1cbd7baaf47,Ruf,crufcc@blogs.com,(517) 5320035,28492 Westend Junction,Lansing,MI,48956,113,141.25
 e90981ef-c1a6-41ee-8826-ec3103300ba8,Bryett,wbryettcd@rediff.com,(614) 3490781,3 Bartelt Parkway,Columbus,OH,43268,186,232.5
 0cb59431-46fd-4aaa-88f8-e647f22c9849,Matuszinski,jmatuszinskice@360.cn,(770) 2967510,7 Pearson Road,Atlanta,GA,30340,173,216.25
@@ -455,7 +455,7 @@ e90981ef-c1a6-41ee-8826-ec3103300ba8,Bryett,wbryettcd@rediff.com,(614) 3490781,3
 fc36d214-d201-4e57-a900-eb3a4e2b5eb3,Shadfourth,gshadfourthcl@nhs.uk,(240) 2934601,9336 Oak Street,Silver Spring,MD,20918,209,261.25
 00538113-0aa1-41b7-8495-1c13f535c054,Malkin,emalkincm@tinypic.com,(713) 6549566,09 Moland Pass,Houston,TX,77260,142,177.5
 b2a1c5a2-d5fe-4a2a-9e41-6ee241de517d,Gethin,pgethincn@cbslocal.com,(505) 5493073,1 Golf Drive,Albuquerque,NM,87110,385,481.25
-0b459221-cb63-4fd9-8b5f-c509747a7f88,Copcott,tcopcottco@uiuc.edu,(203) 5714781,888 Wayridge Avenue,Fairfield,CT,06825,223,278.75
+0b459221-cb63-4fd9-8b5f-c509747a7f88,Copcott,tcopcottco@uiuc.edu,(203) 5714781,888 Wayridge Avenue,Fairfield,CT,6825,223,278.75
 f9c399b3-2714-46d6-86a3-bb1660a491ba,Eastlake,seastlakecp@eepurl.com,(619) 9160825,31 Bay Point,San Diego,CA,92137,103,128.75
 b0a69508-827b-4ea6-9081-6b22f446f570,Regglar,dregglarcq@quantcast.com,(213) 5371998,010 Armistice Point,Los Angeles,CA,90030,489,611.25
 7a5ea7e8-2852-4bbd-ba52-82a0d951a8c0,Snozzwell,jsnozzwellcr@guardian.co.uk,(614) 4671013,12950 Parkside Hill,Columbus,OH,43226,306,382.5
@@ -474,8 +474,8 @@ cf82702a-ed1a-47d7-a3a3-2c07fbdb5feb,Ossulton,fossultond3@virginia.edu,(216) 117
 c39151b4-761c-4143-9158-e110d7fc206e,Greenland,ygreenlandd4@cnbc.com,(801) 1686174,7 Rusk Park,Salt Lake City,UT,84189,376,470
 f75f11f1-5404-4ab6-ac31-c20f1bce86ca,Canet,bcanetd5@goodreads.com,(325) 5031013,6205 Brown Court,San Angelo,TX,76905,251,313.75
 423b5f99-5547-40a2-a334-d6475a080aff,Dunkley,rdunkleyd6@privacy.gov.au,(817) 6435803,4952 Transport Avenue,Fort Worth,TX,76134,344,430
-876d57b4-3b71-418d-9fe9-fa2b89dd8420,Sharpin,bsharpind7@opensource.org,(856) 2035614,1 Fairview Point,Camden,NJ,08104,254,317.5
-b1b48595-1244-4098-8d0b-add7ee19b532,Bramall,cbramalld8@e-recht24.de,(609) 1822139,5 Forest Run Point,Trenton,NJ,08603,440,550
+876d57b4-3b71-418d-9fe9-fa2b89dd8420,Sharpin,bsharpind7@opensource.org,(856) 2035614,1 Fairview Point,Camden,NJ,8104,254,317.5
+b1b48595-1244-4098-8d0b-add7ee19b532,Bramall,cbramalld8@e-recht24.de,(609) 1822139,5 Forest Run Point,Trenton,NJ,8603,440,550
 3decfd82-bdbe-4faa-af11-78dd5c8aec1a,Look,mlookd9@goo.gl,(941) 5172601,1523 Corry Parkway,Bradenton,FL,34282,400,500
 28a757f6-c5c7-4818-b6cb-5bac00db6a42,Skoyles,pskoylesda@msn.com,(801) 8437158,2306 Crowley Crossing,Salt Lake City,UT,84110,156,195
 53a79405-1a6f-44a2-b36f-5a4637f9a6e3,Fitzsimmons,pfitzsimmonsdb@noaa.gov,(907) 9124290,93301 Dovetail Hill,Juneau,AK,99812,271,338.75
@@ -505,9 +505,9 @@ e8681f78-6ed6-45a6-bb61-d05b1fdb010c,Noyes,anoyesdx@t.co,(214) 4521699,061 Lakew
 b55a8ad8-e5ba-446d-b740-142b2b5b0755,Barney,dbarneydz@netlog.com,(813) 2052995,3880 Ridgeview Pass,Tampa,FL,33620,145,181.25
 fec8eb4b-daaf-4d12-99f4-27fd00eb86e4,McTrustie,cmctrustiee0@yelp.com,(602) 6442248,469 Warrior Crossing,Chandler,AZ,85246,378,472.5
 5050a3f8-a717-46af-b1d5-1f9ce6bc2a5c,Sprules,rsprulese1@squarespace.com,(909) 5398677,8299 Bluestem Trail,San Bernardino,CA,92424,198,247.5
-4017223c-7ec5-4cc8-8ee4-ab1e1d8237fe,Schimonek,eschimoneke2@free.fr,(609) 9887319,0744 Golf Alley,Trenton,NJ,08603,422,527.5
-8109004e-145e-45c0-a652-746703eda588,Casemore,gcasemoree3@abc.net.au,(508) 3693530,073 Golden Leaf Drive,New Bedford,MA,02745,399,498.75
-9b1d2283-523f-486d-85e9-88770c4ff42e,Blazdell,ablazdelle4@tamu.edu,(617) 7184534,0606 Corscot Point,Boston,MA,02298,77,96.25
+4017223c-7ec5-4cc8-8ee4-ab1e1d8237fe,Schimonek,eschimoneke2@free.fr,(609) 9887319,0744 Golf Alley,Trenton,NJ,8603,422,527.5
+8109004e-145e-45c0-a652-746703eda588,Casemore,gcasemoree3@abc.net.au,(508) 3693530,073 Golden Leaf Drive,New Bedford,MA,2745,399,498.75
+9b1d2283-523f-486d-85e9-88770c4ff42e,Blazdell,ablazdelle4@tamu.edu,(617) 7184534,0606 Corscot Point,Boston,MA,2298,77,96.25
 14648d4e-f108-481b-acfd-dc7c6b3f81f5,Loftus,wloftuse5@dagondesign.com,(806) 3151897,59096 Carey Trail,Amarillo,TX,79159,268,335
 d8d7f72a-6624-4c73-b318-74be8271feed,Blenkensop,mblenkensope6@t.co,(505) 9294809,58 Kensington Drive,Albuquerque,NM,87195,115,143.75
 ae9bb41a-1005-4bf1-a49b-ba8b81bf46a8,Oldam,coldame7@geocities.com,(217) 8305684,5335 Sunbrook Lane,Springfield,IL,62718,157,196.25
@@ -575,12 +575,12 @@ f9288f11-f211-40e8-a16a-7414389982bc,Angliss,janglissfu@cornell.edu,(281) 342073
 ad80c072-5f68-4451-b7bb-67c43cb8d84a,Pattingson,apattingsonfx@businessinsider.com,(714) 6121179,05 Dovetail Crossing,Irvine,CA,92710,218,272.5
 65155ad6-2a73-4297-a8d9-c6c16fcadb11,Maile,lmailefy@naver.com,(301) 6055476,5781 Delaware Road,Bethesda,MD,20892,166,207.5
 81f0dda6-d8df-45f7-af3d-9685de54e5d3,Thouless,cthoulessfz@msu.edu,(214) 6825971,7998 Swallow Place,Dallas,TX,75397,141,176.25
-8863340f-7c70-4aaa-8a20-eec04aeef9f4,Gadsby,dgadsbyg0@weebly.com,(203) 3323571,0426 Loeprich Hill,Danbury,CT,06816,438,547.5
+8863340f-7c70-4aaa-8a20-eec04aeef9f4,Gadsby,dgadsbyg0@weebly.com,(203) 3323571,0426 Loeprich Hill,Danbury,CT,6816,438,547.5
 f0e956e6-7e41-42e3-b0a2-46f23b9adc5c,Dudgeon,mdudgeong1@berkeley.edu,(404) 4511172,18 Lillian Point,Atlanta,GA,31106,446,557.5
 76e4188c-77de-488d-a197-86410798e089,Richard,frichardg2@discuz.net,(859) 7503923,9599 Farmco Lane,Lexington,KY,40505,107,133.75
 dd75344f-a57a-469f-b8a6-e732c6f767d1,Ayree,cayreeg3@redcross.org,(919) 4522339,2 Burning Wood Hill,Raleigh,NC,27658,453,566.25
 34e54faf-99af-4d8d-90e8-90cc472787ca,Guille,vguilleg4@oakley.com,(828) 4569042,3174 Coleman Parkway,Asheville,NC,28815,472,590
-68a458f2-0273-42d7-8393-87f861d8cb5a,Filimore,jfilimoreg5@nyu.edu,(508) 5404458,0 Stuart Park,New Bedford,MA,02745,439,548.75
+68a458f2-0273-42d7-8393-87f861d8cb5a,Filimore,jfilimoreg5@nyu.edu,(508) 5404458,0 Stuart Park,New Bedford,MA,2745,439,548.75
 7df3e5d4-4aba-4979-87a4-b976e298576c,O'Henehan,hohenehang6@nature.com,(256) 1244679,26 Grayhawk Way,Anniston,AL,36205,382,477.5
 833c9a35-a245-4270-8ef4-a2d0819f4a5c,Kuna,nkunag7@guardian.co.uk,(518) 3983468,1 Parkside Avenue,Albany,NY,12232,354,442.5
 e4ab97c9-5380-4993-9195-0d33de27c9a0,Pluvier,jpluvierg8@shutterfly.com,(785) 5405024,4 Pepper Wood Lane,Topeka,KS,66642,200,250
@@ -610,7 +610,7 @@ a85d002c-9676-4dd5-907b-9f63864ae074,Linscott,llinscottgv@angelfire.com,(954) 55
 00c44649-d12c-4644-be47-2536efd618c0,Walthall,ewalthallgw@twitter.com,(850) 2627197,7 Kensington Crossing,Tallahassee,FL,32304,420,525
 8d8ad293-cb4f-4009-a1fd-fde66338e05a,Dary,kdarygx@time.com,(619) 9772169,03805 Welch Court,San Diego,CA,92127,204,255
 d00d2609-ef25-4981-90ad-7ae77ea0a31c,Thieme,ethiemegy@squidoo.com,(804) 6705532,727 Nova Street,Richmond,VA,23208,429,536.25
-94aada02-9a61-4455-97e1-9caabe20092a,Picknett,npicknettgz@icq.com,(508) 1275725,64 Express Center,Waltham,MA,02453,137,171.25
+94aada02-9a61-4455-97e1-9caabe20092a,Picknett,npicknettgz@icq.com,(508) 1275725,64 Express Center,Waltham,MA,2453,137,171.25
 76f96771-9dfb-42c1-8920-94d36c50f41b,Provost,bprovosth0@hao123.com,(515) 3247590,653 Meadow Vale Street,Des Moines,IA,50362,489,611.25
 92495a61-efa0-44d8-a1db-54de3def5ff2,Naisby,anaisbyh1@upenn.edu,(602) 9776308,69 Erie Street,Scottsdale,AZ,85255,148,185
 ebfb3f13-e649-4f95-bf3a-47fc2395b4ea,Goodered,vgooderedh2@booking.com,(919) 3873688,83 Knutson Crossing,Raleigh,NC,27605,412,515
@@ -649,7 +649,7 @@ cb61cc9d-c20e-4209-b615-c9579958adfc,Rangle,sranglehw@imageshack.us,(315) 372023
 021f4231-4dc9-49a9-92d2-6608c8049007,St Clair,cstclairhz@springer.com,(713) 5805130,49377 Sugar Way,Houston,TX,77281,262,327.5
 f6d9009f-c54c-47ae-b4db-50e5c61f0489,Cuttler,ccuttleri0@fc2.com,(818) 6127029,36031 Farragut Place,Santa Monica,CA,90405,206,257.5
 630d31ec-e909-4de7-a28d-713347d2b7cc,Buggs,gbuggsi1@scientificamerican.com,(954) 7215054,3 Kensington Lane,Fort Lauderdale,FL,33325,276,345
-381ace58-6b78-48c5-ae55-3b168e22c687,Botting,hbottingi2@marriott.com,(860) 8436566,47 Rockefeller Lane,Hartford,CT,06145,381,476.25
+381ace58-6b78-48c5-ae55-3b168e22c687,Botting,hbottingi2@marriott.com,(860) 8436566,47 Rockefeller Lane,Hartford,CT,6145,381,476.25
 813a4325-0d3c-4713-ae15-46edd066cef4,Grayshan,mgrayshani3@sina.com.cn,(281) 8771272,6664 La Follette Trail,Spring,TX,77386,260,325
 6608e11a-18f4-4968-a1ce-a5cd6bcc8ab2,Lengthorn,wlengthorni4@free.fr,(817) 6741460,83742 Hollow Ridge Terrace,Fort Worth,TX,76134,82,102.5
 5d6c3d1d-02a5-45a5-ab3e-f745aaf3ad58,Spottiswood,rspottiswoodi5@fc2.com,(253) 4680472,37975 Kenwood Terrace,Tacoma,WA,98481,239,298.75
@@ -657,12 +657,12 @@ b1cb0aaf-7672-468d-89b9-23ba3e7a6c87,Screaton,kscreatoni6@feedburner.com,(817) 1
 36137376-a8db-49ed-a37b-fb22fe0e0e2e,Jore,djorei7@hao123.com,(434) 1278547,1 Ludington Circle,Charlottesville,VA,22908,439,548.75
 cf6555dd-457c-4293-8a1f-6818ebf8dd7d,McVey,jmcveyi8@meetup.com,(402) 6473411,655 Butterfield Crossing,Lincoln,NE,68583,377,471.25
 da32493c-debd-4a4c-8b06-ade194f3768b,Fontelles,jfontellesi9@plala.or.jp,(215) 4314144,3087 Maryland Street,Philadelphia,PA,19093,393,491.25
-bce78694-7c95-465c-a247-1ff79e2fa3ab,Tipple,rtippleia@seesaa.net,(508) 4523232,917 Cardinal Street,Boston,MA,02119,222,277.5
+bce78694-7c95-465c-a247-1ff79e2fa3ab,Tipple,rtippleia@seesaa.net,(508) 4523232,917 Cardinal Street,Boston,MA,2119,222,277.5
 be3cd548-3b81-4df0-ae19-b1ca5ff106aa,Arrault,carraultib@wix.com,(407) 4366550,4757 Surrey Trail,Orlando,FL,32803,480,600
 109b0219-cd92-48f2-9fb9-83ee73781c20,Button,tbuttonic@businessweek.com,(916) 6507866,5943 Maywood Lane,Sacramento,CA,94257,427,533.75
 adb433a6-f641-4508-aa22-5b940c01f458,Witten,dwittenid@theatlantic.com,(847) 2279593,680 Petterle Pass,Evanston,IL,60208,434,542.5
 71c3121c-34fe-4fec-96ae-c93e45d1295f,Emeny,demenyie@bravesites.com,(573) 9256097,86 Upham Road,Columbia,MO,65218,269,336.25
-d4258269-3f21-4beb-b5b0-0b6570357ce0,Robak,drobakif@google.co.uk,(862) 4416049,9 Buell Way,Newark,NJ,07188,147,183.75
+d4258269-3f21-4beb-b5b0-0b6570357ce0,Robak,drobakif@google.co.uk,(862) 4416049,9 Buell Way,Newark,NJ,7188,147,183.75
 a9ba99de-2db5-423c-be0c-e6faa4482f57,Scoular,pscoularig@list-manage.com,(858) 3089103,57 Redwing Lane,San Diego,CA,92121,278,347.5
 2eb44db2-bdd0-4ff0-ba98-df89ac2fe6bb,Kennermann,fkennermannih@reverbnation.com,(513) 9433943,66 Arkansas Hill,Cincinnati,OH,45243,267,333.75
 6e0efdf4-fca3-4d29-9eb8-79836cfdb59d,Freiburger,lfreiburgerii@blogspot.com,(325) 4803804,710 Brown Trail,Abilene,TX,79605,470,587.5
@@ -676,7 +676,7 @@ c3ebf70c-a00e-4ac3-8c41-e7b0e2f29653,Crummie,acrummieip@facebook.com,(801) 99594
 3021b351-64b8-42ac-aea2-2770ccc56ba5,Turville,wturvilleiq@ameblo.jp,(816) 9829052,44268 Hoepker Terrace,Saint Joseph,MO,64504,301,376.25
 b0ca986e-e5e5-4f01-aa1c-7977de2addf4,Riggeard,ariggeardir@ucoz.com,(210) 2467714,5729 Dawn Terrace,San Antonio,TX,78205,168,210
 f03ce04a-1a33-48fa-9e32-4e459e7830ec,Stubbington,gstubbingtonis@china.com.cn,(913) 2010200,0 Vermont Junction,Shawnee Mission,KS,66225,83,103.75
-807fe8f2-7ae2-4030-9144-a61737b0ba7e,Blincow,kblincowit@google.de,(413) 2493809,5062 Onsgard Court,Springfield,MA,01114,157,196.25
+807fe8f2-7ae2-4030-9144-a61737b0ba7e,Blincow,kblincowit@google.de,(413) 2493809,5062 Onsgard Court,Springfield,MA,1114,157,196.25
 fe6eab5a-1da3-4c3f-8270-8ce945d26f5f,Gronauer,bgronaueriu@weather.com,(808) 6032935,8940 Grasskamp Hill,Honolulu,HI,96845,350,437.5
 8ed94ae1-727d-40df-8a13-92ecacd0978c,Charopen,kcharopeniv@flickr.com,(404) 6377917,0 Donald Place,Atlanta,GA,31106,478,597.5
 ca1b9354-3683-4940-9c93-bfebedc04e98,Simonich,bsimonichiw@nhs.uk,(704) 2477503,84024 Rusk Point,Charlotte,NC,28230,370,462.5
@@ -708,7 +708,7 @@ b08c94f5-092c-4fa8-a215-4197c973ca35,McEntee,omcenteejh@123-reg.co.uk,(217) 4440
 3093b48b-b812-4cf6-8e19-ba9c521e0d0c,Tibbs,stibbsjm@admin.ch,(310) 6817461,19013 Londonderry Junction,Santa Monica,CA,90410,123,153.75
 e0a3071f-e859-487f-9ac0-5fe2af8b7789,Calyton,ccalytonjn@ebay.com,(602) 9075586,07 Scott Point,Phoenix,AZ,85077,439,548.75
 da9d44cb-f671-4eef-b99c-73938f798e33,Quin,hquinjo@scientificamerican.com,(904) 5155275,48744 Westerfield Drive,Saint Augustine,FL,32092,145,181.25
-693170c1-22fc-425d-906c-1cbc421f4a87,Vivers,iviversjp@cnet.com,(609) 8480958,6638 Heath Park,Trenton,NJ,08608,147,183.75
+693170c1-22fc-425d-906c-1cbc421f4a87,Vivers,iviversjp@cnet.com,(609) 8480958,6638 Heath Park,Trenton,NJ,8608,147,183.75
 3921b9e3-fbfd-41b6-9810-9465136f567d,Abbatini,kabbatinijq@blinklist.com,(716) 7132921,900 Gulseth Circle,Buffalo,NY,14263,77,96.25
 3e7524d6-ed96-4663-ba54-8e9d93098381,Mayou,mmayoujr@ustream.tv,(830) 2190999,86571 Mesta Trail,San Antonio,TX,78230,444,555
 67d7bc78-de98-48af-964b-c36900956951,Imeson,nimesonjs@aol.com,(304) 8244470,365 Gulseth Park,Morgantown,WV,26505,236,295
@@ -730,7 +730,7 @@ ed9697cb-ec8c-4afd-b965-ef1fe50f9c08,Trembey,mtrembeyk6@geocities.com,(330) 2263
 43dd78e7-1b7e-44bf-b886-75c44ef169e2,Solman,gsolmank8@yelp.com,(864) 2370234,05 Dottie Road,Spartanburg,SC,29305,156,195
 8fbdac04-cf5d-4450-9ca5-fb7504a85829,Pheasant,gpheasantk9@istockphoto.com,(239) 1101049,4873 Rockefeller Junction,Naples,FL,34102,219,273.75
 44abb937-69b9-41b0-8736-55511a84faf8,Braithwait,hbraithwaitka@odnoklassniki.ru,(408) 6356619,34643 Bluejay Circle,San Jose,CA,95138,87,108.75
-4c7172a8-6858-4cd9-a889-8a8001097ca9,Gladwell,jgladwellkb@sciencedaily.com,(617) 3418771,1 Ridge Oak Drive,Boston,MA,02208,350,437.5
+4c7172a8-6858-4cd9-a889-8a8001097ca9,Gladwell,jgladwellkb@sciencedaily.com,(617) 3418771,1 Ridge Oak Drive,Boston,MA,2208,350,437.5
 d20e6398-f3ca-45ea-93e6-1c2fe3d11ab0,Robrow,krobrowkc@skyrock.com,(202) 4402505,7895 Brown Point,Washington,DC,20319,315,393.75
 ccbcec99-4e3b-4c05-8e97-ce8e23f7bc54,Rablan,nrablankd@dell.com,(419) 6270916,09500 Dryden Way,Toledo,OH,43699,297,371.25
 f5b8baeb-6cf0-41d2-ab32-028bdc9d4e5f,Gimert,rgimertke@guardian.co.uk,(520) 2749525,46 Lien Road,Tucson,AZ,85720,206,257.5
@@ -748,7 +748,7 @@ e470526e-afe6-4606-9582-66f8b452a571,Vettore,cvettorekp@ebay.co.uk,(202) 3630845
 03cd7fd8-95d8-41e4-b772-5f80d7c0031a,Condliffe,wcondliffekq@shutterfly.com,(704) 1042131,50 Bay Alley,Charlotte,NC,28210,447,558.75
 b3bb341d-3161-416a-8986-d23be62f5970,Craghead,fcragheadkr@marriott.com,(718) 5495907,78513 Talmadge Place,New York City,NY,10270,168,210
 971a438a-8a55-4b47-a0d9-1c889338bcb3,Gaiter,mgaiterks@zimbio.com,(253) 7017086,2 Atwood Junction,Tacoma,WA,98464,312,390
-26d0cc27-3304-4a98-8884-ac80b0c64810,Rossborough,srossboroughkt@icio.us,(318) 2127155,656 Maple Lane,Boston,MA,02104,470,587.5
+26d0cc27-3304-4a98-8884-ac80b0c64810,Rossborough,srossboroughkt@icio.us,(318) 2127155,656 Maple Lane,Boston,MA,2104,470,587.5
 ec65c229-751e-4b70-80e3-f491421695ee,Volett,tvolettku@sohu.com,(402) 8699890,6541 Elmside Junction,Lincoln,NE,68517,371,463.75
 8d475b83-3f43-4ecb-830d-354a48af0fce,Chomley,wchomleykv@stumbleupon.com,(915) 5594655,20664 Everett Park,El Paso,TX,88563,475,593.75
 4a81939e-a84a-4ad4-a3ad-d587708ad604,Durand,sdurandkw@linkedin.com,(262) 7620620,6141 Springs Hill,Milwaukee,WI,53205,385,481.25
@@ -778,7 +778,7 @@ e57fbbba-ca4a-4dcb-aa59-95537f8bceca,Van den Bosch,cvandenboschlf@bbc.co.uk,(812
 73a32b29-c2e2-444b-a569-8c4dcaa3d591,Karolovsky,fkarolovskylk@comsenz.com,(615) 9903472,00536 Coleman Crossing,Murfreesboro,TN,37131,288,360
 c5cd3ca1-34dd-4545-9271-fecc8b98fa6a,Acton,bactonll@unesco.org,(706) 3498488,7 Old Shore Court,Cumming,GA,30130,302,377.5
 8318b140-5280-4e21-b2eb-970b93fe2969,O'Gaven,sogavenlm@wix.com,(937) 6550476,5 Killdeer Street,Dayton,OH,45414,425,531.25
-1483a8e5-aee3-40a0-823b-658175be504b,Zanini,fzaniniln@craigslist.org,(609) 9719583,912 Grayhawk Plaza,Trenton,NJ,08650,261,326.25
+1483a8e5-aee3-40a0-823b-658175be504b,Zanini,fzaniniln@craigslist.org,(609) 9719583,912 Grayhawk Plaza,Trenton,NJ,8650,261,326.25
 e314b121-5d87-4e6f-8699-45a064a8454d,Bosden,dbosdenlo@princeton.edu,(832) 9048291,42648 Cordelia Street,Houston,TX,77070,412,515
 ffd84a5b-c777-40a7-ab34-44e399bb1031,Linnit,glinnitlp@unicef.org,(770) 8578464,6 Marquette Park,Duluth,GA,30096,225,281.25
 b3770036-db2e-462a-8487-f022f88ba6b5,Yea,hyealq@slideshare.net,(919) 4933905,054 Arizona Drive,Raleigh,NC,27605,152,190
@@ -828,13 +828,13 @@ c0109865-2281-449f-8098-2a87ef35eeb7,Magson,dmagsonmx@wp.com,(770) 9056907,10558
 9d23b4b7-fdd8-4889-b397-f1b9e2384c66,Laughren,alaughrenmy@globo.com,(316) 7728069,03457 Chinook Way,Wichita,KS,67210,486,607.5
 a282baa6-ed76-4b8f-8673-fd75b69a7ae3,Malenoir,amalenoirmz@earthlink.net,(817) 9498493,2 Muir Drive,Irving,TX,75062,321,401.25
 769f3eaf-8dbe-4e2a-9868-fed1ccf965eb,Pettengell,dpettengelln0@moonfruit.com,(614) 6921193,4474 Saint Paul Pass,Columbus,OH,43210,398,497.5
-634986f7-a8c8-4111-9fdf-e0d0689374a4,Stocking,wstockingn1@chicagotribune.com,(401) 8777011,38292 Norway Maple Terrace,Providence,RI,02905,179,223.75
+634986f7-a8c8-4111-9fdf-e0d0689374a4,Stocking,wstockingn1@chicagotribune.com,(401) 8777011,38292 Norway Maple Terrace,Providence,RI,2905,179,223.75
 732f9ef8-a459-4495-8b57-51ef6b68644c,Van Velden,pvanveldenn2@hatena.ne.jp,(512) 7766381,4 Toban Pass,Austin,TX,78715,122,152.5
 4736a33b-1193-4886-ab1e-020ff0bfec6a,Bretherton,vbrethertonn3@artisteer.com,(202) 3703861,03455 Pearson Way,Washington,DC,20337,343,428.75
 06b6ecb5-6f9b-4be8-b7d6-1c93d6d83158,Vail,bvailn4@zimbio.com,(217) 9030418,1 Becker Plaza,Springfield,IL,62764,254,317.5
 501d61bf-22a0-4a90-995f-a3a83094b21d,Bonsale,hbonsalen5@illinois.edu,(803) 6249016,6475 Kropf Road,Columbia,SC,29240,240,300
 e73c73dd-dec0-4213-a9e9-4c903596fb38,Bools,sboolsn6@un.org,(323) 6518476,22953 Thierer Pass,Long Beach,CA,90810,105,131.25
-850b0e23-9dd9-41c5-85e6-f4120fa994d8,Baert,gbaertn7@addthis.com,(856) 8256884,2848 Golf Course Court,Camden,NJ,08104,421,526.25
+850b0e23-9dd9-41c5-85e6-f4120fa994d8,Baert,gbaertn7@addthis.com,(856) 8256884,2848 Golf Course Court,Camden,NJ,8104,421,526.25
 a660012f-2e93-494d-a974-bb47cdf3e7d1,Bart,wbartn8@google.com.au,(423) 7300761,15559 Sycamore Street,Chattanooga,TN,37450,341,426.25
 fe7f38dd-9a10-40a5-85ae-62d435806598,Kittredge,mkittredgen9@jigsy.com,(202) 5731930,61 8th Point,Washington,DC,20404,244,305
 e3c8d5e3-660e-4bad-83a9-ecfcc85ce38d,Barkly,gbarklyna@wikimedia.org,(208) 7608568,73 Golf View Place,Boise,ID,83727,276,345
@@ -862,7 +862,7 @@ ea3589b5-6c35-45d9-b332-f73f1222ba8e,Brammer,fbrammernu@privacy.gov.au,(559) 476
 8ba71795-dc44-415e-b9b8-2b72fa98fef9,Tilberry,ktilberrynw@opera.com,(409) 6151234,0942 Reindahl Park,Galveston,TX,77554,361,451.25
 6d723c03-5c4e-40f9-8d5a-8bd3b101b313,Rozenbaum,crozenbaumnx@usatoday.com,(405) 8093246,191 Scofield Crossing,Oklahoma City,OK,73173,432,540
 d3039f78-76ff-45c7-a918-db159bc1fce3,Magovern,tmagovernny@posterous.com,(702) 3398687,7571 Anhalt Parkway,Las Vegas,NV,89145,468,585
-8d3a40fb-7ad9-4103-88a6-a0131f89bdac,Cota,jcotanz@vk.com,(781) 5433581,0688 Del Mar Place,Lynn,MA,01905,373,466.25
+8d3a40fb-7ad9-4103-88a6-a0131f89bdac,Cota,jcotanz@vk.com,(781) 5433581,0688 Del Mar Place,Lynn,MA,1905,373,466.25
 079a9d9d-6e8e-49ea-8bd5-51df736da4f6,Fosh,nfosho0@t.co,(501) 4243478,76 Lerdahl Circle,Hot Springs National Park,AR,71914,121,151.25
 f8539bd0-0f1c-4fe0-94d1-ac498e51e667,Van Der Weedenburg,rvanderweedenburgo1@qq.com,(619) 3147444,1830 Pankratz Court,San Diego,CA,92186,418,522.5
 f09f3116-b34b-4772-a92c-c3b00751a4db,Hambling,dhamblingo2@imageshack.us,(916) 4460028,08216 Ilene Street,Sacramento,CA,94263,494,617.5
@@ -886,7 +886,7 @@ af1af344-57c3-4db1-8524-0bfefef56e4e,Urry,surryoi@smh.com.au,(314) 9746757,61220
 fd3f60d8-4f30-4585-8749-24911edde4eb,Wolfart,hwolfartok@cnbc.com,(360) 4807552,7 Grayhawk Place,Seattle,WA,98104,128,160
 ea337a3c-017c-4fc3-ac26-8c6d30360de8,Alker,talkerol@unicef.org,(904) 4132102,8 Hollow Ridge Plaza,Jacksonville,FL,32255,266,332.5
 cf610eeb-0a89-46c8-8c25-f15b2b1143e9,Jope,rjopeom@home.pl,(727) 9084360,05528 Birchwood Lane,Largo,FL,34643,81,101.25
-0f3b20e2-c2b2-48ec-be12-58b72a51901a,Surby,gsurbyon@furl.net,(609) 9234590,14352 Bartelt Lane,Trenton,NJ,08619,174,217.5
+0f3b20e2-c2b2-48ec-be12-58b72a51901a,Surby,gsurbyon@furl.net,(609) 9234590,14352 Bartelt Lane,Trenton,NJ,8619,174,217.5
 5b36c1a1-8b9e-482f-99b3-89c460040228,Renihan,mrenihanoo@go.com,(407) 1482875,765 Redwing Drive,Winter Haven,FL,33884,495,618.75
 36c702fe-553b-48eb-883c-c904f60b6804,Skentelbery,jskentelberyop@cnet.com,(202) 4506225,403 Di Loreto Pass,Washington,DC,20535,452,565
 00ba96e8-8147-46ce-be15-3d9fc10d800c,Charette,acharetteoq@opera.com,(202) 7094053,96187 Dryden Pass,Washington,DC,20088,108,135
@@ -920,7 +920,7 @@ bc7d48e6-4e75-460b-b313-525cc953938d,Dunkerly,gdunkerlyph@usnews.com,(801) 14534
 8ea330fa-4a33-4edc-b2a8-da23f5f00dcc,Stockey,tstockeypi@usatoday.com,(310) 4698437,3077 Loomis Place,Long Beach,CA,90805,353,441.25
 8a8833e6-9839-411c-a024-1fbb0cca2e46,McOmish,dmcomishpj@tinypic.com,(661) 5052323,1141 Lakeland Lane,Bakersfield,CA,93386,99,123.75
 a0934252-c2e1-431e-87c8-681c57b7026f,Nardrup,knardruppk@vkontakte.ru,(912) 9200567,1 Lien Pass,Savannah,GA,31422,303,378.75
-f4033d7b-0afc-4ee9-ac4c-d01984262d5a,Mauditt,vmaudittpl@usda.gov,(413) 9543530,133 Thierer Parkway,Springfield,MA,01105,294,367.5
+f4033d7b-0afc-4ee9-ac4c-d01984262d5a,Mauditt,vmaudittpl@usda.gov,(413) 9543530,133 Thierer Parkway,Springfield,MA,1105,294,367.5
 780323ea-cee7-4aaa-aba4-f824af7cebe2,Branney,bbranneypm@usda.gov,(601) 6791680,43562 Waywood Hill,Jackson,MS,39210,341,426.25
 591a2e3e-18b6-42c7-bdae-6b59537412e8,Rosenstiel,mrosenstielpn@mlb.com,(303) 8296774,3 Meadow Ridge Hill,Aurora,CO,80015,157,196.25
 2c9f5c34-3af4-4773-b6a0-9c3697513eeb,Shufflebotham,jshufflebothampo@networksolutions.com,(202) 5944381,2 Continental Point,Washington,DC,20404,400,500
@@ -991,7 +991,7 @@ be855638-fee7-4d07-8d75-11496b10582b,Doone,pdoonerf@sphinn.com,(205) 1529550,046
 2e1ecb92-b942-41b0-8755-534930669bca,Glowinski,sglowinskirh@photobucket.com,(952) 7645933,608 Pearson Way,Minneapolis,MN,55446,418,522.5
 ff3bfe38-97ac-4572-b6da-e0be20034fe7,Hurcombe,ghurcomberi@examiner.com,(713) 9658277,7 Schmedeman Junction,Houston,TX,77090,325,406.25
 79dba877-cdf5-4b30-99ba-94b1c67aad58,Rillatt,brillattrj@plala.or.jp,(626) 5916737,810 Stone Corner Drive,Pasadena,CA,91117,209,261.25
-ec6ea92d-24a2-4fa7-bc6b-9fee0b8bec46,Fingleton,pfingletonrk@mail.ru,(413) 5419314,24 Shopko Drive,Springfield,MA,01105,179,223.75
+ec6ea92d-24a2-4fa7-bc6b-9fee0b8bec46,Fingleton,pfingletonrk@mail.ru,(413) 5419314,24 Shopko Drive,Springfield,MA,1105,179,223.75
 07e85676-73a8-49cf-af2a-72d919bc048f,Osichev,posichevrl@wiley.com,(307) 7246837,32 Fisk Place,Cheyenne,WY,82007,436,545
 ebadd0dd-9be7-46b2-95d0-4c1f3870c8ec,Jako,rjakorm@mit.edu,(518) 5301398,7 Kinsman Junction,Albany,NY,12255,203,253.75
 9e3ee70e-9332-4e31-9adf-81a955249e83,Catchpole,icatchpolern@google.cn,(260) 8501005,9111 Sherman Junction,Fort Wayne,IN,46862,414,517.5
@@ -999,3 +999,4 @@ ebadd0dd-9be7-46b2-95d0-4c1f3870c8ec,Jako,rjakorm@mit.edu,(518) 5301398,7 Kinsma
 95280df4-2459-4385-aebc-adf1caadc5f2,Radnedge,tradnedgerp@dot.gov,(256) 4342232,941 Springview Road,Anniston,AL,36205,444,555
 a31ba42b-dc73-4fa8-9ee9-f400275c9c88,Iremonger,hiremongerrq@blog.com,(405) 1418851,69062 Roth Drive,Oklahoma City,OK,73119,265,331.25
 8248a3e0-ad7c-43c0-bebf-34745a07e99e,Barritt,sbarrittrr@eventbrite.com,(775) 2518060,20292 Manufacturers Junction,Carson City,NV,89714,242,302.5
+dd98efba-6931-4e4d-871a-717242106bff,Temuudei,Shiilegdamba,(925)6390286,125 Near Court,Walnut Creek,CA,94596,342.23,543.23

@@ -30,8 +30,8 @@ public class ReservationService {
         this.io = io;
     }
 
-    //Shows reservations
-    public List<Reservation> view(String email) {
+    //Shows host reservations
+    public List<Reservation> viewHostReservations(String email) {
         List<Host> hostList = hostRepository.findAll();
         if (!checkIfHostExists(hostList, email) || !checkIfHostHasReservations(hostList, email)) {
             return null;
@@ -88,9 +88,9 @@ public class ReservationService {
         List<Reservation> reservationList = getReservationList(hostList, reservation.getHost().getEmail());
         List<Reservation> newList = new ArrayList<>();
 
-        for (int i = 0; i < reservationList.size(); i++) {
-            if (reservation.getGuest().getEmail().equalsIgnoreCase(reservationList.get(i).getGuest().getEmail())) {
-                newList.add(reservationList.get(i));
+        for (Reservation value : reservationList) {
+            if (reservation.getGuest().getEmail().equalsIgnoreCase(value.getGuest().getEmail())) {
+                newList.add(value);
             }
         }
         return newList;
@@ -100,13 +100,13 @@ public class ReservationService {
     public Host viewHostInfo(String email) {
         Host host = new Host();
         List<Host> hostList = hostRepository.findAll();
-        for (int i = 0; i < hostList.size(); i++) {
-            if (email.equalsIgnoreCase(hostList.get(i).getEmail())) {
-                host.setLastName(hostList.get(i).getLastName());
-                host.setAddress(hostList.get(i).getAddress());
-                host.setCity(hostList.get(i).getCity());
-                host.setState(hostList.get(i).getState());
-                host.setPostalCode(hostList.get(i).getPostalCode());
+        for (Host value : hostList) {
+            if (email.equalsIgnoreCase(value.getEmail())) {
+                host.setLastName(value.getLastName());
+                host.setAddress(value.getAddress());
+                host.setCity(value.getCity());
+                host.setState(value.getState());
+                host.setPostalCode(value.getPostalCode());
                 break;
             }
         }

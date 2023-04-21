@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface HostRepository {
     List<Host> findAll();
+    Host addHost(Host host) throws DataException;
 }

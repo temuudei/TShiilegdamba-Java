@@ -5,7 +5,9 @@ public enum MainMenuOption {
     VIEW_RESERVATIONS_FOR_HOST(1, "View Reservations for Host"),
     MAKE_RESERVATION(2, "Make a Reservation"),
     EDIT_RESERVATION(3, "Edit a Reservation"),
-    CANCEL_RESERVATION(4, "Cancel a Reservation");
+    CREATE_GUEST(4, "Create a Guest"),
+    CREATE_HOST(5, "Create a Host"),
+    CANCEL_RESERVATION(6, "Cancel a Reservation");
     private int value;
     private String message;
 
