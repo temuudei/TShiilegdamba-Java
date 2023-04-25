@@ -169,9 +169,18 @@ left outer join employee e on pe.employee_id = e.employee_id
 where c.last_name = 'Rao';
 
 
+
 -- Find employees and projects for projects in 2017.
 -- Select project_id from project and names from employee.
 -- Expected: 410 Rows
+
+select
+	concat(e.first_name,' ', e.last_name) as full_name,
+    p.project_id as project_id
+from employee e
+inner join project_employee pe on e.employee_id = pe.employee_id
+inner join project p on pe.project_id = p.project_id
+where year(p.start_date) = 2017;
 
 -- Create an "invoice" with line item totals (calculated field)
 -- for items billed to projects for the customer with last_name 'Stelfox'.
