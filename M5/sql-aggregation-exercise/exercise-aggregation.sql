@@ -143,21 +143,75 @@ group by full_name;
 -- How many employees worked on more than 140 projects?
 -- Expected: 10 Rows
 
+select 
+	concat(e.first_name, ' ', e.last_name) as full_name,
+    count(p.project_id) as total
+from employee e
+inner join project_employee pe on e.employee_id = pe.employee_id
+inner join project p on pe.project_id = p.project_id
+group by full_name
+having total > 140;
+
 -- How many projects cost more than $20,000?
 -- Expected: 55 Rows
+
+select 
+	p.project_id as project_id,
+    sum(pi.quantity * i.price_per_unit) as sum
+from 
+	project p 
+inner join project_item pi on p.project_id = pi.project_id
+inner join item i on pi.item_id = i.item_id
+group by project_id
+having sum > 20000;
+
+    
 
 -- Across all projects, what are the total costs per item?
 -- Select the item name and sum.
 -- Sort by the sum desc;
 -- Expected: 18 Rows
 
+select
+	i.`name` as item_name,
+    sum(pi.quantity * i.price_per_unit) as sum
+from 
+	project p 
+inner join project_item pi on p.project_id = pi.project_id
+inner join item i on pi.item_id = i.item_id
+group by item_name
+order by sum desc;
+
 -- Across all projects, what are the total costs per item category?
 -- Select the category name and sum.
 -- Sort by the sum desc;
 -- Expected: 7 Rows
 
+select
+	c.`name` as category_name,
+    sum(pi.quantity * i.price_per_unit) as sum
+from 
+	category c
+inner join item i on c.category_id = i.category_id
+inner join project_item pi on i.item_id = pi.item_id
+group by category_name
+order by sum desc;
+
 -- What's the average 'Standard Labor' cost per city?
 -- Expected: 88 Rows
+
+select
+	customer.city,
+    avg(pi.quantity * i.price_per_unit) as avg
+from 
+	category c
+inner join item i on c.category_id = i.category_id
+inner join project_item pi on i.item_id = pi.item_id
+inner join project p on pi.project_id = p.project_id
+inner join customer on p.customer_id = customer.customer_id
+where c.name = 'Labor'
+group by customer.city;
+
 
 -- Challenge: Which customer has the first project of 2019?
 -- (Requires a subquery.)
