@@ -4,11 +4,15 @@ create database rcttcdb;
 
 use rcttcdb;
 
+-- Creating Performance table
+
 create table Performance
 (
 	performance_id int primary key auto_increment,
     `name` varchar(100) not null
 );
+
+-- Creating Customer table
 
 create table Customer
 (
@@ -20,6 +24,8 @@ create table Customer
     address varchar(125) null
 );
 
+-- Creating Theater table
+
 create table Theater
 (
 	theater_id int primary key auto_increment,
@@ -28,6 +34,8 @@ create table Theater
     phone varchar(15) not null,
     email varchar(100) not null
 );
+
+-- Creating Shows table
 
 create table Shows
 (
@@ -39,6 +47,8 @@ create table Shows
     foreign key (theater_id) references Theater(theater_id),
     foreign key (performance_id) references Performance(performance_id)
 );
+
+-- Creating Ticket table
 
 create table Ticket
 (
