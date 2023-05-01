@@ -147,6 +147,13 @@ where ticket_id = 103;
 
 -- Deleting all customers who have single-tickets at the 10 Pin
 
+Select customer_id, count(ticket_id) 
+from Ticket t
+	inner join Shows s on s.shows_id = t.shows_id
+    inner join Theater th on th.theater_id = s.theater_id
+where th.name = '10 Pin'
+ Group by customer_id having count(ticket_id) = 1;
+
 delete from Ticket where customer_id = 7;
 
 delete from Ticket where customer_id = 8;
