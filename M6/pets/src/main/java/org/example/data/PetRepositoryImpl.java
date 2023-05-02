@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.sql.DataSource;
-public class PetJdbcRepository {
+public class PetRepositoryImpl implements PetRepository {
 
     // 1. Dangerous initialization during construction
     private DataSource dataSource = initDataSource();
@@ -25,6 +25,7 @@ public class PetJdbcRepository {
         return result;
     }
 
+    @Override
     public List<Pet> findAll() {
         List<Pet> result = new ArrayList<>();
 
@@ -44,8 +45,9 @@ public class PetJdbcRepository {
         return result;
     }
 
+    @Override
     public Pet findByName(String petName) {
-        String sql = "select * from pet where `name` = ?;";
+        final String sql = "select * from pet where `name` = ?;";
 
         try (Connection conn = dataSource.getConnection(); PreparedStatement statement = conn.prepareStatement(sql)) {
             statement.setString(1, petName);
@@ -64,8 +66,9 @@ public class PetJdbcRepository {
         return null;
     }
 
+    @Override
     public Pet findById(int petName) {
-        String sql = "select * from pet where pet_id = ?;";
+        final String sql = "select pet_id, `name`, `type` from pet where pet_id = ?;";
 
         try (Connection conn = dataSource.getConnection(); PreparedStatement statement = conn.prepareStatement(sql)) {
             statement.setInt(1, petName);
@@ -84,6 +87,7 @@ public class PetJdbcRepository {
         return null;
     }
 
+    @Override
     public Pet add(Pet pet) {
         final String sql = "insert into pet (`name`, `type`) values (?,?)";
         try (Connection conn = dataSource.getConnection(); PreparedStatement st = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
@@ -107,6 +111,7 @@ public class PetJdbcRepository {
         return pet;
     }
 
+    @Override
     public boolean update(Pet pet) {
         final String sql = "update pet set `name` = ?, `type` = ? where pet_id = ?";
         try (Connection conn = dataSource.getConnection(); PreparedStatement st = conn.prepareStatement(sql)) {
@@ -122,7 +127,8 @@ public class PetJdbcRepository {
         return false;
     }
 
-    public boolean delete(int petId) {
+    @Override
+    public boolean deleteById(int petId) {
         final String sql = "delete from pet where pet_id = ?";
         try (Connection conn = dataSource.getConnection(); PreparedStatement st = conn.prepareStatement(sql)) {
             st.setInt(1, petId);

@@ -11,11 +11,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PetJdbcRepositoryTest {
 
-    PetJdbcRepository repository;
+    PetRepository repository;
 
     @BeforeEach
     void setUp() {
-        repository = new PetJdbcRepository();
+        repository = new PetRepositoryImpl();
     }
 
     @AfterEach
