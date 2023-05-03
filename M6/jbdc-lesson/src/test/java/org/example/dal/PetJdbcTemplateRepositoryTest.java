@@ -1,30 +1,32 @@
 package org.example.dal;
 
 import org.example.models.Pet;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+// 1. SpringBootTest
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
 class PetJdbcTemplateRepositoryTest {
 
+    @Autowired
     PetJdbcTemplateRepository repository;
+    @Autowired
+    JdbcTemplate jdbcTemplate;
+    // 3. @BeforeAll work-around.
+    static boolean hasSetUp = false;
 
-    public PetJdbcTemplateRepositoryTest() {
-        ApplicationContext context = new AnnotationConfigApplicationContext(DbTestConfig.class);
-        repository = context.getBean(PetJdbcTemplateRepository.class);
-    }
-
-    @BeforeAll
-     static void setUp() {
-        ApplicationContext context = new AnnotationConfigApplicationContext(DbTestConfig.class);
-        JdbcTemplate jdbcTemplate = context.getBean(JdbcTemplate.class);
-        jdbcTemplate.update("call set_known_good_state();");
+    @BeforeEach
+    void setup() {
+        if (!hasSetUp) {
+            hasSetUp = true;
+            jdbcTemplate.update("call set_known_good_state();");
+        }
     }
     @Test
     void shouldFindAll() {

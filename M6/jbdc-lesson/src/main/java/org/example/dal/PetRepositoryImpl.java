@@ -24,7 +24,7 @@ public class PetRepositoryImpl implements PetRepository {
         // 3. username
         result.setUser("root");
         // 4. password
-        result.setPassword("password");
+        result.setPassword("top-secret-password");
         return result;
     }
     @Override

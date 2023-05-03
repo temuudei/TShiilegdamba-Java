@@ -37,4 +37,22 @@ public class PetController{
         }
     }
 
+    @PutMapping("/{petId}")
+    public ResponseEntity<List<String>> update(@PathVariable int petId, @RequestBody Pet pet) {
+        Result<Pet> result = service.update(petId, pet);
+        if(result.isSuccessful()){
+            return new ResponseEntity<>(HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(result.getMessages(), HttpStatus.PRECONDITION_FAILED);
+        }
+    }
+    @DeleteMapping("/{petId}")
+    public ResponseEntity<List<String>> delete(@PathVariable int petId) {
+        Result<Integer> result = service.delete(petId);
+        if(result.isSuccessful()){
+            return new ResponseEntity<>(HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(result.getMessages(), HttpStatus.PRECONDITION_FAILED);
+        }
+    }
 }
