@@ -10,11 +10,10 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.PreparedStatement;
 import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class PetJdbcTemplateRepository implements PetRepository{
+public class PetJdbcTemplateRepository implements PetRepository {
 
     private final JdbcTemplate jdbcTemplate;
 

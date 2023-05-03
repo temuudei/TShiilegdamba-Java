@@ -1,10 +1,9 @@
 package org.example.dal;
 
+import org.example.models.Pet;
 import com.mysql.cj.jdbc.MysqlDataSource;
 
 import javax.sql.DataSource;
-import org.example.models.Pet;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;

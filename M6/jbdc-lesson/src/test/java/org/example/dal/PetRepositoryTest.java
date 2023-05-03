@@ -1,6 +1,7 @@
 package org.example.dal;
 
 import org.example.models.Pet;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -59,7 +60,7 @@ class PetRepositoryTest {
         pet.setType("Snake");
 
         assertTrue(repository.update(pet));
-        assertEquals(pet, repository.findById(2));
+        Assertions.assertEquals(pet, repository.findById(2));
     }
 
     @Test
