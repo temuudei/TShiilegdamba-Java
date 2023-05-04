@@ -3,6 +3,7 @@ package org.example.domains;
 import org.example.dal.PetRepository;
 import org.example.models.Pet;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
@@ -13,6 +14,7 @@ import static org.mockito.Mockito.*;
 class PetServiceTest {
     @MockBean
     PetRepository repository;
+    @Autowired
     PetService service;
     @Test
     void shouldAdd() {
@@ -25,6 +27,7 @@ class PetServiceTest {
 
         // Act
         Result<Pet> result = service.add(petIn);
+        assertNotNull(result);
 
         // Assert
         //assertEquals(2, result.getMessages().size());
