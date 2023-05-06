@@ -3,6 +3,7 @@ package learn.field_agent.data;
 import learn.field_agent.models.AgencyAgent;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 public class AgencyAgentJdbcTemplateRepository implements AgencyAgentRepository {
@@ -14,6 +15,7 @@ public class AgencyAgentJdbcTemplateRepository implements AgencyAgentRepository 
     }
 
     @Override
+    @Transactional
     public boolean add(AgencyAgent agencyAgent) {
 
         final String sql = "insert into agency_agent (agency_id, agent_id, identifier, security_clearance_id, "
@@ -30,6 +32,7 @@ public class AgencyAgentJdbcTemplateRepository implements AgencyAgentRepository 
     }
 
     @Override
+    @Transactional
     public boolean update(AgencyAgent agencyAgent) {
 
         final String sql = "update agency_agent set "
@@ -50,6 +53,7 @@ public class AgencyAgentJdbcTemplateRepository implements AgencyAgentRepository 
     }
 
     @Override
+    @Transactional
     public boolean deleteByKey(int agencyId, int agentId) {
 
         final String sql = "delete from agency_agent "

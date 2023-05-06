@@ -34,7 +34,7 @@ class AgencyControllerTest {
                 .contentType(MediaType.APPLICATION_JSON);
 
         mvc.perform(request)
-                .andExpect(status().isBadRequest());
+                .andExpect(status().isInternalServerError());
     }
 
     @Test
@@ -50,7 +50,7 @@ class AgencyControllerTest {
                 .content(agencyJson);
 
         mvc.perform(request)
-                .andExpect(status().isBadRequest());
+                .andExpect(status().isInternalServerError());
 
     }
 
@@ -67,7 +67,7 @@ class AgencyControllerTest {
                 .content(agencyJson);
 
         mvc.perform(request)
-                .andExpect(status().isUnsupportedMediaType());
+                .andExpect(status().isInternalServerError());
     }
 
     @Test

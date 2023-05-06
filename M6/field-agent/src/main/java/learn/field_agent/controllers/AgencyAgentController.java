@@ -24,22 +24,22 @@ public class AgencyAgentController {
         if (result.isSuccess()) {
             return new ResponseEntity<>(HttpStatus.CREATED);
         }
-        return ErrorResponse.build(result);
+        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @PutMapping
     public ResponseEntity<Object> update(@RequestBody AgencyAgent agencyAgent) {
         Result<Void> result = service.updateAgent(agencyAgent);
         if (result.isSuccess()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(HttpStatus.OK);
         }
-        return ErrorResponse.build(result);
+        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @DeleteMapping("/{agencyId}/{agentId}")
     public ResponseEntity<Void> deleteByKey(@PathVariable int agencyId, @PathVariable int agentId) {
         if (service.deleteAgentByKey(agencyId, agentId)) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }

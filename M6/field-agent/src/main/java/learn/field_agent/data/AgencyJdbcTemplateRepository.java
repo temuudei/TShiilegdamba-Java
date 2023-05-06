@@ -24,6 +24,7 @@ public class AgencyJdbcTemplateRepository implements AgencyRepository {
     }
 
     @Override
+    @Transactional
     public List<Agency> findAll() {
         // limit until we develop a paging solution
         final String sql = "select agency_id, short_name, long_name from agency limit 1000;";
@@ -50,6 +51,7 @@ public class AgencyJdbcTemplateRepository implements AgencyRepository {
     }
 
     @Override
+    @Transactional
     public Agency add(Agency agency) {
 
         final String sql = "insert into agency (short_name, long_name) values (?,?);";
@@ -71,6 +73,7 @@ public class AgencyJdbcTemplateRepository implements AgencyRepository {
     }
 
     @Override
+    @Transactional
     public boolean update(Agency agency) {
 
         final String sql = "update agency set "
@@ -103,7 +106,7 @@ public class AgencyJdbcTemplateRepository implements AgencyRepository {
     private void addAgents(Agency agency) {
 
         final String sql = "select aa.agency_id, aa.agent_id, aa.identifier, aa.activation_date, aa.is_active, "
-                + "sc.security_clearance_id, sc.name security_clearance_name, "
+                + "sc.security_clearance_id, sc.`name` security_clearance_name, "
                 + "a.first_name, a.middle_name, a.last_name, a.dob, a.height_in_inches "
                 + "from agency_agent aa "
                 + "inner join agent a on aa.agent_id = a.agent_id "

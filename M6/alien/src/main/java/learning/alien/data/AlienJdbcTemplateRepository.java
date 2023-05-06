@@ -5,11 +5,8 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 @Repository
@@ -26,10 +23,8 @@ public class AlienJdbcTemplateRepository implements AlienRepository {
         try {
             return jdbcTemplate.query(sql, (resultSet, rowNum) -> {
                 Alien alien = new Alien();
-                DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
                 Date date = resultSet.getDate("alien_date");
-                Dat
-                LocalDate alienDate = date.
+                LocalDate alienDate = date.toLocalDate();
 
                 alien.setAlienId(resultSet.getInt("alien_id"));
                 alien.setAlienName(resultSet.getString("alien_name"));

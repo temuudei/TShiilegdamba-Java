@@ -2,6 +2,7 @@ package learn.field_agent.data;
 
 import learn.field_agent.data.mappers.AgentAgencyMapper;
 import learn.field_agent.data.mappers.AgentMapper;
+import learn.field_agent.data.mappers.AliasMapper;
 import learn.field_agent.models.Agent;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
@@ -24,6 +25,7 @@ public class AgentJdbcTemplateRepository implements AgentRepository {
     }
 
     @Override
+    @Transactional
     public List<Agent> findAll() {
         final String sql = "select agent_id, first_name, middle_name, last_name, dob, height_in_inches "
                 + "from agent limit 1000;";
@@ -43,12 +45,14 @@ public class AgentJdbcTemplateRepository implements AgentRepository {
 
         if (agent != null) {
             addAgencies(agent);
+            addAliases(agent);
         }
 
         return agent;
     }
 
     @Override
+    @Transactional
     public Agent add(Agent agent) {
 
         final String sql = "insert into agent (first_name, middle_name, last_name, dob, height_in_inches) "
@@ -74,6 +78,7 @@ public class AgentJdbcTemplateRepository implements AgentRepository {
     }
 
     @Override
+    @Transactional
     public boolean update(Agent agent) {
 
         final String sql = "update agent set "
@@ -97,13 +102,14 @@ public class AgentJdbcTemplateRepository implements AgentRepository {
     @Transactional
     public boolean deleteById(int agentId) {
         jdbcTemplate.update("delete from agency_agent where agent_id = ?;", agentId);
+        jdbcTemplate.update("delete from alias where agent_id = ?;", agentId);
         return jdbcTemplate.update("delete from agent where agent_id = ?;", agentId) > 0;
     }
 
     private void addAgencies(Agent agent) {
 
         final String sql = "select aa.agency_id, aa.agent_id, aa.identifier, aa.activation_date, aa.is_active, "
-                + "sc.security_clearance_id, sc.name security_clearance_name, "
+                + "sc.security_clearance_id, sc.`name` security_clearance_name, "
                 + "a.short_name, a.long_name "
                 + "from agency_agent aa "
                 + "inner join agency a on aa.agency_id = a.agency_id "
@@ -112,5 +118,13 @@ public class AgentJdbcTemplateRepository implements AgentRepository {
 
         var agentAgencies = jdbcTemplate.query(sql, new AgentAgencyMapper(), agent.getAgentId());
         agent.setAgencies(agentAgencies);
+    }
+
+    private void addAliases(Agent agent) {
+        final String sql = "select alias_id, `name` alias_name, persona, agent_id "
+                + "from alias "
+                + "where agent_id = ?;";
+        var aliases = jdbcTemplate.query(sql, new AliasMapper(), agent.getAgentId());
+        agent.setAliases(aliases);
     }
 }

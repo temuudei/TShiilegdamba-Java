@@ -6,6 +6,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.PreparedStatement;
 import java.sql.Statement;
@@ -20,6 +21,7 @@ public class LocationJdbcTemplateRepository implements LocationRepository {
     }
 
     @Override
+    @Transactional
     public Location findById(int locationId) {
 
         final String sql = "select location_id, name, address, city, region, country_code, postal_code, agency_id "
@@ -32,6 +34,7 @@ public class LocationJdbcTemplateRepository implements LocationRepository {
     }
 
     @Override
+    @Transactional
     public Location add(Location location) {
 
         final String sql = "insert into location (name, address, city, region, country_code, postal_code, agency_id)"
@@ -59,6 +62,7 @@ public class LocationJdbcTemplateRepository implements LocationRepository {
     }
 
     @Override
+    @Transactional
     public boolean update(Location location) {
 
         // don't allow agency_id updates for now
@@ -82,8 +86,9 @@ public class LocationJdbcTemplateRepository implements LocationRepository {
     }
 
     @Override
+    @Transactional
     public boolean deleteById(int locationId) {
         return jdbcTemplate.update(
-                "delete from location where location_id = ?", locationId) > 0;
+                "delete from location where location_id = ?;", locationId) > 0;
     }
 }
