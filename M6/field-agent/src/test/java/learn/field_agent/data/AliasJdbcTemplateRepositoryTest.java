@@ -36,18 +36,38 @@ class AliasJdbcTemplateRepositoryTest {
 
     @Test
     void shouldFindById() {
-        Alias alias = new Alias(1, "Tim", "Spy", 1);
+        Alias alias = new Alias();
+        alias.setAlias_id(1);
+        alias.setName("Tim");
+        alias.setPersona("Spy");
+        alias.setAgent_id(1);
+
         Alias actual = repository.findById(1);
         assertEquals(alias.getName(), actual.getName());
         assertEquals(alias.getAlias_id(), actual.getAlias_id());
+    }
+
+    @Test
+    void shouldUpdate() {
+        Alias alias = makeAlias();
+        alias.setAlias_id(1);
+        assertTrue(repository.update(alias));
+
+        alias.setAlias_id(500);
+        assertFalse(repository.update(alias));
+    }
+
+    @Test
+    void shouldDeleteById() {
+        assertTrue(repository.deleteById(1));
+        assertFalse(repository.deleteById(1));
     }
 
     private Alias makeAlias() {
         Alias alias = new Alias();
         alias.setName("Tim");
         alias.setPersona("Spy");
-        alias.setAgent_id(5);
+        alias.setAgent_id(1);
         return alias;
     }
-
 }

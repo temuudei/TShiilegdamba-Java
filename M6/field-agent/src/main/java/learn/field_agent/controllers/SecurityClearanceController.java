@@ -48,7 +48,6 @@ public class SecurityClearanceController {
         if (result.isSuccess()) {
             return new ResponseEntity<>(HttpStatus.OK);
         }
-
         return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 

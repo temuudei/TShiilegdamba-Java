@@ -105,6 +105,8 @@ begin
     delete from agency_agent;
 	delete from agency;
 	alter table agency auto_increment = 1;
+    delete from alias;
+    alter table alias auto_increment = 1;
     delete from agent;
     alter table agent auto_increment = 1;
     

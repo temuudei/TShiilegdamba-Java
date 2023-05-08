@@ -53,7 +53,7 @@ class SecurityClearanceJdbcTemplateRepositoryTest {
         SecurityClearance clearance = makeClearance();
         SecurityClearance actual = repository.add(clearance);
         assertNotNull(actual);
-        assertEquals(3, actual.getSecurityClearanceId());
+        assertEquals(5, actual.getSecurityClearanceId());
     }
 
     @Test

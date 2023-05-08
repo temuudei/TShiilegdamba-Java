@@ -8,7 +8,6 @@ public class AgencyAgent {
     private String identifier;
     private LocalDate activationDate;
     private boolean active;
-
     private Agent agent;
     private SecurityClearance securityClearance;
 

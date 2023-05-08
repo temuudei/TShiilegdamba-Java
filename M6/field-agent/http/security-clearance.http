@@ -1,10 +1,10 @@
 @url = http://localhost:8080/api/security_clearance
 
-GET {{url}} HTTP/1.1
+GET {{url}}/2 HTTP/1.1
 
 ###
 
-GET {{url}}/4 HTTP/1.1
+GET {{url}} HTTP/1.1
 
 ###
 
@@ -18,14 +18,14 @@ Content-Type: application/json
 
 ### 
 
-PUT {{url}}/4 HTTP/1.1
+PUT {{url}}/2 HTTP/1.1
 Content-Type: application/json
 
 {
-    "securityClearanceId": 4,
-    "name": "Top Government Secret",
+    "securityClearanceId": 2,
+    "name": "Shh",
     "agents": []
 }
 
 ###
-DELETE {{url}}/9 HTTP/1.1
+DELETE {{url}}/5 HTTP/1.1
