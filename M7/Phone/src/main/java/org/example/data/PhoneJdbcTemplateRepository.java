@@ -61,6 +61,15 @@ public class PhoneJdbcTemplateRepository {
                 + "condition = ? "
                 + "where id = ?;";
 
-        return jdbcTemplate.up
+        return jdbcTemplate.update(sql,
+                phone.getPhoneOS(),
+                phone.getReleaseDate(),
+                phone.getPhonePrice(),
+                phone.isStillInGoodCondition(),
+                phone.getPhoneId()) > 0;
+    }
+
+    public boolean deleteById(int id) {
+        return jdbcTemplate.update("delete from Phone where id = ?;", id) > 0;
     }
 }
